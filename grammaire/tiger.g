@@ -3,48 +3,49 @@ grammar tiger;
 
 options {
     backtrack=true;
-    //memoize=true;
-    //k=10;
+    output=AST;
+    memoize=true;
+    k=2;
 }
 
-Prog	:	Exp ;
+Prog			:	Exp ;
 
 Exp			:	ExpOR ExpORPr;
 
-ExpOR			:	 ExpAND ExpANDPr;
+ExpOR			:	ExpAND ExpANDPr;
 
-ExpAND			:	 ArithExp RelExp;
+ExpAND			:	ArithExp RelExp;
 
-ExpORPr			:	 Exp
-			|	''; // Epsilon
+ExpORPr			:	Exp
+			|	; // Epsilon
 	
 ExpANDPr		:	'&' ExpOR
-			|	''; // Epsilon
+			|	; // Epsilon
 			
 				
 ArithExp		:	 Term   TermPr;
 
 RelExp			:	 RelOp  ArithExp
-			|	'';
+			|	;
 			
 Term			:	 Factor  FactorPr;
 
 TermPr			:	('+'|'-')  Term   TermPr
-			|	''; // Epsilon
+			|	; // Epsilon
 			
 FactorPr		:	('*'| '/')  Factor   FactorPr
-			|	'';
+			|	;
 	
-Factor			:	''
+Factor			:	
 			|	INT
 			|	STRING
 			|	'(' ExpList ')' // ')' en plus
 			|	 UnaryOp Exp
-			|	'if'  Exp 'then'  Exp ( 'else'  Exp )?
-			|	'while'  Exp 'do'  Exp
-			|	'for' ID ':='  Exp 'to'  Exp 'do'  Exp
-			|	'break'
-			|	'let'  DecList 'in'  ExpList 'end'
+			|	('if') => ('if' Exp 'then'  Exp ( 'else'  Exp )?)
+			|	('while') =>  ('while' Exp 'do'  Exp)
+			|	('for') => ('for' ID ':='  Exp 'to'  Exp 'do'  Exp)
+			|	('break') => ('break')
+			|	('let') =>  ('let' DecList 'in'  ExpList 'end')
 			|	 LValue;
 			
 DecList 		:	( Dec )*;
@@ -57,8 +58,8 @@ Dec 			:	 TyDec
 TyDec	 		:	'type'  TypeId =  Ty
 ;
 
-Ty 			:	( FieldList )*
-			|	 'arrayof'  TypeId
+Ty 			:	( FieldList)*
+			|	('arrayof') => ('arrayof' TypeId)
 			|	 TypeId
 ;
 
@@ -80,7 +81,7 @@ FunctionRecordArrayPr	:	( '(' '.' ID | ( Exp )? ')' )* ( ':='  Exp )?
 			;
 			
 				
-FieldList 		:	( ID ':'  TypeId ( ',' ID ':'  TypeId )* )?
+FieldList 		:	(( ID ':'  TypeId ( ',' ID ':'  TypeId )*) )?
 ;
 
 FieldExpList 		:	( ID '='  TypeId ( ',' ID '='  TypeId )* )?
@@ -131,7 +132,7 @@ WS  :   ( ' '
     ;
 
 STRING
-    :  '\'' ( ESC_SEQ | ~('\\'|'\'') )* '\''
+    :  ( ESC_SEQ | ~('\\'|'\'') )* '\''
     ;
 
 CHAR:  '\'' ( ESC_SEQ | ~('\''|'\\') ) '\''

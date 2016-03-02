@@ -8,93 +8,94 @@ options {
     k=2;
 }
 
-Prog			:	Exp ;
+prog			:	exp ;
 
-Exp			:	ExpOR ExpORPr;
+exp			:	expOR expORPr;
 
-ExpOR			:	ExpAND ExpANDPr;
+expOR			:	expAND expANDPr;
 
-ExpAND			:	ArithExp RelExp;
+expAND			:	arithExp relExp;
 
-ExpORPr			:	Exp
+expORPr			:	exp
 			|	; // Epsilon
 	
-ExpANDPr		:	'&' ExpOR
+expANDPr		:	'&' expOR
 			|	; // Epsilon
 			
 				
-ArithExp		:	 Term   TermPr;
+arithExp		:	 term   termPr;
 
-RelExp			:	 RelOp  ArithExp
+relExp			:	 RelOp  arithExp
 			|	;
 			
-Term			:	 Factor  FactorPr;
+term			:	 factor  factorPr;
 
-TermPr			:	('+'|'-')  Term   TermPr
+termPr			:	('+'|'-')  term   termPr
 			|	; // Epsilon
 			
-FactorPr		:	('*'| '/')  Factor   FactorPr
+factorPr		:	('*'| '/')  factor   factorPr
 			|	;
 	
-Factor			:	
+factor			:	
 			|	INT
 			|	STRING
-			|	'(' ExpList ')' // ')' en plus
-			|	 UnaryOp Exp
-			|	('if') => ('if' Exp 'then'  Exp ( 'else'  Exp )?)
-			|	('while') =>  ('while' Exp 'do'  Exp)
-			|	('for') => ('for' ID ':='  Exp 'to'  Exp 'do'  Exp)
-			|	('break') => ('break')
-			|	('let') =>  ('let' DecList 'in'  ExpList 'end')
-			|	 LValue;
+			|	'(' expList ')' // ')' en plus
+			|	 UnaryOp exp
+			|	'if' exp 'then'  exp ( 'else'  exp )?
+			|	'while' exp 'do'  exp
+			|	'for' ID ':='  exp 'to'  exp 'do'  exp
+			|	'break'
+			|	'let' decList 'in'  expList 'end'
+			|	 lValue
+			|	decList;
 			
-DecList 		:	( Dec )*;
+decList 		:	( dec )*;
 
-Dec 			:	 TyDec
-			|	 VarDec
-			|	 FunDec;
+dec 			:	 tyDec
+			|	 varDec
+			|	 funDec;
 			
 			
-TyDec	 		:	'type'  TypeId =  Ty
+tyDec	 		:	'type'  typeId '='  ty
 ;
 
-Ty 			:	( FieldList)*
-			|	('arrayof') => ('arrayof' TypeId)
-			|	 TypeId
+ty 			:	( fieldList)*
+			|	'arrayof' typeId
+			|	 typeId
 ;
 
 	
-VarDec			:	'var' ID ( ':'  TypeId )? ':='  Exp
+varDec			:	'var' ID (':'  typeId)? ':='  exp
 ;
 
-FunDec			:	'function' ID '(' FieldList ')' (':'  TypeId)? '='  Exp
+funDec			:	'function' ID '(' fieldList ')' (':'  typeId)? '='  exp
 ;
 			
-LValue			:	ID ( FunctionRecordArray |  FunctionRecordArrayPr );
+lValue			:	ID ( functionRecordArray |  functionRecordArrayPr );
 
-FunctionRecordArray	:	'(' ArgList ')'
-			|	'{' FieldList '}'
-			|	( Exp )? '(' 'of'  Exp ')' 
+functionRecordArray	:	'(' argList ')'
+			|	'{' fieldList '}'
+			|	( exp )? '(' 'of'  exp ')' 
 			; // | Av
 	
-FunctionRecordArrayPr	:	( '(' '.' ID | ( Exp )? ')' )* ( ':='  Exp )?
+functionRecordArrayPr	:	( '(' '.' ID | ( exp )? ')' )* ( ':='  exp )?
 			;
 			
 				
-FieldList 		:	(( ID ':'  TypeId ( ',' ID ':'  TypeId )*) )?
+fieldList 		:	(( ID ':'  typeId ( ',' ID ':'  typeId )*) )?
 ;
 
-FieldExpList 		:	( ID '='  TypeId ( ',' ID '='  TypeId )* )?
+fieldExpList 		:	( ID '='  typeId ( ',' ID '='  typeId )* )?
 ;
 
 
-ExpList			:	( Exp ( ';'  Exp )* )?
+expList			:	( exp ( ';'  exp )* )?
 ;
 
-ArgList			:	( Exp ( ','  Exp )* )?
+argList			:	( exp ( ','  exp )* )?
 ;
 
-TypeId	:	ID
+typeId	:	ID
 	|	INT
 	|	STRING;
 

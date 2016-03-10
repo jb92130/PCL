@@ -16,16 +16,16 @@ expOR			:	expAND expANDPr;
 
 expAND			:	arithExp relExp;
 
-expORPr			:	exp
+expORPr			:	expAND expANDPr
 			|	; // Epsilon
 	
 expANDPr		:	'&' expOR
 			|	; // Epsilon
 			
 				
-arithExp		:	 term   termPr;
+arithExp		:	term termPr;
 
-relExp			:	 RelOp  arithExp
+relExp			:	RelOp  arithExp
 			|	;
 			
 term			:	 factor  factorPr;

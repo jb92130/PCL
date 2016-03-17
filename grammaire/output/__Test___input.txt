@@ -1,5 +1,9 @@
+<<<<<<< .merge_file_uyEXx7
+var N := 5
+=======
 <<<<<<< HEAD
 2-3*5
 =======
 var N := 5
 >>>>>>> 2db0b05a71a7ac5ea9086138d9027dc896cda632
+>>>>>>> .merge_file_6JdW9H

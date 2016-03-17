@@ -1,4 +1,7 @@
+<<<<<<< .merge_file_t71hqx
+=======
 <<<<<<< HEAD
+>>>>>>> .merge_file_I6YzWT
 T__18=18
 T__19=19
 T__20=20
@@ -29,8 +32,11 @@ T__44=44
 T__45=45
 T__46=46
 T__47=47
+<<<<<<< .merge_file_t71hqx
+=======
 T__48=48
 T__49=49
+>>>>>>> .merge_file_I6YzWT
 CHAR=4
 COMMENT=5
 ESC_SEQ=6
@@ -68,6 +74,16 @@ WS=17
 'if'=37
 'in'=38
 'let'=39
+<<<<<<< .merge_file_t71hqx
+'of'=40
+'then'=41
+'to'=42
+'type'=43
+'var'=44
+'while'=45
+'{'=46
+'}'=47
+=======
 'nil'=40
 'of'=41
 'then'=42
@@ -94,3 +110,4 @@ WS=5
 '-'=10
 '/'=11
 >>>>>>> 2db0b05a71a7ac5ea9086138d9027dc896cda632
+>>>>>>> .merge_file_I6YzWT

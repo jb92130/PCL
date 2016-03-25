@@ -4,7 +4,7 @@ options {
     language=Java;
     output=AST;
     backtrack=true;
-    k=2;
+    k=100;
 }
 
 prog 	:	 expr*;
@@ -16,53 +16,51 @@ expr 	:	'let' decList* 'in' expSeq?  'end'
 	|	'(' expSeq? ')'
 	
 	//|	'-' expr
-	//|	opMan
-	
+	|	lvalue (':=' expr)?
+		
+	|	ID '(' expList? ')'
+		
 	|	typeId '[' expr ']' 'of' expr
 	|	typeId fieldList?
 	
-	|	lvalue ':=' expr
-	
-	|	ID '(' expList? ')'
 	|	STRING
 	|	INT
 	;
-
+	
+		
 opMan:	addExpr (('='|'<>'|'<'|'>'|'=<'|'=>') addExpr)*
-;
+	;
 
-addExpr	:   multExpr  (('+' |'-') multExpr )*
-;
+addExpr    :   multExpr  (('+' |'-') multExpr )*
+    	;
 
 multExpr :   atom  (('*'|'/') atom)*
-; 
+    ; 
     
 
-atom     :   int 
+atom     :   iNT 
     	|   ID
-   	|   '(' expr ')' 
-   	;
+   	 |   '(' expr ')' 
+   	 ;
 
-int	:	INT
+iNT	:	INT
 	|	'-' INT
 	;
 
 
 
-
 //rep	:  	fieldList?
 //	|	'[' expr ']' 'of' expr;
-
-
-lvalue	:	ID ('.' ID)* ('[' expr ']')*;
 	
 decList	:	decFunc
 	|	decType
 	|	decVar;
 
-decFunc	:	'function' ID '(' fieldList ')' '=' expr; // A compléter
+decFunc	:	'function' ID '(' typeFields? ')' (':' typeId)? '=' expr; // A compléter
 decVar	:	'var' ID (':'  typeId)? ':='  expr;
 decType	:	'type' typeId '=' type;
+
+lvalue	:	ID ( '.' ID)* ('[' expr ']')*;
 
 type	:	typeFields
 	|	'array of' typeId
@@ -73,7 +71,7 @@ expSeq 	:	expr (';' expr)*;
 expList	:	expr (',' expr)*;
 	
 fieldList
-	:	(ID ':' typeId (',' ID ':' typeId)* )?;	
+	:	ID '=' expr (',' ID '=' expr)*;	
 	
 typeFields
 	:	typeField (',' typeField)*;

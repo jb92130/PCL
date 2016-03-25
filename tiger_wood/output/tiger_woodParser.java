@@ -1,4 +1,4 @@
-// $ANTLR 3.5.1 /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g 2016-03-25 16:47:13
+// $ANTLR 3.5.1 /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g 2016-03-25 17:56:37
 
 import org.antlr.runtime.*;
 import java.util.Stack;
@@ -77,29 +77,31 @@ public class tiger_woodParser extends DebugParser {
 
 
 	public static final String[] ruleNames = new String[] {
-		"invalidRule", "synpred22_tiger_wood", "synpred7_tiger_wood", "synpred13_tiger_wood", 
-		"opMan", "synpred11_tiger_wood", "synpred39_tiger_wood", "prog", "synpred44_tiger_wood", 
-		"lvalue", "typeFields", "synpred42_tiger_wood", "synpred2_tiger_wood", 
-		"synpred17_tiger_wood", "synpred8_tiger_wood", "int", "synpred35_tiger_wood", 
-		"synpred33_tiger_wood", "synpred43_tiger_wood", "decType", "synpred3_tiger_wood", 
-		"type", "synpred15_tiger_wood", "synpred5_tiger_wood", "synpred37_tiger_wood", 
-		"synpred18_tiger_wood", "synpred21_tiger_wood", "synpred1_tiger_wood", 
-		"synpred34_tiger_wood", "multExpr", "synpred23_tiger_wood", "synpred38_tiger_wood", 
-		"expr", "atom", "addExpr", "synpred25_tiger_wood", "synpred4_tiger_wood", 
-		"fieldList", "synpred24_tiger_wood", "synpred40_tiger_wood", "synpred27_tiger_wood", 
-		"synpred14_tiger_wood", "decFunc", "synpred31_tiger_wood", "synpred20_tiger_wood", 
-		"decVar", "synpred6_tiger_wood", "synpred32_tiger_wood", "synpred9_tiger_wood", 
-		"synpred19_tiger_wood", "synpred30_tiger_wood", "synpred10_tiger_wood", 
-		"synpred26_tiger_wood", "expSeq", "synpred12_tiger_wood", "synpred28_tiger_wood", 
-		"synpred36_tiger_wood", "synpred16_tiger_wood", "typeId", "typeField", 
-		"expList", "synpred41_tiger_wood", "decList", "synpred29_tiger_wood"
+		"invalidRule", "synpred6_tiger_wood", "synpred27_tiger_wood", "type", 
+		"synpred35_tiger_wood", "synpred8_tiger_wood", "expr", "decVar", "synpred10_tiger_wood", 
+		"synpred40_tiger_wood", "decFunc", "synpred9_tiger_wood", "synpred21_tiger_wood", 
+		"addExpr", "synpred12_tiger_wood", "synpred30_tiger_wood", "synpred2_tiger_wood", 
+		"synpred17_tiger_wood", "opMan", "synpred15_tiger_wood", "prog", "atom", 
+		"synpred42_tiger_wood", "synpred39_tiger_wood", "synpred28_tiger_wood", 
+		"synpred41_tiger_wood", "synpred3_tiger_wood", "synpred34_tiger_wood", 
+		"decList", "synpred44_tiger_wood", "expSeq", "synpred11_tiger_wood", "synpred31_tiger_wood", 
+		"synpred16_tiger_wood", "expList", "synpred43_tiger_wood", "synpred32_tiger_wood", 
+		"synpred33_tiger_wood", "synpred45_tiger_wood", "synpred13_tiger_wood", 
+		"synpred22_tiger_wood", "synpred14_tiger_wood", "synpred26_tiger_wood", 
+		"synpred24_tiger_wood", "synpred1_tiger_wood", "synpred25_tiger_wood", 
+		"synpred5_tiger_wood", "typeField", "lvalue", "synpred29_tiger_wood", 
+		"synpred46_tiger_wood", "multExpr", "synpred36_tiger_wood", "synpred38_tiger_wood", 
+		"synpred4_tiger_wood", "iNT", "decType", "fieldList", "typeFields", "synpred7_tiger_wood", 
+		"synpred18_tiger_wood", "typeId", "synpred37_tiger_wood", "synpred19_tiger_wood", 
+		"synpred20_tiger_wood", "synpred23_tiger_wood"
 	};
 
 	public static final boolean[] decisionCanBacktrack = new boolean[] {
 		false, // invalid decision
-		false, false, false, true, false, true, false, true, false, false, false, 
-		    false, false, false, false, false, false, false, false, false, true, 
-		    false, false, false, false, false, false, true, false, false
+		false, false, false, true, false, false, false, false, true, false, false, 
+		    false, false, false, false, false, false, false, false, false, false, 
+		    false, false, true, false, false, false, false, false, false, false, 
+		    false
 	};
 
  
@@ -260,7 +262,7 @@ public class tiger_woodParser extends DebugParser {
 
 
 	// $ANTLR start "expr"
-	// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:12:1: expr : ( 'let' ( decList )* 'in' ( expSeq )? 'end' | 'if' expr 'then' expr ( 'else' expr )? | 'for' ID ':=' expr 'to' expr 'do' expr | 'break' | '(' ( expSeq )? ')' | typeId '[' expr ']' 'of' expr | typeId ( fieldList )? | lvalue ':=' expr | ID '(' ( expList )? ')' | STRING | INT );
+	// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:12:1: expr : ( 'let' ( decList )* 'in' ( expSeq )? 'end' | 'if' expr 'then' expr ( 'else' expr )? | 'for' ID ':=' expr 'to' expr 'do' expr | 'break' | '(' ( expSeq )? ')' | lvalue ( ':=' expr )? | ID '(' ( expList )? ')' | typeId '[' expr ']' 'of' expr | typeId ( fieldList )? | STRING | INT );
 	public final tiger_woodParser.expr_return expr() throws RecognitionException {
 		tiger_woodParser.expr_return retval = new tiger_woodParser.expr_return();
 		retval.start = input.LT(1);
@@ -281,13 +283,13 @@ public class tiger_woodParser extends DebugParser {
 		Token string_literal21=null;
 		Token char_literal22=null;
 		Token char_literal24=null;
-		Token char_literal26=null;
-		Token char_literal28=null;
-		Token string_literal29=null;
-		Token string_literal34=null;
-		Token ID36=null;
-		Token char_literal37=null;
-		Token char_literal39=null;
+		Token string_literal26=null;
+		Token ID28=null;
+		Token char_literal29=null;
+		Token char_literal31=null;
+		Token char_literal33=null;
+		Token char_literal35=null;
+		Token string_literal36=null;
 		Token STRING40=null;
 		Token INT41=null;
 		ParserRuleReturnScope decList3 =null;
@@ -299,14 +301,14 @@ public class tiger_woodParser extends DebugParser {
 		ParserRuleReturnScope expr18 =null;
 		ParserRuleReturnScope expr20 =null;
 		ParserRuleReturnScope expSeq23 =null;
-		ParserRuleReturnScope typeId25 =null;
+		ParserRuleReturnScope lvalue25 =null;
 		ParserRuleReturnScope expr27 =null;
-		ParserRuleReturnScope expr30 =null;
-		ParserRuleReturnScope typeId31 =null;
-		ParserRuleReturnScope fieldList32 =null;
-		ParserRuleReturnScope lvalue33 =null;
-		ParserRuleReturnScope expr35 =null;
-		ParserRuleReturnScope expList38 =null;
+		ParserRuleReturnScope expList30 =null;
+		ParserRuleReturnScope typeId32 =null;
+		ParserRuleReturnScope expr34 =null;
+		ParserRuleReturnScope expr37 =null;
+		ParserRuleReturnScope typeId38 =null;
+		ParserRuleReturnScope fieldList39 =null;
 
 		Object string_literal2_tree=null;
 		Object string_literal4_tree=null;
@@ -322,13 +324,13 @@ public class tiger_woodParser extends DebugParser {
 		Object string_literal21_tree=null;
 		Object char_literal22_tree=null;
 		Object char_literal24_tree=null;
-		Object char_literal26_tree=null;
-		Object char_literal28_tree=null;
-		Object string_literal29_tree=null;
-		Object string_literal34_tree=null;
-		Object ID36_tree=null;
-		Object char_literal37_tree=null;
-		Object char_literal39_tree=null;
+		Object string_literal26_tree=null;
+		Object ID28_tree=null;
+		Object char_literal29_tree=null;
+		Object char_literal31_tree=null;
+		Object char_literal33_tree=null;
+		Object char_literal35_tree=null;
+		Object string_literal36_tree=null;
 		Object STRING40_tree=null;
 		Object INT41_tree=null;
 
@@ -338,21 +340,21 @@ public class tiger_woodParser extends DebugParser {
 		dbg.location(12, 0);
 
 		try {
-			// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:12:7: ( 'let' ( decList )* 'in' ( expSeq )? 'end' | 'if' expr 'then' expr ( 'else' expr )? | 'for' ID ':=' expr 'to' expr 'do' expr | 'break' | '(' ( expSeq )? ')' | typeId '[' expr ']' 'of' expr | typeId ( fieldList )? | lvalue ':=' expr | ID '(' ( expList )? ')' | STRING | INT )
-			int alt8=11;
-			try { dbg.enterDecision(8, decisionCanBacktrack[8]);
+			// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:12:7: ( 'let' ( decList )* 'in' ( expSeq )? 'end' | 'if' expr 'then' expr ( 'else' expr )? | 'for' ID ':=' expr 'to' expr 'do' expr | 'break' | '(' ( expSeq )? ')' | lvalue ( ':=' expr )? | ID '(' ( expList )? ')' | typeId '[' expr ']' 'of' expr | typeId ( fieldList )? | STRING | INT )
+			int alt9=11;
+			try { dbg.enterDecision(9, decisionCanBacktrack[9]);
 
 			try {
 				isCyclicDecision = true;
-				alt8 = dfa8.predict(input);
+				alt9 = dfa9.predict(input);
 			}
 			catch (NoViableAltException nvae) {
 				dbg.recognitionException(nvae);
 				throw nvae;
 			}
-			} finally {dbg.exitDecision(8);}
+			} finally {dbg.exitDecision(9);}
 
-			switch (alt8) {
+			switch (alt9) {
 				case 1 :
 					dbg.enterAlt(1);
 
@@ -655,77 +657,26 @@ public class tiger_woodParser extends DebugParser {
 				case 6 :
 					dbg.enterAlt(6);
 
-					// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:21:4: typeId '[' expr ']' 'of' expr
+					// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:19:4: lvalue ( ':=' expr )?
 					{
 					root_0 = (Object)adaptor.nil();
 
 
-					dbg.location(21,4);
-					pushFollow(FOLLOW_typeId_in_expr139);
-					typeId25=typeId();
+					dbg.location(19,4);
+					pushFollow(FOLLOW_lvalue_in_expr135);
+					lvalue25=lvalue();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, typeId25.getTree());
-					dbg.location(21,11);
-					char_literal26=(Token)match(input,31,FOLLOW_31_in_expr141); if (state.failed) return retval;
-					if ( state.backtracking==0 ) {
-					char_literal26_tree = (Object)adaptor.create(char_literal26);
-					adaptor.addChild(root_0, char_literal26_tree);
-					}
-					dbg.location(21,15);
-					pushFollow(FOLLOW_expr_in_expr143);
-					expr27=expr();
-					state._fsp--;
-					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, expr27.getTree());
-					dbg.location(21,20);
-					char_literal28=(Token)match(input,32,FOLLOW_32_in_expr145); if (state.failed) return retval;
-					if ( state.backtracking==0 ) {
-					char_literal28_tree = (Object)adaptor.create(char_literal28);
-					adaptor.addChild(root_0, char_literal28_tree);
-					}
-					dbg.location(21,24);
-					string_literal29=(Token)match(input,43,FOLLOW_43_in_expr147); if (state.failed) return retval;
-					if ( state.backtracking==0 ) {
-					string_literal29_tree = (Object)adaptor.create(string_literal29);
-					adaptor.addChild(root_0, string_literal29_tree);
-					}
-					dbg.location(21,29);
-					pushFollow(FOLLOW_expr_in_expr149);
-					expr30=expr();
-					state._fsp--;
-					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, expr30.getTree());
-
-					}
-					break;
-				case 7 :
-					dbg.enterAlt(7);
-
-					// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:22:4: typeId ( fieldList )?
-					{
-					root_0 = (Object)adaptor.nil();
-
-
-					dbg.location(22,4);
-					pushFollow(FOLLOW_typeId_in_expr154);
-					typeId31=typeId();
-					state._fsp--;
-					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, typeId31.getTree());
-					dbg.location(22,11);
-					// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:22:11: ( fieldList )?
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, lvalue25.getTree());
+					dbg.location(19,11);
+					// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:19:11: ( ':=' expr )?
 					int alt6=2;
 					try { dbg.enterSubRule(6);
 					try { dbg.enterDecision(6, decisionCanBacktrack[6]);
 
-					try {
-						isCyclicDecision = true;
-						alt6 = dfa6.predict(input);
-					}
-					catch (NoViableAltException nvae) {
-						dbg.recognitionException(nvae);
-						throw nvae;
+					int LA6_0 = input.LA(1);
+					if ( (LA6_0==23) ) {
+						alt6=1;
 					}
 					} finally {dbg.exitDecision(6);}
 
@@ -733,14 +684,20 @@ public class tiger_woodParser extends DebugParser {
 						case 1 :
 							dbg.enterAlt(1);
 
-							// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:22:11: fieldList
+							// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:19:12: ':=' expr
 							{
-							dbg.location(22,11);
-							pushFollow(FOLLOW_fieldList_in_expr156);
-							fieldList32=fieldList();
+							dbg.location(19,12);
+							string_literal26=(Token)match(input,23,FOLLOW_23_in_expr138); if (state.failed) return retval;
+							if ( state.backtracking==0 ) {
+							string_literal26_tree = (Object)adaptor.create(string_literal26);
+							adaptor.addChild(root_0, string_literal26_tree);
+							}
+							dbg.location(19,17);
+							pushFollow(FOLLOW_expr_in_expr140);
+							expr27=expr();
 							state._fsp--;
 							if (state.failed) return retval;
-							if ( state.backtracking==0 ) adaptor.addChild(root_0, fieldList32.getTree());
+							if ( state.backtracking==0 ) adaptor.addChild(root_0, expr27.getTree());
 
 							}
 							break;
@@ -750,57 +707,28 @@ public class tiger_woodParser extends DebugParser {
 
 					}
 					break;
-				case 8 :
-					dbg.enterAlt(8);
+				case 7 :
+					dbg.enterAlt(7);
 
-					// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:24:4: lvalue ':=' expr
+					// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:21:4: ID '(' ( expList )? ')'
 					{
 					root_0 = (Object)adaptor.nil();
 
 
-					dbg.location(24,4);
-					pushFollow(FOLLOW_lvalue_in_expr164);
-					lvalue33=lvalue();
-					state._fsp--;
-					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, lvalue33.getTree());
-					dbg.location(24,11);
-					string_literal34=(Token)match(input,23,FOLLOW_23_in_expr166); if (state.failed) return retval;
+					dbg.location(21,4);
+					ID28=(Token)match(input,ID,FOLLOW_ID_in_expr150); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
-					string_literal34_tree = (Object)adaptor.create(string_literal34);
-					adaptor.addChild(root_0, string_literal34_tree);
+					ID28_tree = (Object)adaptor.create(ID28);
+					adaptor.addChild(root_0, ID28_tree);
 					}
-					dbg.location(24,16);
-					pushFollow(FOLLOW_expr_in_expr168);
-					expr35=expr();
-					state._fsp--;
-					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, expr35.getTree());
-
-					}
-					break;
-				case 9 :
-					dbg.enterAlt(9);
-
-					// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:26:4: ID '(' ( expList )? ')'
-					{
-					root_0 = (Object)adaptor.nil();
-
-
-					dbg.location(26,4);
-					ID36=(Token)match(input,ID,FOLLOW_ID_in_expr175); if (state.failed) return retval;
+					dbg.location(21,7);
+					char_literal29=(Token)match(input,14,FOLLOW_14_in_expr152); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
-					ID36_tree = (Object)adaptor.create(ID36);
-					adaptor.addChild(root_0, ID36_tree);
+					char_literal29_tree = (Object)adaptor.create(char_literal29);
+					adaptor.addChild(root_0, char_literal29_tree);
 					}
-					dbg.location(26,7);
-					char_literal37=(Token)match(input,14,FOLLOW_14_in_expr177); if (state.failed) return retval;
-					if ( state.backtracking==0 ) {
-					char_literal37_tree = (Object)adaptor.create(char_literal37);
-					adaptor.addChild(root_0, char_literal37_tree);
-					}
-					dbg.location(26,11);
-					// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:26:11: ( expList )?
+					dbg.location(21,11);
+					// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:21:11: ( expList )?
 					int alt7=2;
 					try { dbg.enterSubRule(7);
 					try { dbg.enterDecision(7, decisionCanBacktrack[7]);
@@ -815,39 +743,136 @@ public class tiger_woodParser extends DebugParser {
 						case 1 :
 							dbg.enterAlt(1);
 
-							// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:26:11: expList
+							// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:21:11: expList
 							{
-							dbg.location(26,11);
-							pushFollow(FOLLOW_expList_in_expr179);
-							expList38=expList();
+							dbg.location(21,11);
+							pushFollow(FOLLOW_expList_in_expr154);
+							expList30=expList();
 							state._fsp--;
 							if (state.failed) return retval;
-							if ( state.backtracking==0 ) adaptor.addChild(root_0, expList38.getTree());
+							if ( state.backtracking==0 ) adaptor.addChild(root_0, expList30.getTree());
 
 							}
 							break;
 
 					}
 					} finally {dbg.exitSubRule(7);}
-					dbg.location(26,20);
-					char_literal39=(Token)match(input,15,FOLLOW_15_in_expr182); if (state.failed) return retval;
+					dbg.location(21,20);
+					char_literal31=(Token)match(input,15,FOLLOW_15_in_expr157); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
-					char_literal39_tree = (Object)adaptor.create(char_literal39);
-					adaptor.addChild(root_0, char_literal39_tree);
+					char_literal31_tree = (Object)adaptor.create(char_literal31);
+					adaptor.addChild(root_0, char_literal31_tree);
 					}
+
+					}
+					break;
+				case 8 :
+					dbg.enterAlt(8);
+
+					// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:23:4: typeId '[' expr ']' 'of' expr
+					{
+					root_0 = (Object)adaptor.nil();
+
+
+					dbg.location(23,4);
+					pushFollow(FOLLOW_typeId_in_expr165);
+					typeId32=typeId();
+					state._fsp--;
+					if (state.failed) return retval;
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, typeId32.getTree());
+					dbg.location(23,11);
+					char_literal33=(Token)match(input,31,FOLLOW_31_in_expr167); if (state.failed) return retval;
+					if ( state.backtracking==0 ) {
+					char_literal33_tree = (Object)adaptor.create(char_literal33);
+					adaptor.addChild(root_0, char_literal33_tree);
+					}
+					dbg.location(23,15);
+					pushFollow(FOLLOW_expr_in_expr169);
+					expr34=expr();
+					state._fsp--;
+					if (state.failed) return retval;
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, expr34.getTree());
+					dbg.location(23,20);
+					char_literal35=(Token)match(input,32,FOLLOW_32_in_expr171); if (state.failed) return retval;
+					if ( state.backtracking==0 ) {
+					char_literal35_tree = (Object)adaptor.create(char_literal35);
+					adaptor.addChild(root_0, char_literal35_tree);
+					}
+					dbg.location(23,24);
+					string_literal36=(Token)match(input,43,FOLLOW_43_in_expr173); if (state.failed) return retval;
+					if ( state.backtracking==0 ) {
+					string_literal36_tree = (Object)adaptor.create(string_literal36);
+					adaptor.addChild(root_0, string_literal36_tree);
+					}
+					dbg.location(23,29);
+					pushFollow(FOLLOW_expr_in_expr175);
+					expr37=expr();
+					state._fsp--;
+					if (state.failed) return retval;
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, expr37.getTree());
+
+					}
+					break;
+				case 9 :
+					dbg.enterAlt(9);
+
+					// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:24:4: typeId ( fieldList )?
+					{
+					root_0 = (Object)adaptor.nil();
+
+
+					dbg.location(24,4);
+					pushFollow(FOLLOW_typeId_in_expr180);
+					typeId38=typeId();
+					state._fsp--;
+					if (state.failed) return retval;
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, typeId38.getTree());
+					dbg.location(24,11);
+					// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:24:11: ( fieldList )?
+					int alt8=2;
+					try { dbg.enterSubRule(8);
+					try { dbg.enterDecision(8, decisionCanBacktrack[8]);
+
+					int LA8_0 = input.LA(1);
+					if ( (LA8_0==ID) ) {
+						int LA8_1 = input.LA(2);
+						if ( (LA8_1==27) ) {
+							alt8=1;
+						}
+					}
+					} finally {dbg.exitDecision(8);}
+
+					switch (alt8) {
+						case 1 :
+							dbg.enterAlt(1);
+
+							// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:24:11: fieldList
+							{
+							dbg.location(24,11);
+							pushFollow(FOLLOW_fieldList_in_expr182);
+							fieldList39=fieldList();
+							state._fsp--;
+							if (state.failed) return retval;
+							if ( state.backtracking==0 ) adaptor.addChild(root_0, fieldList39.getTree());
+
+							}
+							break;
+
+					}
+					} finally {dbg.exitSubRule(8);}
 
 					}
 					break;
 				case 10 :
 					dbg.enterAlt(10);
 
-					// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:27:4: STRING
+					// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:26:4: STRING
 					{
 					root_0 = (Object)adaptor.nil();
 
 
-					dbg.location(27,4);
-					STRING40=(Token)match(input,STRING,FOLLOW_STRING_in_expr187); if (state.failed) return retval;
+					dbg.location(26,4);
+					STRING40=(Token)match(input,STRING,FOLLOW_STRING_in_expr190); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
 					STRING40_tree = (Object)adaptor.create(STRING40);
 					adaptor.addChild(root_0, STRING40_tree);
@@ -858,13 +883,13 @@ public class tiger_woodParser extends DebugParser {
 				case 11 :
 					dbg.enterAlt(11);
 
-					// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:28:4: INT
+					// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:27:4: INT
 					{
 					root_0 = (Object)adaptor.nil();
 
 
-					dbg.location(28,4);
-					INT41=(Token)match(input,INT,FOLLOW_INT_in_expr192); if (state.failed) return retval;
+					dbg.location(27,4);
+					INT41=(Token)match(input,INT,FOLLOW_INT_in_expr195); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
 					INT41_tree = (Object)adaptor.create(INT41);
 					adaptor.addChild(root_0, INT41_tree);
@@ -889,7 +914,7 @@ public class tiger_woodParser extends DebugParser {
 		finally {
 			// do for sure before leaving
 		}
-		dbg.location(29, 1);
+		dbg.location(28, 1);
 
 		}
 		finally {
@@ -939,28 +964,28 @@ public class tiger_woodParser extends DebugParser {
 
 
 			dbg.location(31,8);
-			pushFollow(FOLLOW_addExpr_in_opMan201);
+			pushFollow(FOLLOW_addExpr_in_opMan208);
 			addExpr42=addExpr();
 			state._fsp--;
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) adaptor.addChild(root_0, addExpr42.getTree());
 			dbg.location(31,16);
 			// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:31:16: ( ( '=' | '<>' | '<' | '>' | '=<' | '=>' ) addExpr )*
-			try { dbg.enterSubRule(9);
+			try { dbg.enterSubRule(10);
 
-			loop9:
+			loop10:
 			while (true) {
-				int alt9=2;
-				try { dbg.enterDecision(9, decisionCanBacktrack[9]);
+				int alt10=2;
+				try { dbg.enterDecision(10, decisionCanBacktrack[10]);
 
-				int LA9_0 = input.LA(1);
-				if ( ((LA9_0 >= 25 && LA9_0 <= 30)) ) {
-					alt9=1;
+				int LA10_0 = input.LA(1);
+				if ( ((LA10_0 >= 25 && LA10_0 <= 30)) ) {
+					alt10=1;
 				}
 
-				} finally {dbg.exitDecision(9);}
+				} finally {dbg.exitDecision(10);}
 
-				switch (alt9) {
+				switch (alt10) {
 				case 1 :
 					dbg.enterAlt(1);
 
@@ -980,7 +1005,7 @@ public class tiger_woodParser extends DebugParser {
 						dbg.recognitionException(mse);
 						throw mse;
 					}dbg.location(31,46);
-					pushFollow(FOLLOW_addExpr_in_opMan218);
+					pushFollow(FOLLOW_addExpr_in_opMan225);
 					addExpr44=addExpr();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -990,10 +1015,10 @@ public class tiger_woodParser extends DebugParser {
 					break;
 
 				default :
-					break loop9;
+					break loop10;
 				}
 			}
-			} finally {dbg.exitSubRule(9);}
+			} finally {dbg.exitSubRule(10);}
 
 			}
 
@@ -1012,7 +1037,7 @@ public class tiger_woodParser extends DebugParser {
 		finally {
 			// do for sure before leaving
 		}
-		dbg.location(32, 0);
+		dbg.location(32, 1);
 
 		}
 		finally {
@@ -1053,43 +1078,43 @@ public class tiger_woodParser extends DebugParser {
 		dbg.location(34, 0);
 
 		try {
-			// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:34:9: ( multExpr ( ( '+' | '-' ) multExpr )* )
+			// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:34:12: ( multExpr ( ( '+' | '-' ) multExpr )* )
 			dbg.enterAlt(1);
 
-			// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:34:13: multExpr ( ( '+' | '-' ) multExpr )*
+			// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:34:16: multExpr ( ( '+' | '-' ) multExpr )*
 			{
 			root_0 = (Object)adaptor.nil();
 
 
-			dbg.location(34,13);
-			pushFollow(FOLLOW_multExpr_in_addExpr231);
+			dbg.location(34,16);
+			pushFollow(FOLLOW_multExpr_in_addExpr242);
 			multExpr45=multExpr();
 			state._fsp--;
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) adaptor.addChild(root_0, multExpr45.getTree());
-			dbg.location(34,23);
-			// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:34:23: ( ( '+' | '-' ) multExpr )*
-			try { dbg.enterSubRule(10);
+			dbg.location(34,26);
+			// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:34:26: ( ( '+' | '-' ) multExpr )*
+			try { dbg.enterSubRule(11);
 
-			loop10:
+			loop11:
 			while (true) {
-				int alt10=2;
-				try { dbg.enterDecision(10, decisionCanBacktrack[10]);
+				int alt11=2;
+				try { dbg.enterDecision(11, decisionCanBacktrack[11]);
 
-				int LA10_0 = input.LA(1);
-				if ( (LA10_0==17||LA10_0==19) ) {
-					alt10=1;
+				int LA11_0 = input.LA(1);
+				if ( (LA11_0==17||LA11_0==19) ) {
+					alt11=1;
 				}
 
-				} finally {dbg.exitDecision(10);}
+				} finally {dbg.exitDecision(11);}
 
-				switch (alt10) {
+				switch (alt11) {
 				case 1 :
 					dbg.enterAlt(1);
 
-					// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:34:24: ( '+' | '-' ) multExpr
+					// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:34:27: ( '+' | '-' ) multExpr
 					{
-					dbg.location(34,24);
+					dbg.location(34,27);
 					set46=input.LT(1);
 					if ( input.LA(1)==17||input.LA(1)==19 ) {
 						input.consume();
@@ -1102,8 +1127,8 @@ public class tiger_woodParser extends DebugParser {
 						MismatchedSetException mse = new MismatchedSetException(null,input);
 						dbg.recognitionException(mse);
 						throw mse;
-					}dbg.location(34,35);
-					pushFollow(FOLLOW_multExpr_in_addExpr242);
+					}dbg.location(34,38);
+					pushFollow(FOLLOW_multExpr_in_addExpr253);
 					multExpr47=multExpr();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -1113,10 +1138,10 @@ public class tiger_woodParser extends DebugParser {
 					break;
 
 				default :
-					break loop10;
+					break loop11;
 				}
 			}
-			} finally {dbg.exitSubRule(10);}
+			} finally {dbg.exitSubRule(11);}
 
 			}
 
@@ -1135,7 +1160,7 @@ public class tiger_woodParser extends DebugParser {
 		finally {
 			// do for sure before leaving
 		}
-		dbg.location(35, 0);
+		dbg.location(35, 5);
 
 		}
 		finally {
@@ -1185,28 +1210,28 @@ public class tiger_woodParser extends DebugParser {
 
 
 			dbg.location(37,14);
-			pushFollow(FOLLOW_atom_in_multExpr256);
+			pushFollow(FOLLOW_atom_in_multExpr272);
 			atom48=atom();
 			state._fsp--;
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) adaptor.addChild(root_0, atom48.getTree());
 			dbg.location(37,20);
 			// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:37:20: ( ( '*' | '/' ) atom )*
-			try { dbg.enterSubRule(11);
+			try { dbg.enterSubRule(12);
 
-			loop11:
+			loop12:
 			while (true) {
-				int alt11=2;
-				try { dbg.enterDecision(11, decisionCanBacktrack[11]);
+				int alt12=2;
+				try { dbg.enterDecision(12, decisionCanBacktrack[12]);
 
-				int LA11_0 = input.LA(1);
-				if ( (LA11_0==16||LA11_0==21) ) {
-					alt11=1;
+				int LA12_0 = input.LA(1);
+				if ( (LA12_0==16||LA12_0==21) ) {
+					alt12=1;
 				}
 
-				} finally {dbg.exitDecision(11);}
+				} finally {dbg.exitDecision(12);}
 
-				switch (alt11) {
+				switch (alt12) {
 				case 1 :
 					dbg.enterAlt(1);
 
@@ -1226,7 +1251,7 @@ public class tiger_woodParser extends DebugParser {
 						dbg.recognitionException(mse);
 						throw mse;
 					}dbg.location(37,31);
-					pushFollow(FOLLOW_atom_in_multExpr266);
+					pushFollow(FOLLOW_atom_in_multExpr282);
 					atom50=atom();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -1236,10 +1261,10 @@ public class tiger_woodParser extends DebugParser {
 					break;
 
 				default :
-					break loop11;
+					break loop12;
 				}
 			}
-			} finally {dbg.exitSubRule(11);}
+			} finally {dbg.exitSubRule(12);}
 
 			}
 
@@ -1258,7 +1283,7 @@ public class tiger_woodParser extends DebugParser {
 		finally {
 			// do for sure before leaving
 		}
-		dbg.location(38, 0);
+		dbg.location(38, 4);
 
 		}
 		finally {
@@ -1280,7 +1305,7 @@ public class tiger_woodParser extends DebugParser {
 
 
 	// $ANTLR start "atom"
-	// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:41:1: atom : ( int | ID | '(' expr ')' );
+	// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:41:1: atom : ( iNT | ID | '(' expr ')' );
 	public final tiger_woodParser.atom_return atom() throws RecognitionException {
 		tiger_woodParser.atom_return retval = new tiger_woodParser.atom_return();
 		retval.start = input.LT(1);
@@ -1290,7 +1315,7 @@ public class tiger_woodParser extends DebugParser {
 		Token ID52=null;
 		Token char_literal53=null;
 		Token char_literal55=null;
-		ParserRuleReturnScope int51 =null;
+		ParserRuleReturnScope iNT51 =null;
 		ParserRuleReturnScope expr54 =null;
 
 		Object ID52_tree=null;
@@ -1303,51 +1328,51 @@ public class tiger_woodParser extends DebugParser {
 		dbg.location(41, 0);
 
 		try {
-			// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:41:10: ( int | ID | '(' expr ')' )
-			int alt12=3;
-			try { dbg.enterDecision(12, decisionCanBacktrack[12]);
+			// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:41:10: ( iNT | ID | '(' expr ')' )
+			int alt13=3;
+			try { dbg.enterDecision(13, decisionCanBacktrack[13]);
 
 			switch ( input.LA(1) ) {
 			case INT:
 			case 19:
 				{
-				alt12=1;
+				alt13=1;
 				}
 				break;
 			case ID:
 				{
-				alt12=2;
+				alt13=2;
 				}
 				break;
 			case 14:
 				{
-				alt12=3;
+				alt13=3;
 				}
 				break;
 			default:
 				if (state.backtracking>0) {state.failed=true; return retval;}
 				NoViableAltException nvae =
-					new NoViableAltException("", 12, 0, input);
+					new NoViableAltException("", 13, 0, input);
 				dbg.recognitionException(nvae);
 				throw nvae;
 			}
-			} finally {dbg.exitDecision(12);}
+			} finally {dbg.exitDecision(13);}
 
-			switch (alt12) {
+			switch (alt13) {
 				case 1 :
 					dbg.enterAlt(1);
 
-					// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:41:14: int
+					// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:41:14: iNT
 					{
 					root_0 = (Object)adaptor.nil();
 
 
 					dbg.location(41,14);
-					pushFollow(FOLLOW_int_in_atom289);
-					int51=int();
+					pushFollow(FOLLOW_iNT_in_atom309);
+					iNT51=iNT();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, int51.getTree());
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, iNT51.getTree());
 
 					}
 					break;
@@ -1360,7 +1385,7 @@ public class tiger_woodParser extends DebugParser {
 
 
 					dbg.location(42,10);
-					ID52=(Token)match(input,ID,FOLLOW_ID_in_atom301); if (state.failed) return retval;
+					ID52=(Token)match(input,ID,FOLLOW_ID_in_atom321); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
 					ID52_tree = (Object)adaptor.create(ID52);
 					adaptor.addChild(root_0, ID52_tree);
@@ -1371,25 +1396,25 @@ public class tiger_woodParser extends DebugParser {
 				case 3 :
 					dbg.enterAlt(3);
 
-					// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:43:9: '(' expr ')'
+					// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:43:10: '(' expr ')'
 					{
 					root_0 = (Object)adaptor.nil();
 
 
-					dbg.location(43,9);
-					char_literal53=(Token)match(input,14,FOLLOW_14_in_atom311); if (state.failed) return retval;
+					dbg.location(43,10);
+					char_literal53=(Token)match(input,14,FOLLOW_14_in_atom332); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
 					char_literal53_tree = (Object)adaptor.create(char_literal53);
 					adaptor.addChild(root_0, char_literal53_tree);
 					}
-					dbg.location(43,13);
-					pushFollow(FOLLOW_expr_in_atom313);
+					dbg.location(43,14);
+					pushFollow(FOLLOW_expr_in_atom334);
 					expr54=expr();
 					state._fsp--;
 					if (state.failed) return retval;
 					if ( state.backtracking==0 ) adaptor.addChild(root_0, expr54.getTree());
-					dbg.location(43,18);
-					char_literal55=(Token)match(input,15,FOLLOW_15_in_atom315); if (state.failed) return retval;
+					dbg.location(43,19);
+					char_literal55=(Token)match(input,15,FOLLOW_15_in_atom336); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
 					char_literal55_tree = (Object)adaptor.create(char_literal55);
 					adaptor.addChild(root_0, char_literal55_tree);
@@ -1414,7 +1439,7 @@ public class tiger_woodParser extends DebugParser {
 		finally {
 			// do for sure before leaving
 		}
-		dbg.location(44, 4);
+		dbg.location(44, 5);
 
 		}
 		finally {
@@ -1428,17 +1453,17 @@ public class tiger_woodParser extends DebugParser {
 	// $ANTLR end "atom"
 
 
-	public static class int_return extends ParserRuleReturnScope {
+	public static class iNT_return extends ParserRuleReturnScope {
 		Object tree;
 		@Override
 		public Object getTree() { return tree; }
 	};
 
 
-	// $ANTLR start "int"
-	// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:46:1: int : ( INT | '-' INT );
-	public final tiger_woodParser.int_return int() throws RecognitionException {
-		tiger_woodParser.int_return retval = new tiger_woodParser.int_return();
+	// $ANTLR start "iNT"
+	// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:46:1: iNT : ( INT | '-' INT );
+	public final tiger_woodParser.iNT_return iNT() throws RecognitionException {
+		tiger_woodParser.iNT_return retval = new tiger_woodParser.iNT_return();
 		retval.start = input.LT(1);
 
 		Object root_0 = null;
@@ -1451,35 +1476,35 @@ public class tiger_woodParser extends DebugParser {
 		Object char_literal57_tree=null;
 		Object INT58_tree=null;
 
-		try { dbg.enterRule(getGrammarFileName(), "int");
+		try { dbg.enterRule(getGrammarFileName(), "iNT");
 		if ( getRuleLevel()==0 ) {dbg.commence();}
 		incRuleLevel();
 		dbg.location(46, 0);
 
 		try {
 			// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:46:5: ( INT | '-' INT )
-			int alt13=2;
-			try { dbg.enterDecision(13, decisionCanBacktrack[13]);
+			int alt14=2;
+			try { dbg.enterDecision(14, decisionCanBacktrack[14]);
 
-			int LA13_0 = input.LA(1);
-			if ( (LA13_0==INT) ) {
-				alt13=1;
+			int LA14_0 = input.LA(1);
+			if ( (LA14_0==INT) ) {
+				alt14=1;
 			}
-			else if ( (LA13_0==19) ) {
-				alt13=2;
+			else if ( (LA14_0==19) ) {
+				alt14=2;
 			}
 
 			else {
 				if (state.backtracking>0) {state.failed=true; return retval;}
 				NoViableAltException nvae =
-					new NoViableAltException("", 13, 0, input);
+					new NoViableAltException("", 14, 0, input);
 				dbg.recognitionException(nvae);
 				throw nvae;
 			}
 
-			} finally {dbg.exitDecision(13);}
+			} finally {dbg.exitDecision(14);}
 
-			switch (alt13) {
+			switch (alt14) {
 				case 1 :
 					dbg.enterAlt(1);
 
@@ -1489,7 +1514,7 @@ public class tiger_woodParser extends DebugParser {
 
 
 					dbg.location(46,7);
-					INT56=(Token)match(input,INT,FOLLOW_INT_in_int329); if (state.failed) return retval;
+					INT56=(Token)match(input,INT,FOLLOW_INT_in_iNT351); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
 					INT56_tree = (Object)adaptor.create(INT56);
 					adaptor.addChild(root_0, INT56_tree);
@@ -1506,13 +1531,13 @@ public class tiger_woodParser extends DebugParser {
 
 
 					dbg.location(47,4);
-					char_literal57=(Token)match(input,19,FOLLOW_19_in_int334); if (state.failed) return retval;
+					char_literal57=(Token)match(input,19,FOLLOW_19_in_iNT356); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
 					char_literal57_tree = (Object)adaptor.create(char_literal57);
 					adaptor.addChild(root_0, char_literal57_tree);
 					}
 					dbg.location(47,8);
-					INT58=(Token)match(input,INT,FOLLOW_INT_in_int336); if (state.failed) return retval;
+					INT58=(Token)match(input,INT,FOLLOW_INT_in_iNT358); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
 					INT58_tree = (Object)adaptor.create(INT58);
 					adaptor.addChild(root_0, INT58_tree);
@@ -1541,186 +1566,14 @@ public class tiger_woodParser extends DebugParser {
 
 		}
 		finally {
-			dbg.exitRule(getGrammarFileName(), "int");
+			dbg.exitRule(getGrammarFileName(), "iNT");
 			decRuleLevel();
 			if ( getRuleLevel()==0 ) {dbg.terminate();}
 		}
 
 		return retval;
 	}
-	// $ANTLR end "int"
-
-
-	public static class lvalue_return extends ParserRuleReturnScope {
-		Object tree;
-		@Override
-		public Object getTree() { return tree; }
-	};
-
-
-	// $ANTLR start "lvalue"
-	// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:57:1: lvalue : ID ( '.' ID )* ( '[' expr ']' )* ;
-	public final tiger_woodParser.lvalue_return lvalue() throws RecognitionException {
-		tiger_woodParser.lvalue_return retval = new tiger_woodParser.lvalue_return();
-		retval.start = input.LT(1);
-
-		Object root_0 = null;
-
-		Token ID59=null;
-		Token char_literal60=null;
-		Token ID61=null;
-		Token char_literal62=null;
-		Token char_literal64=null;
-		ParserRuleReturnScope expr63 =null;
-
-		Object ID59_tree=null;
-		Object char_literal60_tree=null;
-		Object ID61_tree=null;
-		Object char_literal62_tree=null;
-		Object char_literal64_tree=null;
-
-		try { dbg.enterRule(getGrammarFileName(), "lvalue");
-		if ( getRuleLevel()==0 ) {dbg.commence();}
-		incRuleLevel();
-		dbg.location(57, 0);
-
-		try {
-			// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:57:8: ( ID ( '.' ID )* ( '[' expr ']' )* )
-			dbg.enterAlt(1);
-
-			// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:57:10: ID ( '.' ID )* ( '[' expr ']' )*
-			{
-			root_0 = (Object)adaptor.nil();
-
-
-			dbg.location(57,10);
-			ID59=(Token)match(input,ID,FOLLOW_ID_in_lvalue353); if (state.failed) return retval;
-			if ( state.backtracking==0 ) {
-			ID59_tree = (Object)adaptor.create(ID59);
-			adaptor.addChild(root_0, ID59_tree);
-			}
-			dbg.location(57,13);
-			// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:57:13: ( '.' ID )*
-			try { dbg.enterSubRule(14);
-
-			loop14:
-			while (true) {
-				int alt14=2;
-				try { dbg.enterDecision(14, decisionCanBacktrack[14]);
-
-				int LA14_0 = input.LA(1);
-				if ( (LA14_0==20) ) {
-					alt14=1;
-				}
-
-				} finally {dbg.exitDecision(14);}
-
-				switch (alt14) {
-				case 1 :
-					dbg.enterAlt(1);
-
-					// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:57:14: '.' ID
-					{
-					dbg.location(57,14);
-					char_literal60=(Token)match(input,20,FOLLOW_20_in_lvalue356); if (state.failed) return retval;
-					if ( state.backtracking==0 ) {
-					char_literal60_tree = (Object)adaptor.create(char_literal60);
-					adaptor.addChild(root_0, char_literal60_tree);
-					}
-					dbg.location(57,18);
-					ID61=(Token)match(input,ID,FOLLOW_ID_in_lvalue358); if (state.failed) return retval;
-					if ( state.backtracking==0 ) {
-					ID61_tree = (Object)adaptor.create(ID61);
-					adaptor.addChild(root_0, ID61_tree);
-					}
-
-					}
-					break;
-
-				default :
-					break loop14;
-				}
-			}
-			} finally {dbg.exitSubRule(14);}
-			dbg.location(57,23);
-			// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:57:23: ( '[' expr ']' )*
-			try { dbg.enterSubRule(15);
-
-			loop15:
-			while (true) {
-				int alt15=2;
-				try { dbg.enterDecision(15, decisionCanBacktrack[15]);
-
-				int LA15_0 = input.LA(1);
-				if ( (LA15_0==31) ) {
-					alt15=1;
-				}
-
-				} finally {dbg.exitDecision(15);}
-
-				switch (alt15) {
-				case 1 :
-					dbg.enterAlt(1);
-
-					// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:57:24: '[' expr ']'
-					{
-					dbg.location(57,24);
-					char_literal62=(Token)match(input,31,FOLLOW_31_in_lvalue363); if (state.failed) return retval;
-					if ( state.backtracking==0 ) {
-					char_literal62_tree = (Object)adaptor.create(char_literal62);
-					adaptor.addChild(root_0, char_literal62_tree);
-					}
-					dbg.location(57,28);
-					pushFollow(FOLLOW_expr_in_lvalue365);
-					expr63=expr();
-					state._fsp--;
-					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, expr63.getTree());
-					dbg.location(57,33);
-					char_literal64=(Token)match(input,32,FOLLOW_32_in_lvalue367); if (state.failed) return retval;
-					if ( state.backtracking==0 ) {
-					char_literal64_tree = (Object)adaptor.create(char_literal64);
-					adaptor.addChild(root_0, char_literal64_tree);
-					}
-
-					}
-					break;
-
-				default :
-					break loop15;
-				}
-			}
-			} finally {dbg.exitSubRule(15);}
-
-			}
-
-			retval.stop = input.LT(-1);
-
-			if ( state.backtracking==0 ) {
-			retval.tree = (Object)adaptor.rulePostProcessing(root_0);
-			adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
-			}
-		}
-		catch (RecognitionException re) {
-			reportError(re);
-			recover(input,re);
-			retval.tree = (Object)adaptor.errorNode(input, retval.start, input.LT(-1), re);
-		}
-		finally {
-			// do for sure before leaving
-		}
-		dbg.location(57, 37);
-
-		}
-		finally {
-			dbg.exitRule(getGrammarFileName(), "lvalue");
-			decRuleLevel();
-			if ( getRuleLevel()==0 ) {dbg.terminate();}
-		}
-
-		return retval;
-	}
-	// $ANTLR end "lvalue"
+	// $ANTLR end "iNT"
 
 
 	public static class decList_return extends ParserRuleReturnScope {
@@ -1731,102 +1584,102 @@ public class tiger_woodParser extends DebugParser {
 
 
 	// $ANTLR start "decList"
-	// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:59:1: decList : ( decFunc | decType | decVar );
+	// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:55:1: decList : ( decFunc | decType | decVar );
 	public final tiger_woodParser.decList_return decList() throws RecognitionException {
 		tiger_woodParser.decList_return retval = new tiger_woodParser.decList_return();
 		retval.start = input.LT(1);
 
 		Object root_0 = null;
 
-		ParserRuleReturnScope decFunc65 =null;
-		ParserRuleReturnScope decType66 =null;
-		ParserRuleReturnScope decVar67 =null;
+		ParserRuleReturnScope decFunc59 =null;
+		ParserRuleReturnScope decType60 =null;
+		ParserRuleReturnScope decVar61 =null;
 
 
 		try { dbg.enterRule(getGrammarFileName(), "decList");
 		if ( getRuleLevel()==0 ) {dbg.commence();}
 		incRuleLevel();
-		dbg.location(59, 0);
+		dbg.location(55, 0);
 
 		try {
-			// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:59:9: ( decFunc | decType | decVar )
-			int alt16=3;
-			try { dbg.enterDecision(16, decisionCanBacktrack[16]);
+			// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:55:9: ( decFunc | decType | decVar )
+			int alt15=3;
+			try { dbg.enterDecision(15, decisionCanBacktrack[15]);
 
 			switch ( input.LA(1) ) {
 			case 39:
 				{
-				alt16=1;
+				alt15=1;
 				}
 				break;
 			case 46:
 				{
-				alt16=2;
+				alt15=2;
 				}
 				break;
 			case 47:
 				{
-				alt16=3;
+				alt15=3;
 				}
 				break;
 			default:
 				if (state.backtracking>0) {state.failed=true; return retval;}
 				NoViableAltException nvae =
-					new NoViableAltException("", 16, 0, input);
+					new NoViableAltException("", 15, 0, input);
 				dbg.recognitionException(nvae);
 				throw nvae;
 			}
-			} finally {dbg.exitDecision(16);}
+			} finally {dbg.exitDecision(15);}
 
-			switch (alt16) {
+			switch (alt15) {
 				case 1 :
 					dbg.enterAlt(1);
 
-					// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:59:11: decFunc
+					// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:55:11: decFunc
 					{
 					root_0 = (Object)adaptor.nil();
 
 
-					dbg.location(59,11);
-					pushFollow(FOLLOW_decFunc_in_decList378);
-					decFunc65=decFunc();
+					dbg.location(55,11);
+					pushFollow(FOLLOW_decFunc_in_decList374);
+					decFunc59=decFunc();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, decFunc65.getTree());
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, decFunc59.getTree());
 
 					}
 					break;
 				case 2 :
 					dbg.enterAlt(2);
 
-					// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:60:4: decType
+					// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:56:4: decType
 					{
 					root_0 = (Object)adaptor.nil();
 
 
-					dbg.location(60,4);
-					pushFollow(FOLLOW_decType_in_decList383);
-					decType66=decType();
+					dbg.location(56,4);
+					pushFollow(FOLLOW_decType_in_decList379);
+					decType60=decType();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, decType66.getTree());
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, decType60.getTree());
 
 					}
 					break;
 				case 3 :
 					dbg.enterAlt(3);
 
-					// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:61:4: decVar
+					// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:57:4: decVar
 					{
 					root_0 = (Object)adaptor.nil();
 
 
-					dbg.location(61,4);
-					pushFollow(FOLLOW_decVar_in_decList388);
-					decVar67=decVar();
+					dbg.location(57,4);
+					pushFollow(FOLLOW_decVar_in_decList384);
+					decVar61=decVar();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, decVar67.getTree());
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, decVar61.getTree());
 
 					}
 					break;
@@ -1847,7 +1700,7 @@ public class tiger_woodParser extends DebugParser {
 		finally {
 			// do for sure before leaving
 		}
-		dbg.location(61, 9);
+		dbg.location(57, 9);
 
 		}
 		finally {
@@ -1869,83 +1722,146 @@ public class tiger_woodParser extends DebugParser {
 
 
 	// $ANTLR start "decFunc"
-	// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:63:1: decFunc : 'function' ID '(' fieldList ')' '=' expr ;
+	// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:59:1: decFunc : 'function' ID '(' ( typeFields )? ')' ( ':' typeId )? '=' expr ;
 	public final tiger_woodParser.decFunc_return decFunc() throws RecognitionException {
 		tiger_woodParser.decFunc_return retval = new tiger_woodParser.decFunc_return();
 		retval.start = input.LT(1);
 
 		Object root_0 = null;
 
-		Token string_literal68=null;
-		Token ID69=null;
-		Token char_literal70=null;
-		Token char_literal72=null;
-		Token char_literal73=null;
-		ParserRuleReturnScope fieldList71 =null;
-		ParserRuleReturnScope expr74 =null;
+		Token string_literal62=null;
+		Token ID63=null;
+		Token char_literal64=null;
+		Token char_literal66=null;
+		Token char_literal67=null;
+		Token char_literal69=null;
+		ParserRuleReturnScope typeFields65 =null;
+		ParserRuleReturnScope typeId68 =null;
+		ParserRuleReturnScope expr70 =null;
 
-		Object string_literal68_tree=null;
-		Object ID69_tree=null;
-		Object char_literal70_tree=null;
-		Object char_literal72_tree=null;
-		Object char_literal73_tree=null;
+		Object string_literal62_tree=null;
+		Object ID63_tree=null;
+		Object char_literal64_tree=null;
+		Object char_literal66_tree=null;
+		Object char_literal67_tree=null;
+		Object char_literal69_tree=null;
 
 		try { dbg.enterRule(getGrammarFileName(), "decFunc");
 		if ( getRuleLevel()==0 ) {dbg.commence();}
 		incRuleLevel();
-		dbg.location(63, 0);
+		dbg.location(59, 0);
 
 		try {
-			// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:63:9: ( 'function' ID '(' fieldList ')' '=' expr )
+			// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:59:9: ( 'function' ID '(' ( typeFields )? ')' ( ':' typeId )? '=' expr )
 			dbg.enterAlt(1);
 
-			// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:63:11: 'function' ID '(' fieldList ')' '=' expr
+			// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:59:11: 'function' ID '(' ( typeFields )? ')' ( ':' typeId )? '=' expr
 			{
 			root_0 = (Object)adaptor.nil();
 
 
-			dbg.location(63,11);
-			string_literal68=(Token)match(input,39,FOLLOW_39_in_decFunc396); if (state.failed) return retval;
+			dbg.location(59,11);
+			string_literal62=(Token)match(input,39,FOLLOW_39_in_decFunc392); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
-			string_literal68_tree = (Object)adaptor.create(string_literal68);
-			adaptor.addChild(root_0, string_literal68_tree);
+			string_literal62_tree = (Object)adaptor.create(string_literal62);
+			adaptor.addChild(root_0, string_literal62_tree);
 			}
-			dbg.location(63,22);
-			ID69=(Token)match(input,ID,FOLLOW_ID_in_decFunc398); if (state.failed) return retval;
+			dbg.location(59,22);
+			ID63=(Token)match(input,ID,FOLLOW_ID_in_decFunc394); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
-			ID69_tree = (Object)adaptor.create(ID69);
-			adaptor.addChild(root_0, ID69_tree);
+			ID63_tree = (Object)adaptor.create(ID63);
+			adaptor.addChild(root_0, ID63_tree);
 			}
-			dbg.location(63,25);
-			char_literal70=(Token)match(input,14,FOLLOW_14_in_decFunc400); if (state.failed) return retval;
+			dbg.location(59,25);
+			char_literal64=(Token)match(input,14,FOLLOW_14_in_decFunc396); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
-			char_literal70_tree = (Object)adaptor.create(char_literal70);
-			adaptor.addChild(root_0, char_literal70_tree);
+			char_literal64_tree = (Object)adaptor.create(char_literal64);
+			adaptor.addChild(root_0, char_literal64_tree);
 			}
-			dbg.location(63,29);
-			pushFollow(FOLLOW_fieldList_in_decFunc402);
-			fieldList71=fieldList();
+			dbg.location(59,29);
+			// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:59:29: ( typeFields )?
+			int alt16=2;
+			try { dbg.enterSubRule(16);
+			try { dbg.enterDecision(16, decisionCanBacktrack[16]);
+
+			int LA16_0 = input.LA(1);
+			if ( (LA16_0==ID) ) {
+				alt16=1;
+			}
+			} finally {dbg.exitDecision(16);}
+
+			switch (alt16) {
+				case 1 :
+					dbg.enterAlt(1);
+
+					// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:59:29: typeFields
+					{
+					dbg.location(59,29);
+					pushFollow(FOLLOW_typeFields_in_decFunc398);
+					typeFields65=typeFields();
+					state._fsp--;
+					if (state.failed) return retval;
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, typeFields65.getTree());
+
+					}
+					break;
+
+			}
+			} finally {dbg.exitSubRule(16);}
+			dbg.location(59,41);
+			char_literal66=(Token)match(input,15,FOLLOW_15_in_decFunc401); if (state.failed) return retval;
+			if ( state.backtracking==0 ) {
+			char_literal66_tree = (Object)adaptor.create(char_literal66);
+			adaptor.addChild(root_0, char_literal66_tree);
+			}
+			dbg.location(59,45);
+			// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:59:45: ( ':' typeId )?
+			int alt17=2;
+			try { dbg.enterSubRule(17);
+			try { dbg.enterDecision(17, decisionCanBacktrack[17]);
+
+			int LA17_0 = input.LA(1);
+			if ( (LA17_0==22) ) {
+				alt17=1;
+			}
+			} finally {dbg.exitDecision(17);}
+
+			switch (alt17) {
+				case 1 :
+					dbg.enterAlt(1);
+
+					// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:59:46: ':' typeId
+					{
+					dbg.location(59,46);
+					char_literal67=(Token)match(input,22,FOLLOW_22_in_decFunc404); if (state.failed) return retval;
+					if ( state.backtracking==0 ) {
+					char_literal67_tree = (Object)adaptor.create(char_literal67);
+					adaptor.addChild(root_0, char_literal67_tree);
+					}
+					dbg.location(59,50);
+					pushFollow(FOLLOW_typeId_in_decFunc406);
+					typeId68=typeId();
+					state._fsp--;
+					if (state.failed) return retval;
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, typeId68.getTree());
+
+					}
+					break;
+
+			}
+			} finally {dbg.exitSubRule(17);}
+			dbg.location(59,59);
+			char_literal69=(Token)match(input,27,FOLLOW_27_in_decFunc410); if (state.failed) return retval;
+			if ( state.backtracking==0 ) {
+			char_literal69_tree = (Object)adaptor.create(char_literal69);
+			adaptor.addChild(root_0, char_literal69_tree);
+			}
+			dbg.location(59,63);
+			pushFollow(FOLLOW_expr_in_decFunc412);
+			expr70=expr();
 			state._fsp--;
 			if (state.failed) return retval;
-			if ( state.backtracking==0 ) adaptor.addChild(root_0, fieldList71.getTree());
-			dbg.location(63,39);
-			char_literal72=(Token)match(input,15,FOLLOW_15_in_decFunc404); if (state.failed) return retval;
-			if ( state.backtracking==0 ) {
-			char_literal72_tree = (Object)adaptor.create(char_literal72);
-			adaptor.addChild(root_0, char_literal72_tree);
-			}
-			dbg.location(63,43);
-			char_literal73=(Token)match(input,27,FOLLOW_27_in_decFunc406); if (state.failed) return retval;
-			if ( state.backtracking==0 ) {
-			char_literal73_tree = (Object)adaptor.create(char_literal73);
-			adaptor.addChild(root_0, char_literal73_tree);
-			}
-			dbg.location(63,47);
-			pushFollow(FOLLOW_expr_in_decFunc408);
-			expr74=expr();
-			state._fsp--;
-			if (state.failed) return retval;
-			if ( state.backtracking==0 ) adaptor.addChild(root_0, expr74.getTree());
+			if ( state.backtracking==0 ) adaptor.addChild(root_0, expr70.getTree());
 
 			}
 
@@ -1964,7 +1880,7 @@ public class tiger_woodParser extends DebugParser {
 		finally {
 			// do for sure before leaving
 		}
-		dbg.location(63, 50);
+		dbg.location(59, 66);
 
 		}
 		finally {
@@ -1986,99 +1902,99 @@ public class tiger_woodParser extends DebugParser {
 
 
 	// $ANTLR start "decVar"
-	// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:64:1: decVar : 'var' ID ( ':' typeId )? ':=' expr ;
+	// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:60:1: decVar : 'var' ID ( ':' typeId )? ':=' expr ;
 	public final tiger_woodParser.decVar_return decVar() throws RecognitionException {
 		tiger_woodParser.decVar_return retval = new tiger_woodParser.decVar_return();
 		retval.start = input.LT(1);
 
 		Object root_0 = null;
 
+		Token string_literal71=null;
+		Token ID72=null;
+		Token char_literal73=null;
 		Token string_literal75=null;
-		Token ID76=null;
-		Token char_literal77=null;
-		Token string_literal79=null;
-		ParserRuleReturnScope typeId78 =null;
-		ParserRuleReturnScope expr80 =null;
+		ParserRuleReturnScope typeId74 =null;
+		ParserRuleReturnScope expr76 =null;
 
+		Object string_literal71_tree=null;
+		Object ID72_tree=null;
+		Object char_literal73_tree=null;
 		Object string_literal75_tree=null;
-		Object ID76_tree=null;
-		Object char_literal77_tree=null;
-		Object string_literal79_tree=null;
 
 		try { dbg.enterRule(getGrammarFileName(), "decVar");
 		if ( getRuleLevel()==0 ) {dbg.commence();}
 		incRuleLevel();
-		dbg.location(64, 0);
+		dbg.location(60, 0);
 
 		try {
-			// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:64:8: ( 'var' ID ( ':' typeId )? ':=' expr )
+			// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:60:8: ( 'var' ID ( ':' typeId )? ':=' expr )
 			dbg.enterAlt(1);
 
-			// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:64:10: 'var' ID ( ':' typeId )? ':=' expr
+			// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:60:10: 'var' ID ( ':' typeId )? ':=' expr
 			{
 			root_0 = (Object)adaptor.nil();
 
 
-			dbg.location(64,10);
-			string_literal75=(Token)match(input,47,FOLLOW_47_in_decVar416); if (state.failed) return retval;
+			dbg.location(60,10);
+			string_literal71=(Token)match(input,47,FOLLOW_47_in_decVar420); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
-			string_literal75_tree = (Object)adaptor.create(string_literal75);
-			adaptor.addChild(root_0, string_literal75_tree);
+			string_literal71_tree = (Object)adaptor.create(string_literal71);
+			adaptor.addChild(root_0, string_literal71_tree);
 			}
-			dbg.location(64,16);
-			ID76=(Token)match(input,ID,FOLLOW_ID_in_decVar418); if (state.failed) return retval;
+			dbg.location(60,16);
+			ID72=(Token)match(input,ID,FOLLOW_ID_in_decVar422); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
-			ID76_tree = (Object)adaptor.create(ID76);
-			adaptor.addChild(root_0, ID76_tree);
+			ID72_tree = (Object)adaptor.create(ID72);
+			adaptor.addChild(root_0, ID72_tree);
 			}
-			dbg.location(64,19);
-			// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:64:19: ( ':' typeId )?
-			int alt17=2;
-			try { dbg.enterSubRule(17);
-			try { dbg.enterDecision(17, decisionCanBacktrack[17]);
+			dbg.location(60,19);
+			// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:60:19: ( ':' typeId )?
+			int alt18=2;
+			try { dbg.enterSubRule(18);
+			try { dbg.enterDecision(18, decisionCanBacktrack[18]);
 
-			int LA17_0 = input.LA(1);
-			if ( (LA17_0==22) ) {
-				alt17=1;
+			int LA18_0 = input.LA(1);
+			if ( (LA18_0==22) ) {
+				alt18=1;
 			}
-			} finally {dbg.exitDecision(17);}
+			} finally {dbg.exitDecision(18);}
 
-			switch (alt17) {
+			switch (alt18) {
 				case 1 :
 					dbg.enterAlt(1);
 
-					// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:64:20: ':' typeId
+					// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:60:20: ':' typeId
 					{
-					dbg.location(64,20);
-					char_literal77=(Token)match(input,22,FOLLOW_22_in_decVar421); if (state.failed) return retval;
+					dbg.location(60,20);
+					char_literal73=(Token)match(input,22,FOLLOW_22_in_decVar425); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
-					char_literal77_tree = (Object)adaptor.create(char_literal77);
-					adaptor.addChild(root_0, char_literal77_tree);
+					char_literal73_tree = (Object)adaptor.create(char_literal73);
+					adaptor.addChild(root_0, char_literal73_tree);
 					}
-					dbg.location(64,25);
-					pushFollow(FOLLOW_typeId_in_decVar424);
-					typeId78=typeId();
+					dbg.location(60,25);
+					pushFollow(FOLLOW_typeId_in_decVar428);
+					typeId74=typeId();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, typeId78.getTree());
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, typeId74.getTree());
 
 					}
 					break;
 
 			}
-			} finally {dbg.exitSubRule(17);}
-			dbg.location(64,34);
-			string_literal79=(Token)match(input,23,FOLLOW_23_in_decVar428); if (state.failed) return retval;
+			} finally {dbg.exitSubRule(18);}
+			dbg.location(60,34);
+			string_literal75=(Token)match(input,23,FOLLOW_23_in_decVar432); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
-			string_literal79_tree = (Object)adaptor.create(string_literal79);
-			adaptor.addChild(root_0, string_literal79_tree);
+			string_literal75_tree = (Object)adaptor.create(string_literal75);
+			adaptor.addChild(root_0, string_literal75_tree);
 			}
-			dbg.location(64,40);
-			pushFollow(FOLLOW_expr_in_decVar431);
-			expr80=expr();
+			dbg.location(60,40);
+			pushFollow(FOLLOW_expr_in_decVar435);
+			expr76=expr();
 			state._fsp--;
 			if (state.failed) return retval;
-			if ( state.backtracking==0 ) adaptor.addChild(root_0, expr80.getTree());
+			if ( state.backtracking==0 ) adaptor.addChild(root_0, expr76.getTree());
 
 			}
 
@@ -2097,7 +2013,7 @@ public class tiger_woodParser extends DebugParser {
 		finally {
 			// do for sure before leaving
 		}
-		dbg.location(64, 43);
+		dbg.location(60, 43);
 
 		}
 		finally {
@@ -2119,59 +2035,59 @@ public class tiger_woodParser extends DebugParser {
 
 
 	// $ANTLR start "decType"
-	// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:65:1: decType : 'type' typeId '=' type ;
+	// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:61:1: decType : 'type' typeId '=' type ;
 	public final tiger_woodParser.decType_return decType() throws RecognitionException {
 		tiger_woodParser.decType_return retval = new tiger_woodParser.decType_return();
 		retval.start = input.LT(1);
 
 		Object root_0 = null;
 
-		Token string_literal81=null;
-		Token char_literal83=null;
-		ParserRuleReturnScope typeId82 =null;
-		ParserRuleReturnScope type84 =null;
+		Token string_literal77=null;
+		Token char_literal79=null;
+		ParserRuleReturnScope typeId78 =null;
+		ParserRuleReturnScope type80 =null;
 
-		Object string_literal81_tree=null;
-		Object char_literal83_tree=null;
+		Object string_literal77_tree=null;
+		Object char_literal79_tree=null;
 
 		try { dbg.enterRule(getGrammarFileName(), "decType");
 		if ( getRuleLevel()==0 ) {dbg.commence();}
 		incRuleLevel();
-		dbg.location(65, 0);
+		dbg.location(61, 0);
 
 		try {
-			// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:65:9: ( 'type' typeId '=' type )
+			// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:61:9: ( 'type' typeId '=' type )
 			dbg.enterAlt(1);
 
-			// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:65:11: 'type' typeId '=' type
+			// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:61:11: 'type' typeId '=' type
 			{
 			root_0 = (Object)adaptor.nil();
 
 
-			dbg.location(65,11);
-			string_literal81=(Token)match(input,46,FOLLOW_46_in_decType438); if (state.failed) return retval;
+			dbg.location(61,11);
+			string_literal77=(Token)match(input,46,FOLLOW_46_in_decType442); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
-			string_literal81_tree = (Object)adaptor.create(string_literal81);
-			adaptor.addChild(root_0, string_literal81_tree);
+			string_literal77_tree = (Object)adaptor.create(string_literal77);
+			adaptor.addChild(root_0, string_literal77_tree);
 			}
-			dbg.location(65,18);
-			pushFollow(FOLLOW_typeId_in_decType440);
-			typeId82=typeId();
+			dbg.location(61,18);
+			pushFollow(FOLLOW_typeId_in_decType444);
+			typeId78=typeId();
 			state._fsp--;
 			if (state.failed) return retval;
-			if ( state.backtracking==0 ) adaptor.addChild(root_0, typeId82.getTree());
-			dbg.location(65,25);
-			char_literal83=(Token)match(input,27,FOLLOW_27_in_decType442); if (state.failed) return retval;
+			if ( state.backtracking==0 ) adaptor.addChild(root_0, typeId78.getTree());
+			dbg.location(61,25);
+			char_literal79=(Token)match(input,27,FOLLOW_27_in_decType446); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
-			char_literal83_tree = (Object)adaptor.create(char_literal83);
-			adaptor.addChild(root_0, char_literal83_tree);
+			char_literal79_tree = (Object)adaptor.create(char_literal79);
+			adaptor.addChild(root_0, char_literal79_tree);
 			}
-			dbg.location(65,29);
-			pushFollow(FOLLOW_type_in_decType444);
-			type84=type();
+			dbg.location(61,29);
+			pushFollow(FOLLOW_type_in_decType448);
+			type80=type();
 			state._fsp--;
 			if (state.failed) return retval;
-			if ( state.backtracking==0 ) adaptor.addChild(root_0, type84.getTree());
+			if ( state.backtracking==0 ) adaptor.addChild(root_0, type80.getTree());
 
 			}
 
@@ -2190,7 +2106,7 @@ public class tiger_woodParser extends DebugParser {
 		finally {
 			// do for sure before leaving
 		}
-		dbg.location(65, 32);
+		dbg.location(61, 32);
 
 		}
 		finally {
@@ -2204,217 +2120,56 @@ public class tiger_woodParser extends DebugParser {
 	// $ANTLR end "decType"
 
 
-	public static class type_return extends ParserRuleReturnScope {
+	public static class lvalue_return extends ParserRuleReturnScope {
 		Object tree;
 		@Override
 		public Object getTree() { return tree; }
 	};
 
 
-	// $ANTLR start "type"
-	// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:67:1: type : ( typeFields | 'array of' typeId | typeId );
-	public final tiger_woodParser.type_return type() throws RecognitionException {
-		tiger_woodParser.type_return retval = new tiger_woodParser.type_return();
+	// $ANTLR start "lvalue"
+	// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:63:1: lvalue : ID ( '.' ID )* ( '[' expr ']' )* ;
+	public final tiger_woodParser.lvalue_return lvalue() throws RecognitionException {
+		tiger_woodParser.lvalue_return retval = new tiger_woodParser.lvalue_return();
 		retval.start = input.LT(1);
 
 		Object root_0 = null;
 
-		Token string_literal86=null;
-		ParserRuleReturnScope typeFields85 =null;
-		ParserRuleReturnScope typeId87 =null;
-		ParserRuleReturnScope typeId88 =null;
+		Token ID81=null;
+		Token char_literal82=null;
+		Token ID83=null;
+		Token char_literal84=null;
+		Token char_literal86=null;
+		ParserRuleReturnScope expr85 =null;
 
-		Object string_literal86_tree=null;
+		Object ID81_tree=null;
+		Object char_literal82_tree=null;
+		Object ID83_tree=null;
+		Object char_literal84_tree=null;
+		Object char_literal86_tree=null;
 
-		try { dbg.enterRule(getGrammarFileName(), "type");
+		try { dbg.enterRule(getGrammarFileName(), "lvalue");
 		if ( getRuleLevel()==0 ) {dbg.commence();}
 		incRuleLevel();
-		dbg.location(67, 0);
+		dbg.location(63, 0);
 
 		try {
-			// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:67:6: ( typeFields | 'array of' typeId | typeId )
-			int alt18=3;
-			try { dbg.enterDecision(18, decisionCanBacktrack[18]);
-
-			switch ( input.LA(1) ) {
-			case ID:
-				{
-				int LA18_1 = input.LA(2);
-				if ( (LA18_1==22) ) {
-					alt18=1;
-				}
-				else if ( (LA18_1==EOF||LA18_1==39||LA18_1==41||(LA18_1 >= 46 && LA18_1 <= 47)) ) {
-					alt18=3;
-				}
-
-				else {
-					if (state.backtracking>0) {state.failed=true; return retval;}
-					int nvaeMark = input.mark();
-					try {
-						input.consume();
-						NoViableAltException nvae =
-							new NoViableAltException("", 18, 1, input);
-						dbg.recognitionException(nvae);
-						throw nvae;
-					} finally {
-						input.rewind(nvaeMark);
-					}
-				}
-
-				}
-				break;
-			case 33:
-				{
-				alt18=2;
-				}
-				break;
-			case INT:
-			case STRING:
-				{
-				alt18=3;
-				}
-				break;
-			default:
-				if (state.backtracking>0) {state.failed=true; return retval;}
-				NoViableAltException nvae =
-					new NoViableAltException("", 18, 0, input);
-				dbg.recognitionException(nvae);
-				throw nvae;
-			}
-			} finally {dbg.exitDecision(18);}
-
-			switch (alt18) {
-				case 1 :
-					dbg.enterAlt(1);
-
-					// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:67:8: typeFields
-					{
-					root_0 = (Object)adaptor.nil();
-
-
-					dbg.location(67,8);
-					pushFollow(FOLLOW_typeFields_in_type452);
-					typeFields85=typeFields();
-					state._fsp--;
-					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, typeFields85.getTree());
-
-					}
-					break;
-				case 2 :
-					dbg.enterAlt(2);
-
-					// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:68:4: 'array of' typeId
-					{
-					root_0 = (Object)adaptor.nil();
-
-
-					dbg.location(68,4);
-					string_literal86=(Token)match(input,33,FOLLOW_33_in_type457); if (state.failed) return retval;
-					if ( state.backtracking==0 ) {
-					string_literal86_tree = (Object)adaptor.create(string_literal86);
-					adaptor.addChild(root_0, string_literal86_tree);
-					}
-					dbg.location(68,15);
-					pushFollow(FOLLOW_typeId_in_type459);
-					typeId87=typeId();
-					state._fsp--;
-					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, typeId87.getTree());
-
-					}
-					break;
-				case 3 :
-					dbg.enterAlt(3);
-
-					// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:69:4: typeId
-					{
-					root_0 = (Object)adaptor.nil();
-
-
-					dbg.location(69,4);
-					pushFollow(FOLLOW_typeId_in_type464);
-					typeId88=typeId();
-					state._fsp--;
-					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, typeId88.getTree());
-
-					}
-					break;
-
-			}
-			retval.stop = input.LT(-1);
-
-			if ( state.backtracking==0 ) {
-			retval.tree = (Object)adaptor.rulePostProcessing(root_0);
-			adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
-			}
-		}
-		catch (RecognitionException re) {
-			reportError(re);
-			recover(input,re);
-			retval.tree = (Object)adaptor.errorNode(input, retval.start, input.LT(-1), re);
-		}
-		finally {
-			// do for sure before leaving
-		}
-		dbg.location(69, 9);
-
-		}
-		finally {
-			dbg.exitRule(getGrammarFileName(), "type");
-			decRuleLevel();
-			if ( getRuleLevel()==0 ) {dbg.terminate();}
-		}
-
-		return retval;
-	}
-	// $ANTLR end "type"
-
-
-	public static class expSeq_return extends ParserRuleReturnScope {
-		Object tree;
-		@Override
-		public Object getTree() { return tree; }
-	};
-
-
-	// $ANTLR start "expSeq"
-	// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:71:1: expSeq : expr ( ';' expr )* ;
-	public final tiger_woodParser.expSeq_return expSeq() throws RecognitionException {
-		tiger_woodParser.expSeq_return retval = new tiger_woodParser.expSeq_return();
-		retval.start = input.LT(1);
-
-		Object root_0 = null;
-
-		Token char_literal90=null;
-		ParserRuleReturnScope expr89 =null;
-		ParserRuleReturnScope expr91 =null;
-
-		Object char_literal90_tree=null;
-
-		try { dbg.enterRule(getGrammarFileName(), "expSeq");
-		if ( getRuleLevel()==0 ) {dbg.commence();}
-		incRuleLevel();
-		dbg.location(71, 0);
-
-		try {
-			// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:71:9: ( expr ( ';' expr )* )
+			// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:63:8: ( ID ( '.' ID )* ( '[' expr ']' )* )
 			dbg.enterAlt(1);
 
-			// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:71:11: expr ( ';' expr )*
+			// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:63:10: ID ( '.' ID )* ( '[' expr ']' )*
 			{
 			root_0 = (Object)adaptor.nil();
 
 
-			dbg.location(71,11);
-			pushFollow(FOLLOW_expr_in_expSeq473);
-			expr89=expr();
-			state._fsp--;
-			if (state.failed) return retval;
-			if ( state.backtracking==0 ) adaptor.addChild(root_0, expr89.getTree());
-			dbg.location(71,16);
-			// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:71:16: ( ';' expr )*
+			dbg.location(63,10);
+			ID81=(Token)match(input,ID,FOLLOW_ID_in_lvalue456); if (state.failed) return retval;
+			if ( state.backtracking==0 ) {
+			ID81_tree = (Object)adaptor.create(ID81);
+			adaptor.addChild(root_0, ID81_tree);
+			}
+			dbg.location(63,13);
+			// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:63:13: ( '.' ID )*
 			try { dbg.enterSubRule(19);
 
 			loop19:
@@ -2423,7 +2178,7 @@ public class tiger_woodParser extends DebugParser {
 				try { dbg.enterDecision(19, decisionCanBacktrack[19]);
 
 				int LA19_0 = input.LA(1);
-				if ( (LA19_0==24) ) {
+				if ( (LA19_0==20) ) {
 					alt19=1;
 				}
 
@@ -2433,20 +2188,20 @@ public class tiger_woodParser extends DebugParser {
 				case 1 :
 					dbg.enterAlt(1);
 
-					// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:71:17: ';' expr
+					// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:63:15: '.' ID
 					{
-					dbg.location(71,17);
-					char_literal90=(Token)match(input,24,FOLLOW_24_in_expSeq476); if (state.failed) return retval;
+					dbg.location(63,15);
+					char_literal82=(Token)match(input,20,FOLLOW_20_in_lvalue460); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
-					char_literal90_tree = (Object)adaptor.create(char_literal90);
-					adaptor.addChild(root_0, char_literal90_tree);
+					char_literal82_tree = (Object)adaptor.create(char_literal82);
+					adaptor.addChild(root_0, char_literal82_tree);
 					}
-					dbg.location(71,21);
-					pushFollow(FOLLOW_expr_in_expSeq478);
-					expr91=expr();
-					state._fsp--;
-					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, expr91.getTree());
+					dbg.location(63,19);
+					ID83=(Token)match(input,ID,FOLLOW_ID_in_lvalue462); if (state.failed) return retval;
+					if ( state.backtracking==0 ) {
+					ID83_tree = (Object)adaptor.create(ID83);
+					adaptor.addChild(root_0, ID83_tree);
+					}
 
 					}
 					break;
@@ -2456,81 +2211,8 @@ public class tiger_woodParser extends DebugParser {
 				}
 			}
 			} finally {dbg.exitSubRule(19);}
-
-			}
-
-			retval.stop = input.LT(-1);
-
-			if ( state.backtracking==0 ) {
-			retval.tree = (Object)adaptor.rulePostProcessing(root_0);
-			adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
-			}
-		}
-		catch (RecognitionException re) {
-			reportError(re);
-			recover(input,re);
-			retval.tree = (Object)adaptor.errorNode(input, retval.start, input.LT(-1), re);
-		}
-		finally {
-			// do for sure before leaving
-		}
-		dbg.location(71, 26);
-
-		}
-		finally {
-			dbg.exitRule(getGrammarFileName(), "expSeq");
-			decRuleLevel();
-			if ( getRuleLevel()==0 ) {dbg.terminate();}
-		}
-
-		return retval;
-	}
-	// $ANTLR end "expSeq"
-
-
-	public static class expList_return extends ParserRuleReturnScope {
-		Object tree;
-		@Override
-		public Object getTree() { return tree; }
-	};
-
-
-	// $ANTLR start "expList"
-	// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:73:1: expList : expr ( ',' expr )* ;
-	public final tiger_woodParser.expList_return expList() throws RecognitionException {
-		tiger_woodParser.expList_return retval = new tiger_woodParser.expList_return();
-		retval.start = input.LT(1);
-
-		Object root_0 = null;
-
-		Token char_literal93=null;
-		ParserRuleReturnScope expr92 =null;
-		ParserRuleReturnScope expr94 =null;
-
-		Object char_literal93_tree=null;
-
-		try { dbg.enterRule(getGrammarFileName(), "expList");
-		if ( getRuleLevel()==0 ) {dbg.commence();}
-		incRuleLevel();
-		dbg.location(73, 0);
-
-		try {
-			// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:73:9: ( expr ( ',' expr )* )
-			dbg.enterAlt(1);
-
-			// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:73:11: expr ( ',' expr )*
-			{
-			root_0 = (Object)adaptor.nil();
-
-
-			dbg.location(73,11);
-			pushFollow(FOLLOW_expr_in_expList488);
-			expr92=expr();
-			state._fsp--;
-			if (state.failed) return retval;
-			if ( state.backtracking==0 ) adaptor.addChild(root_0, expr92.getTree());
-			dbg.location(73,16);
-			// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:73:16: ( ',' expr )*
+			dbg.location(63,24);
+			// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:63:24: ( '[' expr ']' )*
 			try { dbg.enterSubRule(20);
 
 			loop20:
@@ -2539,7 +2221,7 @@ public class tiger_woodParser extends DebugParser {
 				try { dbg.enterDecision(20, decisionCanBacktrack[20]);
 
 				int LA20_0 = input.LA(1);
-				if ( (LA20_0==18) ) {
+				if ( (LA20_0==31) ) {
 					alt20=1;
 				}
 
@@ -2549,20 +2231,26 @@ public class tiger_woodParser extends DebugParser {
 				case 1 :
 					dbg.enterAlt(1);
 
-					// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:73:17: ',' expr
+					// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:63:25: '[' expr ']'
 					{
-					dbg.location(73,17);
-					char_literal93=(Token)match(input,18,FOLLOW_18_in_expList491); if (state.failed) return retval;
+					dbg.location(63,25);
+					char_literal84=(Token)match(input,31,FOLLOW_31_in_lvalue467); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
-					char_literal93_tree = (Object)adaptor.create(char_literal93);
-					adaptor.addChild(root_0, char_literal93_tree);
+					char_literal84_tree = (Object)adaptor.create(char_literal84);
+					adaptor.addChild(root_0, char_literal84_tree);
 					}
-					dbg.location(73,21);
-					pushFollow(FOLLOW_expr_in_expList493);
-					expr94=expr();
+					dbg.location(63,29);
+					pushFollow(FOLLOW_expr_in_lvalue469);
+					expr85=expr();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, expr94.getTree());
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, expr85.getTree());
+					dbg.location(63,34);
+					char_literal86=(Token)match(input,32,FOLLOW_32_in_lvalue471); if (state.failed) return retval;
+					if ( state.backtracking==0 ) {
+					char_literal86_tree = (Object)adaptor.create(char_literal86);
+					adaptor.addChild(root_0, char_literal86_tree);
+					}
 
 					}
 					break;
@@ -2590,169 +2278,270 @@ public class tiger_woodParser extends DebugParser {
 		finally {
 			// do for sure before leaving
 		}
-		dbg.location(73, 26);
+		dbg.location(63, 38);
 
 		}
 		finally {
-			dbg.exitRule(getGrammarFileName(), "expList");
+			dbg.exitRule(getGrammarFileName(), "lvalue");
 			decRuleLevel();
 			if ( getRuleLevel()==0 ) {dbg.terminate();}
 		}
 
 		return retval;
 	}
-	// $ANTLR end "expList"
+	// $ANTLR end "lvalue"
 
 
-	public static class fieldList_return extends ParserRuleReturnScope {
+	public static class type_return extends ParserRuleReturnScope {
 		Object tree;
 		@Override
 		public Object getTree() { return tree; }
 	};
 
 
-	// $ANTLR start "fieldList"
-	// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:75:1: fieldList : ( ID ':' typeId ( ',' ID ':' typeId )* )? ;
-	public final tiger_woodParser.fieldList_return fieldList() throws RecognitionException {
-		tiger_woodParser.fieldList_return retval = new tiger_woodParser.fieldList_return();
+	// $ANTLR start "type"
+	// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:65:1: type : ( typeFields | 'array of' typeId | typeId );
+	public final tiger_woodParser.type_return type() throws RecognitionException {
+		tiger_woodParser.type_return retval = new tiger_woodParser.type_return();
 		retval.start = input.LT(1);
 
 		Object root_0 = null;
 
-		Token ID95=null;
-		Token char_literal96=null;
-		Token char_literal98=null;
-		Token ID99=null;
-		Token char_literal100=null;
-		ParserRuleReturnScope typeId97 =null;
-		ParserRuleReturnScope typeId101 =null;
+		Token string_literal88=null;
+		ParserRuleReturnScope typeFields87 =null;
+		ParserRuleReturnScope typeId89 =null;
+		ParserRuleReturnScope typeId90 =null;
 
-		Object ID95_tree=null;
-		Object char_literal96_tree=null;
-		Object char_literal98_tree=null;
-		Object ID99_tree=null;
-		Object char_literal100_tree=null;
+		Object string_literal88_tree=null;
 
-		try { dbg.enterRule(getGrammarFileName(), "fieldList");
+		try { dbg.enterRule(getGrammarFileName(), "type");
 		if ( getRuleLevel()==0 ) {dbg.commence();}
 		incRuleLevel();
-		dbg.location(75, 0);
+		dbg.location(65, 0);
 
 		try {
-			// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:76:2: ( ( ID ':' typeId ( ',' ID ':' typeId )* )? )
-			dbg.enterAlt(1);
+			// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:65:6: ( typeFields | 'array of' typeId | typeId )
+			int alt21=3;
+			try { dbg.enterDecision(21, decisionCanBacktrack[21]);
 
-			// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:76:4: ( ID ':' typeId ( ',' ID ':' typeId )* )?
-			{
-			root_0 = (Object)adaptor.nil();
-
-
-			dbg.location(76,4);
-			// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:76:4: ( ID ':' typeId ( ',' ID ':' typeId )* )?
-			int alt22=2;
-			try { dbg.enterSubRule(22);
-			try { dbg.enterDecision(22, decisionCanBacktrack[22]);
-
-			int LA22_0 = input.LA(1);
-			if ( (LA22_0==ID) ) {
-				int LA22_1 = input.LA(2);
-				if ( (LA22_1==22) ) {
-					alt22=1;
+			switch ( input.LA(1) ) {
+			case ID:
+				{
+				int LA21_1 = input.LA(2);
+				if ( (LA21_1==22) ) {
+					alt21=1;
 				}
-			}
-			} finally {dbg.exitDecision(22);}
+				else if ( (LA21_1==EOF||LA21_1==39||LA21_1==41||(LA21_1 >= 46 && LA21_1 <= 47)) ) {
+					alt21=3;
+				}
 
-			switch (alt22) {
+				else {
+					if (state.backtracking>0) {state.failed=true; return retval;}
+					int nvaeMark = input.mark();
+					try {
+						input.consume();
+						NoViableAltException nvae =
+							new NoViableAltException("", 21, 1, input);
+						dbg.recognitionException(nvae);
+						throw nvae;
+					} finally {
+						input.rewind(nvaeMark);
+					}
+				}
+
+				}
+				break;
+			case 33:
+				{
+				alt21=2;
+				}
+				break;
+			case INT:
+			case STRING:
+				{
+				alt21=3;
+				}
+				break;
+			default:
+				if (state.backtracking>0) {state.failed=true; return retval;}
+				NoViableAltException nvae =
+					new NoViableAltException("", 21, 0, input);
+				dbg.recognitionException(nvae);
+				throw nvae;
+			}
+			} finally {dbg.exitDecision(21);}
+
+			switch (alt21) {
 				case 1 :
 					dbg.enterAlt(1);
 
-					// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:76:5: ID ':' typeId ( ',' ID ':' typeId )*
+					// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:65:8: typeFields
 					{
-					dbg.location(76,5);
-					ID95=(Token)match(input,ID,FOLLOW_ID_in_fieldList506); if (state.failed) return retval;
-					if ( state.backtracking==0 ) {
-					ID95_tree = (Object)adaptor.create(ID95);
-					adaptor.addChild(root_0, ID95_tree);
-					}
-					dbg.location(76,8);
-					char_literal96=(Token)match(input,22,FOLLOW_22_in_fieldList508); if (state.failed) return retval;
-					if ( state.backtracking==0 ) {
-					char_literal96_tree = (Object)adaptor.create(char_literal96);
-					adaptor.addChild(root_0, char_literal96_tree);
-					}
-					dbg.location(76,12);
-					pushFollow(FOLLOW_typeId_in_fieldList510);
-					typeId97=typeId();
+					root_0 = (Object)adaptor.nil();
+
+
+					dbg.location(65,8);
+					pushFollow(FOLLOW_typeFields_in_type481);
+					typeFields87=typeFields();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, typeId97.getTree());
-					dbg.location(76,19);
-					// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:76:19: ( ',' ID ':' typeId )*
-					try { dbg.enterSubRule(21);
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, typeFields87.getTree());
 
-					loop21:
-					while (true) {
-						int alt21=2;
-						try { dbg.enterDecision(21, decisionCanBacktrack[21]);
-
-						int LA21_0 = input.LA(1);
-						if ( (LA21_0==18) ) {
-							int LA21_22 = input.LA(2);
-							if ( (LA21_22==ID) ) {
-								int LA21_23 = input.LA(3);
-								if ( (synpred40_tiger_wood()) ) {
-									alt21=1;
-								}
-
-							}
-
-						}
-
-						} finally {dbg.exitDecision(21);}
-
-						switch (alt21) {
-						case 1 :
-							dbg.enterAlt(1);
-
-							// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:76:20: ',' ID ':' typeId
-							{
-							dbg.location(76,20);
-							char_literal98=(Token)match(input,18,FOLLOW_18_in_fieldList513); if (state.failed) return retval;
-							if ( state.backtracking==0 ) {
-							char_literal98_tree = (Object)adaptor.create(char_literal98);
-							adaptor.addChild(root_0, char_literal98_tree);
-							}
-							dbg.location(76,24);
-							ID99=(Token)match(input,ID,FOLLOW_ID_in_fieldList515); if (state.failed) return retval;
-							if ( state.backtracking==0 ) {
-							ID99_tree = (Object)adaptor.create(ID99);
-							adaptor.addChild(root_0, ID99_tree);
-							}
-							dbg.location(76,27);
-							char_literal100=(Token)match(input,22,FOLLOW_22_in_fieldList517); if (state.failed) return retval;
-							if ( state.backtracking==0 ) {
-							char_literal100_tree = (Object)adaptor.create(char_literal100);
-							adaptor.addChild(root_0, char_literal100_tree);
-							}
-							dbg.location(76,31);
-							pushFollow(FOLLOW_typeId_in_fieldList519);
-							typeId101=typeId();
-							state._fsp--;
-							if (state.failed) return retval;
-							if ( state.backtracking==0 ) adaptor.addChild(root_0, typeId101.getTree());
-
-							}
-							break;
-
-						default :
-							break loop21;
-						}
 					}
-					} finally {dbg.exitSubRule(21);}
+					break;
+				case 2 :
+					dbg.enterAlt(2);
+
+					// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:66:4: 'array of' typeId
+					{
+					root_0 = (Object)adaptor.nil();
+
+
+					dbg.location(66,4);
+					string_literal88=(Token)match(input,33,FOLLOW_33_in_type486); if (state.failed) return retval;
+					if ( state.backtracking==0 ) {
+					string_literal88_tree = (Object)adaptor.create(string_literal88);
+					adaptor.addChild(root_0, string_literal88_tree);
+					}
+					dbg.location(66,15);
+					pushFollow(FOLLOW_typeId_in_type488);
+					typeId89=typeId();
+					state._fsp--;
+					if (state.failed) return retval;
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, typeId89.getTree());
+
+					}
+					break;
+				case 3 :
+					dbg.enterAlt(3);
+
+					// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:67:4: typeId
+					{
+					root_0 = (Object)adaptor.nil();
+
+
+					dbg.location(67,4);
+					pushFollow(FOLLOW_typeId_in_type493);
+					typeId90=typeId();
+					state._fsp--;
+					if (state.failed) return retval;
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, typeId90.getTree());
 
 					}
 					break;
 
+			}
+			retval.stop = input.LT(-1);
+
+			if ( state.backtracking==0 ) {
+			retval.tree = (Object)adaptor.rulePostProcessing(root_0);
+			adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
+			}
+		}
+		catch (RecognitionException re) {
+			reportError(re);
+			recover(input,re);
+			retval.tree = (Object)adaptor.errorNode(input, retval.start, input.LT(-1), re);
+		}
+		finally {
+			// do for sure before leaving
+		}
+		dbg.location(67, 9);
+
+		}
+		finally {
+			dbg.exitRule(getGrammarFileName(), "type");
+			decRuleLevel();
+			if ( getRuleLevel()==0 ) {dbg.terminate();}
+		}
+
+		return retval;
+	}
+	// $ANTLR end "type"
+
+
+	public static class expSeq_return extends ParserRuleReturnScope {
+		Object tree;
+		@Override
+		public Object getTree() { return tree; }
+	};
+
+
+	// $ANTLR start "expSeq"
+	// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:69:1: expSeq : expr ( ';' expr )* ;
+	public final tiger_woodParser.expSeq_return expSeq() throws RecognitionException {
+		tiger_woodParser.expSeq_return retval = new tiger_woodParser.expSeq_return();
+		retval.start = input.LT(1);
+
+		Object root_0 = null;
+
+		Token char_literal92=null;
+		ParserRuleReturnScope expr91 =null;
+		ParserRuleReturnScope expr93 =null;
+
+		Object char_literal92_tree=null;
+
+		try { dbg.enterRule(getGrammarFileName(), "expSeq");
+		if ( getRuleLevel()==0 ) {dbg.commence();}
+		incRuleLevel();
+		dbg.location(69, 0);
+
+		try {
+			// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:69:9: ( expr ( ';' expr )* )
+			dbg.enterAlt(1);
+
+			// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:69:11: expr ( ';' expr )*
+			{
+			root_0 = (Object)adaptor.nil();
+
+
+			dbg.location(69,11);
+			pushFollow(FOLLOW_expr_in_expSeq502);
+			expr91=expr();
+			state._fsp--;
+			if (state.failed) return retval;
+			if ( state.backtracking==0 ) adaptor.addChild(root_0, expr91.getTree());
+			dbg.location(69,16);
+			// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:69:16: ( ';' expr )*
+			try { dbg.enterSubRule(22);
+
+			loop22:
+			while (true) {
+				int alt22=2;
+				try { dbg.enterDecision(22, decisionCanBacktrack[22]);
+
+				int LA22_0 = input.LA(1);
+				if ( (LA22_0==24) ) {
+					alt22=1;
+				}
+
+				} finally {dbg.exitDecision(22);}
+
+				switch (alt22) {
+				case 1 :
+					dbg.enterAlt(1);
+
+					// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:69:17: ';' expr
+					{
+					dbg.location(69,17);
+					char_literal92=(Token)match(input,24,FOLLOW_24_in_expSeq505); if (state.failed) return retval;
+					if ( state.backtracking==0 ) {
+					char_literal92_tree = (Object)adaptor.create(char_literal92);
+					adaptor.addChild(root_0, char_literal92_tree);
+					}
+					dbg.location(69,21);
+					pushFollow(FOLLOW_expr_in_expSeq507);
+					expr93=expr();
+					state._fsp--;
+					if (state.failed) return retval;
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, expr93.getTree());
+
+					}
+					break;
+
+				default :
+					break loop22;
+				}
 			}
 			} finally {dbg.exitSubRule(22);}
 
@@ -2773,63 +2562,63 @@ public class tiger_woodParser extends DebugParser {
 		finally {
 			// do for sure before leaving
 		}
-		dbg.location(76, 41);
+		dbg.location(69, 26);
 
 		}
 		finally {
-			dbg.exitRule(getGrammarFileName(), "fieldList");
+			dbg.exitRule(getGrammarFileName(), "expSeq");
 			decRuleLevel();
 			if ( getRuleLevel()==0 ) {dbg.terminate();}
 		}
 
 		return retval;
 	}
-	// $ANTLR end "fieldList"
+	// $ANTLR end "expSeq"
 
 
-	public static class typeFields_return extends ParserRuleReturnScope {
+	public static class expList_return extends ParserRuleReturnScope {
 		Object tree;
 		@Override
 		public Object getTree() { return tree; }
 	};
 
 
-	// $ANTLR start "typeFields"
-	// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:78:1: typeFields : typeField ( ',' typeField )* ;
-	public final tiger_woodParser.typeFields_return typeFields() throws RecognitionException {
-		tiger_woodParser.typeFields_return retval = new tiger_woodParser.typeFields_return();
+	// $ANTLR start "expList"
+	// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:71:1: expList : expr ( ',' expr )* ;
+	public final tiger_woodParser.expList_return expList() throws RecognitionException {
+		tiger_woodParser.expList_return retval = new tiger_woodParser.expList_return();
 		retval.start = input.LT(1);
 
 		Object root_0 = null;
 
-		Token char_literal103=null;
-		ParserRuleReturnScope typeField102 =null;
-		ParserRuleReturnScope typeField104 =null;
+		Token char_literal95=null;
+		ParserRuleReturnScope expr94 =null;
+		ParserRuleReturnScope expr96 =null;
 
-		Object char_literal103_tree=null;
+		Object char_literal95_tree=null;
 
-		try { dbg.enterRule(getGrammarFileName(), "typeFields");
+		try { dbg.enterRule(getGrammarFileName(), "expList");
 		if ( getRuleLevel()==0 ) {dbg.commence();}
 		incRuleLevel();
-		dbg.location(78, 0);
+		dbg.location(71, 0);
 
 		try {
-			// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:79:2: ( typeField ( ',' typeField )* )
+			// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:71:9: ( expr ( ',' expr )* )
 			dbg.enterAlt(1);
 
-			// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:79:4: typeField ( ',' typeField )*
+			// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:71:11: expr ( ',' expr )*
 			{
 			root_0 = (Object)adaptor.nil();
 
 
-			dbg.location(79,4);
-			pushFollow(FOLLOW_typeField_in_typeFields535);
-			typeField102=typeField();
+			dbg.location(71,11);
+			pushFollow(FOLLOW_expr_in_expList517);
+			expr94=expr();
 			state._fsp--;
 			if (state.failed) return retval;
-			if ( state.backtracking==0 ) adaptor.addChild(root_0, typeField102.getTree());
-			dbg.location(79,14);
-			// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:79:14: ( ',' typeField )*
+			if ( state.backtracking==0 ) adaptor.addChild(root_0, expr94.getTree());
+			dbg.location(71,16);
+			// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:71:16: ( ',' expr )*
 			try { dbg.enterSubRule(23);
 
 			loop23:
@@ -2848,20 +2637,20 @@ public class tiger_woodParser extends DebugParser {
 				case 1 :
 					dbg.enterAlt(1);
 
-					// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:79:15: ',' typeField
+					// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:71:17: ',' expr
 					{
-					dbg.location(79,15);
-					char_literal103=(Token)match(input,18,FOLLOW_18_in_typeFields538); if (state.failed) return retval;
+					dbg.location(71,17);
+					char_literal95=(Token)match(input,18,FOLLOW_18_in_expList520); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
-					char_literal103_tree = (Object)adaptor.create(char_literal103);
-					adaptor.addChild(root_0, char_literal103_tree);
+					char_literal95_tree = (Object)adaptor.create(char_literal95);
+					adaptor.addChild(root_0, char_literal95_tree);
 					}
-					dbg.location(79,19);
-					pushFollow(FOLLOW_typeField_in_typeFields540);
-					typeField104=typeField();
+					dbg.location(71,21);
+					pushFollow(FOLLOW_expr_in_expList522);
+					expr96=expr();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, typeField104.getTree());
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, expr96.getTree());
 
 					}
 					break;
@@ -2889,7 +2678,275 @@ public class tiger_woodParser extends DebugParser {
 		finally {
 			// do for sure before leaving
 		}
-		dbg.location(79, 29);
+		dbg.location(71, 26);
+
+		}
+		finally {
+			dbg.exitRule(getGrammarFileName(), "expList");
+			decRuleLevel();
+			if ( getRuleLevel()==0 ) {dbg.terminate();}
+		}
+
+		return retval;
+	}
+	// $ANTLR end "expList"
+
+
+	public static class fieldList_return extends ParserRuleReturnScope {
+		Object tree;
+		@Override
+		public Object getTree() { return tree; }
+	};
+
+
+	// $ANTLR start "fieldList"
+	// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:73:1: fieldList : ID '=' expr ( ',' ID '=' expr )* ;
+	public final tiger_woodParser.fieldList_return fieldList() throws RecognitionException {
+		tiger_woodParser.fieldList_return retval = new tiger_woodParser.fieldList_return();
+		retval.start = input.LT(1);
+
+		Object root_0 = null;
+
+		Token ID97=null;
+		Token char_literal98=null;
+		Token char_literal100=null;
+		Token ID101=null;
+		Token char_literal102=null;
+		ParserRuleReturnScope expr99 =null;
+		ParserRuleReturnScope expr103 =null;
+
+		Object ID97_tree=null;
+		Object char_literal98_tree=null;
+		Object char_literal100_tree=null;
+		Object ID101_tree=null;
+		Object char_literal102_tree=null;
+
+		try { dbg.enterRule(getGrammarFileName(), "fieldList");
+		if ( getRuleLevel()==0 ) {dbg.commence();}
+		incRuleLevel();
+		dbg.location(73, 0);
+
+		try {
+			// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:74:2: ( ID '=' expr ( ',' ID '=' expr )* )
+			dbg.enterAlt(1);
+
+			// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:74:4: ID '=' expr ( ',' ID '=' expr )*
+			{
+			root_0 = (Object)adaptor.nil();
+
+
+			dbg.location(74,4);
+			ID97=(Token)match(input,ID,FOLLOW_ID_in_fieldList534); if (state.failed) return retval;
+			if ( state.backtracking==0 ) {
+			ID97_tree = (Object)adaptor.create(ID97);
+			adaptor.addChild(root_0, ID97_tree);
+			}
+			dbg.location(74,7);
+			char_literal98=(Token)match(input,27,FOLLOW_27_in_fieldList536); if (state.failed) return retval;
+			if ( state.backtracking==0 ) {
+			char_literal98_tree = (Object)adaptor.create(char_literal98);
+			adaptor.addChild(root_0, char_literal98_tree);
+			}
+			dbg.location(74,11);
+			pushFollow(FOLLOW_expr_in_fieldList538);
+			expr99=expr();
+			state._fsp--;
+			if (state.failed) return retval;
+			if ( state.backtracking==0 ) adaptor.addChild(root_0, expr99.getTree());
+			dbg.location(74,16);
+			// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:74:16: ( ',' ID '=' expr )*
+			try { dbg.enterSubRule(24);
+
+			loop24:
+			while (true) {
+				int alt24=2;
+				try { dbg.enterDecision(24, decisionCanBacktrack[24]);
+
+				int LA24_0 = input.LA(1);
+				if ( (LA24_0==18) ) {
+					int LA24_22 = input.LA(2);
+					if ( (synpred43_tiger_wood()) ) {
+						alt24=1;
+					}
+
+				}
+
+				} finally {dbg.exitDecision(24);}
+
+				switch (alt24) {
+				case 1 :
+					dbg.enterAlt(1);
+
+					// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:74:17: ',' ID '=' expr
+					{
+					dbg.location(74,17);
+					char_literal100=(Token)match(input,18,FOLLOW_18_in_fieldList541); if (state.failed) return retval;
+					if ( state.backtracking==0 ) {
+					char_literal100_tree = (Object)adaptor.create(char_literal100);
+					adaptor.addChild(root_0, char_literal100_tree);
+					}
+					dbg.location(74,21);
+					ID101=(Token)match(input,ID,FOLLOW_ID_in_fieldList543); if (state.failed) return retval;
+					if ( state.backtracking==0 ) {
+					ID101_tree = (Object)adaptor.create(ID101);
+					adaptor.addChild(root_0, ID101_tree);
+					}
+					dbg.location(74,24);
+					char_literal102=(Token)match(input,27,FOLLOW_27_in_fieldList545); if (state.failed) return retval;
+					if ( state.backtracking==0 ) {
+					char_literal102_tree = (Object)adaptor.create(char_literal102);
+					adaptor.addChild(root_0, char_literal102_tree);
+					}
+					dbg.location(74,28);
+					pushFollow(FOLLOW_expr_in_fieldList547);
+					expr103=expr();
+					state._fsp--;
+					if (state.failed) return retval;
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, expr103.getTree());
+
+					}
+					break;
+
+				default :
+					break loop24;
+				}
+			}
+			} finally {dbg.exitSubRule(24);}
+
+			}
+
+			retval.stop = input.LT(-1);
+
+			if ( state.backtracking==0 ) {
+			retval.tree = (Object)adaptor.rulePostProcessing(root_0);
+			adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
+			}
+		}
+		catch (RecognitionException re) {
+			reportError(re);
+			recover(input,re);
+			retval.tree = (Object)adaptor.errorNode(input, retval.start, input.LT(-1), re);
+		}
+		finally {
+			// do for sure before leaving
+		}
+		dbg.location(74, 33);
+
+		}
+		finally {
+			dbg.exitRule(getGrammarFileName(), "fieldList");
+			decRuleLevel();
+			if ( getRuleLevel()==0 ) {dbg.terminate();}
+		}
+
+		return retval;
+	}
+	// $ANTLR end "fieldList"
+
+
+	public static class typeFields_return extends ParserRuleReturnScope {
+		Object tree;
+		@Override
+		public Object getTree() { return tree; }
+	};
+
+
+	// $ANTLR start "typeFields"
+	// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:76:1: typeFields : typeField ( ',' typeField )* ;
+	public final tiger_woodParser.typeFields_return typeFields() throws RecognitionException {
+		tiger_woodParser.typeFields_return retval = new tiger_woodParser.typeFields_return();
+		retval.start = input.LT(1);
+
+		Object root_0 = null;
+
+		Token char_literal105=null;
+		ParserRuleReturnScope typeField104 =null;
+		ParserRuleReturnScope typeField106 =null;
+
+		Object char_literal105_tree=null;
+
+		try { dbg.enterRule(getGrammarFileName(), "typeFields");
+		if ( getRuleLevel()==0 ) {dbg.commence();}
+		incRuleLevel();
+		dbg.location(76, 0);
+
+		try {
+			// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:77:2: ( typeField ( ',' typeField )* )
+			dbg.enterAlt(1);
+
+			// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:77:4: typeField ( ',' typeField )*
+			{
+			root_0 = (Object)adaptor.nil();
+
+
+			dbg.location(77,4);
+			pushFollow(FOLLOW_typeField_in_typeFields560);
+			typeField104=typeField();
+			state._fsp--;
+			if (state.failed) return retval;
+			if ( state.backtracking==0 ) adaptor.addChild(root_0, typeField104.getTree());
+			dbg.location(77,14);
+			// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:77:14: ( ',' typeField )*
+			try { dbg.enterSubRule(25);
+
+			loop25:
+			while (true) {
+				int alt25=2;
+				try { dbg.enterDecision(25, decisionCanBacktrack[25]);
+
+				int LA25_0 = input.LA(1);
+				if ( (LA25_0==18) ) {
+					alt25=1;
+				}
+
+				} finally {dbg.exitDecision(25);}
+
+				switch (alt25) {
+				case 1 :
+					dbg.enterAlt(1);
+
+					// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:77:15: ',' typeField
+					{
+					dbg.location(77,15);
+					char_literal105=(Token)match(input,18,FOLLOW_18_in_typeFields563); if (state.failed) return retval;
+					if ( state.backtracking==0 ) {
+					char_literal105_tree = (Object)adaptor.create(char_literal105);
+					adaptor.addChild(root_0, char_literal105_tree);
+					}
+					dbg.location(77,19);
+					pushFollow(FOLLOW_typeField_in_typeFields565);
+					typeField106=typeField();
+					state._fsp--;
+					if (state.failed) return retval;
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, typeField106.getTree());
+
+					}
+					break;
+
+				default :
+					break loop25;
+				}
+			}
+			} finally {dbg.exitSubRule(25);}
+
+			}
+
+			retval.stop = input.LT(-1);
+
+			if ( state.backtracking==0 ) {
+			retval.tree = (Object)adaptor.rulePostProcessing(root_0);
+			adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
+			}
+		}
+		catch (RecognitionException re) {
+			reportError(re);
+			recover(input,re);
+			retval.tree = (Object)adaptor.errorNode(input, retval.start, input.LT(-1), re);
+		}
+		finally {
+			// do for sure before leaving
+		}
+		dbg.location(77, 29);
 
 		}
 		finally {
@@ -2911,52 +2968,52 @@ public class tiger_woodParser extends DebugParser {
 
 
 	// $ANTLR start "typeField"
-	// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:81:1: typeField : ID ':' typeId ;
+	// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:79:1: typeField : ID ':' typeId ;
 	public final tiger_woodParser.typeField_return typeField() throws RecognitionException {
 		tiger_woodParser.typeField_return retval = new tiger_woodParser.typeField_return();
 		retval.start = input.LT(1);
 
 		Object root_0 = null;
 
-		Token ID105=null;
-		Token char_literal106=null;
-		ParserRuleReturnScope typeId107 =null;
+		Token ID107=null;
+		Token char_literal108=null;
+		ParserRuleReturnScope typeId109 =null;
 
-		Object ID105_tree=null;
-		Object char_literal106_tree=null;
+		Object ID107_tree=null;
+		Object char_literal108_tree=null;
 
 		try { dbg.enterRule(getGrammarFileName(), "typeField");
 		if ( getRuleLevel()==0 ) {dbg.commence();}
 		incRuleLevel();
-		dbg.location(81, 0);
+		dbg.location(79, 0);
 
 		try {
-			// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:82:2: ( ID ':' typeId )
+			// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:80:2: ( ID ':' typeId )
 			dbg.enterAlt(1);
 
-			// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:82:4: ID ':' typeId
+			// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:80:4: ID ':' typeId
 			{
 			root_0 = (Object)adaptor.nil();
 
 
-			dbg.location(82,4);
-			ID105=(Token)match(input,ID,FOLLOW_ID_in_typeField552); if (state.failed) return retval;
+			dbg.location(80,4);
+			ID107=(Token)match(input,ID,FOLLOW_ID_in_typeField577); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
-			ID105_tree = (Object)adaptor.create(ID105);
-			adaptor.addChild(root_0, ID105_tree);
+			ID107_tree = (Object)adaptor.create(ID107);
+			adaptor.addChild(root_0, ID107_tree);
 			}
-			dbg.location(82,7);
-			char_literal106=(Token)match(input,22,FOLLOW_22_in_typeField554); if (state.failed) return retval;
+			dbg.location(80,7);
+			char_literal108=(Token)match(input,22,FOLLOW_22_in_typeField579); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
-			char_literal106_tree = (Object)adaptor.create(char_literal106);
-			adaptor.addChild(root_0, char_literal106_tree);
+			char_literal108_tree = (Object)adaptor.create(char_literal108);
+			adaptor.addChild(root_0, char_literal108_tree);
 			}
-			dbg.location(82,11);
-			pushFollow(FOLLOW_typeId_in_typeField556);
-			typeId107=typeId();
+			dbg.location(80,11);
+			pushFollow(FOLLOW_typeId_in_typeField581);
+			typeId109=typeId();
 			state._fsp--;
 			if (state.failed) return retval;
-			if ( state.backtracking==0 ) adaptor.addChild(root_0, typeId107.getTree());
+			if ( state.backtracking==0 ) adaptor.addChild(root_0, typeId109.getTree());
 
 			}
 
@@ -2975,7 +3032,7 @@ public class tiger_woodParser extends DebugParser {
 		finally {
 			// do for sure before leaving
 		}
-		dbg.location(82, 16);
+		dbg.location(80, 16);
 
 		}
 		finally {
@@ -2997,24 +3054,24 @@ public class tiger_woodParser extends DebugParser {
 
 
 	// $ANTLR start "typeId"
-	// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:84:1: typeId : ( ID | INT | STRING );
+	// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:82:1: typeId : ( ID | INT | STRING );
 	public final tiger_woodParser.typeId_return typeId() throws RecognitionException {
 		tiger_woodParser.typeId_return retval = new tiger_woodParser.typeId_return();
 		retval.start = input.LT(1);
 
 		Object root_0 = null;
 
-		Token set108=null;
+		Token set110=null;
 
-		Object set108_tree=null;
+		Object set110_tree=null;
 
 		try { dbg.enterRule(getGrammarFileName(), "typeId");
 		if ( getRuleLevel()==0 ) {dbg.commence();}
 		incRuleLevel();
-		dbg.location(84, 0);
+		dbg.location(82, 0);
 
 		try {
-			// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:84:8: ( ID | INT | STRING )
+			// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:82:8: ( ID | INT | STRING )
 			dbg.enterAlt(1);
 
 			// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:
@@ -3022,11 +3079,11 @@ public class tiger_woodParser extends DebugParser {
 			root_0 = (Object)adaptor.nil();
 
 
-			dbg.location(84,8);
-			set108=input.LT(1);
+			dbg.location(82,8);
+			set110=input.LT(1);
 			if ( (input.LA(1) >= ID && input.LA(1) <= INT)||input.LA(1)==STRING ) {
 				input.consume();
-				if ( state.backtracking==0 ) adaptor.addChild(root_0, (Object)adaptor.create(set108));
+				if ( state.backtracking==0 ) adaptor.addChild(root_0, (Object)adaptor.create(set110));
 				state.errorRecovery=false;
 				state.failed=false;
 			}
@@ -3053,7 +3110,7 @@ public class tiger_woodParser extends DebugParser {
 		finally {
 			// do for sure before leaving
 		}
-		dbg.location(87, 1);
+		dbg.location(85, 1);
 
 		}
 		finally {
@@ -3086,96 +3143,87 @@ public class tiger_woodParser extends DebugParser {
 	}
 	// $ANTLR end synpred5_tiger_wood
 
-	// $ANTLR start synpred11_tiger_wood
-	public final void synpred11_tiger_wood_fragment() throws RecognitionException {
-		// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:21:4: ( typeId '[' expr ']' 'of' expr )
-		dbg.enterAlt(1);
-
-		// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:21:4: typeId '[' expr ']' 'of' expr
-		{
-		dbg.location(21,4);
-		pushFollow(FOLLOW_typeId_in_synpred11_tiger_wood139);
-		typeId();
-		state._fsp--;
-		if (state.failed) return;
-		dbg.location(21,11);
-		match(input,31,FOLLOW_31_in_synpred11_tiger_wood141); if (state.failed) return;
-		dbg.location(21,15);
-		pushFollow(FOLLOW_expr_in_synpred11_tiger_wood143);
-		expr();
-		state._fsp--;
-		if (state.failed) return;
-		dbg.location(21,20);
-		match(input,32,FOLLOW_32_in_synpred11_tiger_wood145); if (state.failed) return;
-		dbg.location(21,24);
-		match(input,43,FOLLOW_43_in_synpred11_tiger_wood147); if (state.failed) return;
-		dbg.location(21,29);
-		pushFollow(FOLLOW_expr_in_synpred11_tiger_wood149);
-		expr();
-		state._fsp--;
-		if (state.failed) return;
-
-		}
-
-	}
-	// $ANTLR end synpred11_tiger_wood
-
 	// $ANTLR start synpred12_tiger_wood
 	public final void synpred12_tiger_wood_fragment() throws RecognitionException {
-		// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:22:11: ( fieldList )
+		// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:19:4: ( lvalue ( ':=' expr )? )
 		dbg.enterAlt(1);
 
-		// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:22:11: fieldList
+		// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:19:4: lvalue ( ':=' expr )?
 		{
-		dbg.location(22,11);
-		pushFollow(FOLLOW_fieldList_in_synpred12_tiger_wood156);
-		fieldList();
+		dbg.location(19,4);
+		pushFollow(FOLLOW_lvalue_in_synpred12_tiger_wood135);
+		lvalue();
 		state._fsp--;
 		if (state.failed) return;
+		dbg.location(19,11);
+		// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:19:11: ( ':=' expr )?
+		int alt30=2;
+		try { dbg.enterSubRule(30);
+		try { dbg.enterDecision(30, decisionCanBacktrack[30]);
+
+		int LA30_0 = input.LA(1);
+		if ( (LA30_0==23) ) {
+			alt30=1;
+		}
+		} finally {dbg.exitDecision(30);}
+
+		switch (alt30) {
+			case 1 :
+				dbg.enterAlt(1);
+
+				// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:19:12: ':=' expr
+				{
+				dbg.location(19,12);
+				match(input,23,FOLLOW_23_in_synpred12_tiger_wood138); if (state.failed) return;
+				dbg.location(19,17);
+				pushFollow(FOLLOW_expr_in_synpred12_tiger_wood140);
+				expr();
+				state._fsp--;
+				if (state.failed) return;
+
+				}
+				break;
+
+		}
+		} finally {dbg.exitSubRule(30);}
 
 		}
 
 	}
 	// $ANTLR end synpred12_tiger_wood
 
-	// $ANTLR start synpred13_tiger_wood
-	public final void synpred13_tiger_wood_fragment() throws RecognitionException {
-		// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:22:4: ( typeId ( fieldList )? )
+	// $ANTLR start synpred17_tiger_wood
+	public final void synpred17_tiger_wood_fragment() throws RecognitionException {
+		// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:24:4: ( typeId ( fieldList )? )
 		dbg.enterAlt(1);
 
-		// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:22:4: typeId ( fieldList )?
+		// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:24:4: typeId ( fieldList )?
 		{
-		dbg.location(22,4);
-		pushFollow(FOLLOW_typeId_in_synpred13_tiger_wood154);
+		dbg.location(24,4);
+		pushFollow(FOLLOW_typeId_in_synpred17_tiger_wood180);
 		typeId();
 		state._fsp--;
 		if (state.failed) return;
-		dbg.location(22,11);
-		// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:22:11: ( fieldList )?
-		int alt28=2;
-		try { dbg.enterSubRule(28);
-		try { dbg.enterDecision(28, decisionCanBacktrack[28]);
+		dbg.location(24,11);
+		// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:24:11: ( fieldList )?
+		int alt32=2;
+		try { dbg.enterSubRule(32);
+		try { dbg.enterDecision(32, decisionCanBacktrack[32]);
 
-		int LA28_0 = input.LA(1);
-		if ( (LA28_0==ID) ) {
-			alt28=1;
+		int LA32_0 = input.LA(1);
+		if ( (LA32_0==ID) ) {
+			alt32=1;
 		}
-		else if ( (LA28_0==EOF) ) {
-			int LA28_2 = input.LA(2);
-			if ( (synpred12_tiger_wood()) ) {
-				alt28=1;
-			}
-		}
-		} finally {dbg.exitDecision(28);}
+		} finally {dbg.exitDecision(32);}
 
-		switch (alt28) {
+		switch (alt32) {
 			case 1 :
 				dbg.enterAlt(1);
 
-				// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:22:11: fieldList
+				// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:24:11: fieldList
 				{
-				dbg.location(22,11);
-				pushFollow(FOLLOW_fieldList_in_synpred13_tiger_wood156);
+				dbg.location(24,11);
+				pushFollow(FOLLOW_fieldList_in_synpred17_tiger_wood182);
 				fieldList();
 				state._fsp--;
 				if (state.failed) return;
@@ -3184,29 +3232,43 @@ public class tiger_woodParser extends DebugParser {
 				break;
 
 		}
-		} finally {dbg.exitSubRule(28);}
+		} finally {dbg.exitSubRule(32);}
 
 		}
 
 	}
-	// $ANTLR end synpred13_tiger_wood
+	// $ANTLR end synpred17_tiger_wood
 
-	// $ANTLR start synpred14_tiger_wood
-	public final void synpred14_tiger_wood_fragment() throws RecognitionException {
-		// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:24:4: ( lvalue ':=' expr )
+	// $ANTLR start synpred18_tiger_wood
+	public final void synpred18_tiger_wood_fragment() throws RecognitionException {
+		// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:26:4: ( STRING )
 		dbg.enterAlt(1);
 
-		// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:24:4: lvalue ':=' expr
+		// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:26:4: STRING
 		{
-		dbg.location(24,4);
-		pushFollow(FOLLOW_lvalue_in_synpred14_tiger_wood164);
-		lvalue();
-		state._fsp--;
-		if (state.failed) return;
-		dbg.location(24,11);
-		match(input,23,FOLLOW_23_in_synpred14_tiger_wood166); if (state.failed) return;
-		dbg.location(24,16);
-		pushFollow(FOLLOW_expr_in_synpred14_tiger_wood168);
+		dbg.location(26,4);
+		match(input,STRING,FOLLOW_STRING_in_synpred18_tiger_wood190); if (state.failed) return;
+
+		}
+
+	}
+	// $ANTLR end synpred18_tiger_wood
+
+	// $ANTLR start synpred43_tiger_wood
+	public final void synpred43_tiger_wood_fragment() throws RecognitionException {
+		// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:74:17: ( ',' ID '=' expr )
+		dbg.enterAlt(1);
+
+		// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:74:17: ',' ID '=' expr
+		{
+		dbg.location(74,17);
+		match(input,18,FOLLOW_18_in_synpred43_tiger_wood541); if (state.failed) return;
+		dbg.location(74,21);
+		match(input,ID,FOLLOW_ID_in_synpred43_tiger_wood543); if (state.failed) return;
+		dbg.location(74,24);
+		match(input,27,FOLLOW_27_in_synpred43_tiger_wood545); if (state.failed) return;
+		dbg.location(74,28);
+		pushFollow(FOLLOW_expr_in_synpred43_tiger_wood547);
 		expr();
 		state._fsp--;
 		if (state.failed) return;
@@ -3214,103 +3276,16 @@ public class tiger_woodParser extends DebugParser {
 		}
 
 	}
-	// $ANTLR end synpred14_tiger_wood
-
-	// $ANTLR start synpred16_tiger_wood
-	public final void synpred16_tiger_wood_fragment() throws RecognitionException {
-		// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:26:4: ( ID '(' ( expList )? ')' )
-		dbg.enterAlt(1);
-
-		// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:26:4: ID '(' ( expList )? ')'
-		{
-		dbg.location(26,4);
-		match(input,ID,FOLLOW_ID_in_synpred16_tiger_wood175); if (state.failed) return;
-		dbg.location(26,7);
-		match(input,14,FOLLOW_14_in_synpred16_tiger_wood177); if (state.failed) return;
-		dbg.location(26,11);
-		// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:26:11: ( expList )?
-		int alt29=2;
-		try { dbg.enterSubRule(29);
-		try { dbg.enterDecision(29, decisionCanBacktrack[29]);
-
-		int LA29_0 = input.LA(1);
-		if ( ((LA29_0 >= ID && LA29_0 <= INT)||LA29_0==STRING||LA29_0==14||LA29_0==34||LA29_0==38||LA29_0==40||LA29_0==42) ) {
-			alt29=1;
-		}
-		} finally {dbg.exitDecision(29);}
-
-		switch (alt29) {
-			case 1 :
-				dbg.enterAlt(1);
-
-				// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:26:11: expList
-				{
-				dbg.location(26,11);
-				pushFollow(FOLLOW_expList_in_synpred16_tiger_wood179);
-				expList();
-				state._fsp--;
-				if (state.failed) return;
-
-				}
-				break;
-
-		}
-		} finally {dbg.exitSubRule(29);}
-		dbg.location(26,20);
-		match(input,15,FOLLOW_15_in_synpred16_tiger_wood182); if (state.failed) return;
-
-		}
-
-	}
-	// $ANTLR end synpred16_tiger_wood
-
-	// $ANTLR start synpred17_tiger_wood
-	public final void synpred17_tiger_wood_fragment() throws RecognitionException {
-		// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:27:4: ( STRING )
-		dbg.enterAlt(1);
-
-		// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:27:4: STRING
-		{
-		dbg.location(27,4);
-		match(input,STRING,FOLLOW_STRING_in_synpred17_tiger_wood187); if (state.failed) return;
-
-		}
-
-	}
-	// $ANTLR end synpred17_tiger_wood
-
-	// $ANTLR start synpred40_tiger_wood
-	public final void synpred40_tiger_wood_fragment() throws RecognitionException {
-		// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:76:20: ( ',' ID ':' typeId )
-		dbg.enterAlt(1);
-
-		// /Users/jean-baptistedominguez/PCL/tiger_wood/tiger_wood.g:76:20: ',' ID ':' typeId
-		{
-		dbg.location(76,20);
-		match(input,18,FOLLOW_18_in_synpred40_tiger_wood513); if (state.failed) return;
-		dbg.location(76,24);
-		match(input,ID,FOLLOW_ID_in_synpred40_tiger_wood515); if (state.failed) return;
-		dbg.location(76,27);
-		match(input,22,FOLLOW_22_in_synpred40_tiger_wood517); if (state.failed) return;
-		dbg.location(76,31);
-		pushFollow(FOLLOW_typeId_in_synpred40_tiger_wood519);
-		typeId();
-		state._fsp--;
-		if (state.failed) return;
-
-		}
-
-	}
-	// $ANTLR end synpred40_tiger_wood
+	// $ANTLR end synpred43_tiger_wood
 
 	// Delegated rules
 
-	public final boolean synpred40_tiger_wood() {
+	public final boolean synpred43_tiger_wood() {
 		state.backtracking++;
 		dbg.beginBacktrack(state.backtracking);
 		int start = input.mark();
 		try {
-			synpred40_tiger_wood_fragment(); // can never throw exception
+			synpred43_tiger_wood_fragment(); // can never throw exception
 		} catch (RecognitionException re) {
 			System.err.println("impossible: "+re);
 		}
@@ -3353,28 +3328,12 @@ public class tiger_woodParser extends DebugParser {
 		state.failed=false;
 		return success;
 	}
-	public final boolean synpred11_tiger_wood() {
+	public final boolean synpred18_tiger_wood() {
 		state.backtracking++;
 		dbg.beginBacktrack(state.backtracking);
 		int start = input.mark();
 		try {
-			synpred11_tiger_wood_fragment(); // can never throw exception
-		} catch (RecognitionException re) {
-			System.err.println("impossible: "+re);
-		}
-		boolean success = !state.failed;
-		input.rewind(start);
-		dbg.endBacktrack(state.backtracking, success);
-		state.backtracking--;
-		state.failed=false;
-		return success;
-	}
-	public final boolean synpred13_tiger_wood() {
-		state.backtracking++;
-		dbg.beginBacktrack(state.backtracking);
-		int start = input.mark();
-		try {
-			synpred13_tiger_wood_fragment(); // can never throw exception
+			synpred18_tiger_wood_fragment(); // can never throw exception
 		} catch (RecognitionException re) {
 			System.err.println("impossible: "+re);
 		}
@@ -3401,56 +3360,23 @@ public class tiger_woodParser extends DebugParser {
 		state.failed=false;
 		return success;
 	}
-	public final boolean synpred14_tiger_wood() {
-		state.backtracking++;
-		dbg.beginBacktrack(state.backtracking);
-		int start = input.mark();
-		try {
-			synpred14_tiger_wood_fragment(); // can never throw exception
-		} catch (RecognitionException re) {
-			System.err.println("impossible: "+re);
-		}
-		boolean success = !state.failed;
-		input.rewind(start);
-		dbg.endBacktrack(state.backtracking, success);
-		state.backtracking--;
-		state.failed=false;
-		return success;
-	}
-	public final boolean synpred16_tiger_wood() {
-		state.backtracking++;
-		dbg.beginBacktrack(state.backtracking);
-		int start = input.mark();
-		try {
-			synpred16_tiger_wood_fragment(); // can never throw exception
-		} catch (RecognitionException re) {
-			System.err.println("impossible: "+re);
-		}
-		boolean success = !state.failed;
-		input.rewind(start);
-		dbg.endBacktrack(state.backtracking, success);
-		state.backtracking--;
-		state.failed=false;
-		return success;
-	}
 
 
-	protected DFA8 dfa8 = new DFA8(this);
-	protected DFA6 dfa6 = new DFA6(this);
-	static final String DFA8_eotS =
-		"\123\uffff";
-	static final String DFA8_eofS =
-		"\6\uffff\1\13\114\uffff";
-	static final String DFA8_minS =
-		"\1\10\5\uffff\1\10\2\37\2\0\110\uffff";
-	static final String DFA8_maxS =
-		"\1\52\5\uffff\1\57\2\37\2\0\110\uffff";
-	static final String DFA8_acceptS =
-		"\1\uffff\1\1\1\2\1\3\1\4\1\5\5\uffff\1\7\24\uffff\1\10\1\uffff\1\6\26"+
-		"\uffff\1\12\27\uffff\1\13\1\11";
-	static final String DFA8_specialS =
-		"\7\uffff\1\0\1\1\1\2\1\3\110\uffff}>";
-	static final String[] DFA8_transitionS = {
+	protected DFA9 dfa9 = new DFA9(this);
+	static final String DFA9_eotS =
+		"\124\uffff";
+	static final String DFA9_eofS =
+		"\124\uffff";
+	static final String DFA9_minS =
+		"\1\10\5\uffff\1\16\2\37\113\uffff";
+	static final String DFA9_maxS =
+		"\1\52\5\uffff\3\37\113\uffff";
+	static final String DFA9_acceptS =
+		"\1\uffff\1\1\1\2\1\3\1\4\1\5\3\uffff\1\7\1\uffff\1\10\26\uffff\1\6\1\11"+
+		"\27\uffff\1\12\27\uffff\1\13";
+	static final String DFA9_specialS =
+		"\6\uffff\1\0\1\1\1\2\113\uffff}>";
+	static final String[] DFA9_transitionS = {
 			"\1\6\1\10\1\uffff\1\7\2\uffff\1\5\23\uffff\1\4\3\uffff\1\3\1\uffff\1"+
 			"\2\1\uffff\1\1",
 			"",
@@ -3458,330 +3384,9 @@ public class tiger_woodParser extends DebugParser {
 			"",
 			"",
 			"",
-			"\2\13\1\uffff\1\13\2\uffff\1\11\1\13\2\uffff\1\13\1\uffff\1\40\2\uffff"+
-			"\1\40\1\13\6\uffff\1\12\1\13\1\uffff\11\13\1\uffff\4\13",
-			"\1\42",
-			"\1\42",
-			"\1\uffff",
-			"\1\uffff",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			""
-	};
-
-	static final short[] DFA8_eot = DFA.unpackEncodedString(DFA8_eotS);
-	static final short[] DFA8_eof = DFA.unpackEncodedString(DFA8_eofS);
-	static final char[] DFA8_min = DFA.unpackEncodedStringToUnsignedChars(DFA8_minS);
-	static final char[] DFA8_max = DFA.unpackEncodedStringToUnsignedChars(DFA8_maxS);
-	static final short[] DFA8_accept = DFA.unpackEncodedString(DFA8_acceptS);
-	static final short[] DFA8_special = DFA.unpackEncodedString(DFA8_specialS);
-	static final short[][] DFA8_transition;
-
-	static {
-		int numStates = DFA8_transitionS.length;
-		DFA8_transition = new short[numStates][];
-		for (int i=0; i<numStates; i++) {
-			DFA8_transition[i] = DFA.unpackEncodedString(DFA8_transitionS[i]);
-		}
-	}
-
-	protected class DFA8 extends DFA {
-
-		public DFA8(BaseRecognizer recognizer) {
-			this.recognizer = recognizer;
-			this.decisionNumber = 8;
-			this.eot = DFA8_eot;
-			this.eof = DFA8_eof;
-			this.min = DFA8_min;
-			this.max = DFA8_max;
-			this.accept = DFA8_accept;
-			this.special = DFA8_special;
-			this.transition = DFA8_transition;
-		}
-		@Override
-		public String getDescription() {
-			return "12:1: expr : ( 'let' ( decList )* 'in' ( expSeq )? 'end' | 'if' expr 'then' expr ( 'else' expr )? | 'for' ID ':=' expr 'to' expr 'do' expr | 'break' | '(' ( expSeq )? ')' | typeId '[' expr ']' 'of' expr | typeId ( fieldList )? | lvalue ':=' expr | ID '(' ( expList )? ')' | STRING | INT );";
-		}
-		public void error(NoViableAltException nvae) {
-			dbg.recognitionException(nvae);
-		}
-		@Override
-		public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
-			TokenStream input = (TokenStream)_input;
-			int _s = s;
-			switch ( s ) {
-					case 0 : 
-						int LA8_7 = input.LA(1);
-						 
-						int index8_7 = input.index();
-						input.rewind();
-						s = -1;
-						if ( (LA8_7==31) ) {s = 34;}
-						else if ( (synpred13_tiger_wood()) ) {s = 11;}
-						else if ( (synpred17_tiger_wood()) ) {s = 57;}
-						 
-						input.seek(index8_7);
-						if ( s>=0 ) return s;
-						break;
-
-					case 1 : 
-						int LA8_8 = input.LA(1);
-						 
-						int index8_8 = input.index();
-						input.rewind();
-						s = -1;
-						if ( (LA8_8==31) ) {s = 34;}
-						else if ( (synpred13_tiger_wood()) ) {s = 11;}
-						else if ( (true) ) {s = 81;}
-						 
-						input.seek(index8_8);
-						if ( s>=0 ) return s;
-						break;
-
-					case 2 : 
-						int LA8_9 = input.LA(1);
-						 
-						int index8_9 = input.index();
-						input.rewind();
-						s = -1;
-						if ( (synpred13_tiger_wood()) ) {s = 11;}
-						else if ( (synpred16_tiger_wood()) ) {s = 82;}
-						 
-						input.seek(index8_9);
-						if ( s>=0 ) return s;
-						break;
-
-					case 3 : 
-						int LA8_10 = input.LA(1);
-						 
-						int index8_10 = input.index();
-						input.rewind();
-						s = -1;
-						if ( (synpred11_tiger_wood()) ) {s = 34;}
-						else if ( (synpred14_tiger_wood()) ) {s = 32;}
-						 
-						input.seek(index8_10);
-						if ( s>=0 ) return s;
-						break;
-			}
-			if (state.backtracking>0) {state.failed=true; return -1;}
-			NoViableAltException nvae =
-				new NoViableAltException(getDescription(), 8, _s, input);
-			error(nvae);
-			throw nvae;
-		}
-	}
-
-	static final String DFA6_eotS =
-		"\u00c8\uffff";
-	static final String DFA6_eofS =
-		"\1\2\u00c7\uffff";
-	static final String DFA6_minS =
-		"\1\10\26\0\u00b1\uffff";
-	static final String DFA6_maxS =
-		"\1\57\26\0\u00b1\uffff";
-	static final String DFA6_acceptS =
-		"\44\uffff\1\1\1\2\u00a2\uffff";
-	static final String DFA6_specialS =
-		"\1\uffff\1\0\1\1\1\2\1\3\1\4\1\5\1\6\1\7\1\10\1\11\1\12\1\13\1\14\1\15"+
-		"\1\16\1\17\1\20\1\21\1\22\1\23\1\24\1\25\u00b1\uffff}>";
-	static final String[] DFA6_transitionS = {
-			"\1\1\1\11\1\uffff\1\10\2\uffff\1\7\1\17\2\uffff\1\26\5\uffff\1\24\7\uffff"+
-			"\1\16\1\uffff\1\6\1\15\1\13\1\25\1\5\1\21\1\4\1\20\1\3\1\uffff\1\12\1"+
-			"\14\1\22\1\23",
-			"\1\uffff",
-			"\1\uffff",
-			"\1\uffff",
-			"\1\uffff",
-			"\1\uffff",
-			"\1\uffff",
-			"\1\uffff",
-			"\1\uffff",
-			"\1\uffff",
-			"\1\uffff",
-			"\1\uffff",
-			"\1\uffff",
-			"\1\uffff",
-			"\1\uffff",
-			"\1\uffff",
-			"\1\uffff",
-			"\1\uffff",
-			"\1\uffff",
-			"\1\uffff",
-			"\1\uffff",
-			"\1\uffff",
-			"\1\uffff",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
+			"\1\11\20\uffff\1\13",
+			"\1\13",
+			"\1\13",
 			"",
 			"",
 			"",
@@ -3859,38 +3464,38 @@ public class tiger_woodParser extends DebugParser {
 			""
 	};
 
-	static final short[] DFA6_eot = DFA.unpackEncodedString(DFA6_eotS);
-	static final short[] DFA6_eof = DFA.unpackEncodedString(DFA6_eofS);
-	static final char[] DFA6_min = DFA.unpackEncodedStringToUnsignedChars(DFA6_minS);
-	static final char[] DFA6_max = DFA.unpackEncodedStringToUnsignedChars(DFA6_maxS);
-	static final short[] DFA6_accept = DFA.unpackEncodedString(DFA6_acceptS);
-	static final short[] DFA6_special = DFA.unpackEncodedString(DFA6_specialS);
-	static final short[][] DFA6_transition;
+	static final short[] DFA9_eot = DFA.unpackEncodedString(DFA9_eotS);
+	static final short[] DFA9_eof = DFA.unpackEncodedString(DFA9_eofS);
+	static final char[] DFA9_min = DFA.unpackEncodedStringToUnsignedChars(DFA9_minS);
+	static final char[] DFA9_max = DFA.unpackEncodedStringToUnsignedChars(DFA9_maxS);
+	static final short[] DFA9_accept = DFA.unpackEncodedString(DFA9_acceptS);
+	static final short[] DFA9_special = DFA.unpackEncodedString(DFA9_specialS);
+	static final short[][] DFA9_transition;
 
 	static {
-		int numStates = DFA6_transitionS.length;
-		DFA6_transition = new short[numStates][];
+		int numStates = DFA9_transitionS.length;
+		DFA9_transition = new short[numStates][];
 		for (int i=0; i<numStates; i++) {
-			DFA6_transition[i] = DFA.unpackEncodedString(DFA6_transitionS[i]);
+			DFA9_transition[i] = DFA.unpackEncodedString(DFA9_transitionS[i]);
 		}
 	}
 
-	protected class DFA6 extends DFA {
+	protected class DFA9 extends DFA {
 
-		public DFA6(BaseRecognizer recognizer) {
+		public DFA9(BaseRecognizer recognizer) {
 			this.recognizer = recognizer;
-			this.decisionNumber = 6;
-			this.eot = DFA6_eot;
-			this.eof = DFA6_eof;
-			this.min = DFA6_min;
-			this.max = DFA6_max;
-			this.accept = DFA6_accept;
-			this.special = DFA6_special;
-			this.transition = DFA6_transition;
+			this.decisionNumber = 9;
+			this.eot = DFA9_eot;
+			this.eof = DFA9_eof;
+			this.min = DFA9_min;
+			this.max = DFA9_max;
+			this.accept = DFA9_accept;
+			this.special = DFA9_special;
+			this.transition = DFA9_transition;
 		}
 		@Override
 		public String getDescription() {
-			return "22:11: ( fieldList )?";
+			return "12:1: expr : ( 'let' ( decList )* 'in' ( expSeq )? 'end' | 'if' expr 'then' expr ( 'else' expr )? | 'for' ID ':=' expr 'to' expr 'do' expr | 'break' | '(' ( expSeq )? ')' | lvalue ( ':=' expr )? | ID '(' ( expList )? ')' | typeId '[' expr ']' 'of' expr | typeId ( fieldList )? | STRING | INT );";
 		}
 		public void error(NoViableAltException nvae) {
 			dbg.recognitionException(nvae);
@@ -3901,294 +3506,51 @@ public class tiger_woodParser extends DebugParser {
 			int _s = s;
 			switch ( s ) {
 					case 0 : 
-						int LA6_1 = input.LA(1);
+						int LA9_6 = input.LA(1);
 						 
-						int index6_1 = input.index();
+						int index9_6 = input.index();
 						input.rewind();
 						s = -1;
-						if ( (synpred12_tiger_wood()) ) {s = 36;}
-						else if ( (true) ) {s = 37;}
+						if ( (LA9_6==14) ) {s = 9;}
+						else if ( (LA9_6==31) ) {s = 11;}
+						else if ( (synpred12_tiger_wood()) ) {s = 34;}
+						else if ( (synpred17_tiger_wood()) ) {s = 35;}
 						 
-						input.seek(index6_1);
+						input.seek(index9_6);
 						if ( s>=0 ) return s;
 						break;
 
 					case 1 : 
-						int LA6_2 = input.LA(1);
+						int LA9_7 = input.LA(1);
 						 
-						int index6_2 = input.index();
+						int index9_7 = input.index();
 						input.rewind();
 						s = -1;
-						if ( (synpred12_tiger_wood()) ) {s = 36;}
-						else if ( (true) ) {s = 37;}
+						if ( (LA9_7==31) ) {s = 11;}
+						else if ( (synpred17_tiger_wood()) ) {s = 35;}
+						else if ( (synpred18_tiger_wood()) ) {s = 59;}
 						 
-						input.seek(index6_2);
+						input.seek(index9_7);
 						if ( s>=0 ) return s;
 						break;
 
 					case 2 : 
-						int LA6_3 = input.LA(1);
+						int LA9_8 = input.LA(1);
 						 
-						int index6_3 = input.index();
+						int index9_8 = input.index();
 						input.rewind();
 						s = -1;
-						if ( (synpred12_tiger_wood()) ) {s = 36;}
-						else if ( (true) ) {s = 37;}
+						if ( (LA9_8==31) ) {s = 11;}
+						else if ( (synpred17_tiger_wood()) ) {s = 35;}
+						else if ( (true) ) {s = 83;}
 						 
-						input.seek(index6_3);
-						if ( s>=0 ) return s;
-						break;
-
-					case 3 : 
-						int LA6_4 = input.LA(1);
-						 
-						int index6_4 = input.index();
-						input.rewind();
-						s = -1;
-						if ( (synpred12_tiger_wood()) ) {s = 36;}
-						else if ( (true) ) {s = 37;}
-						 
-						input.seek(index6_4);
-						if ( s>=0 ) return s;
-						break;
-
-					case 4 : 
-						int LA6_5 = input.LA(1);
-						 
-						int index6_5 = input.index();
-						input.rewind();
-						s = -1;
-						if ( (synpred12_tiger_wood()) ) {s = 36;}
-						else if ( (true) ) {s = 37;}
-						 
-						input.seek(index6_5);
-						if ( s>=0 ) return s;
-						break;
-
-					case 5 : 
-						int LA6_6 = input.LA(1);
-						 
-						int index6_6 = input.index();
-						input.rewind();
-						s = -1;
-						if ( (synpred12_tiger_wood()) ) {s = 36;}
-						else if ( (true) ) {s = 37;}
-						 
-						input.seek(index6_6);
-						if ( s>=0 ) return s;
-						break;
-
-					case 6 : 
-						int LA6_7 = input.LA(1);
-						 
-						int index6_7 = input.index();
-						input.rewind();
-						s = -1;
-						if ( (synpred12_tiger_wood()) ) {s = 36;}
-						else if ( (true) ) {s = 37;}
-						 
-						input.seek(index6_7);
-						if ( s>=0 ) return s;
-						break;
-
-					case 7 : 
-						int LA6_8 = input.LA(1);
-						 
-						int index6_8 = input.index();
-						input.rewind();
-						s = -1;
-						if ( (synpred12_tiger_wood()) ) {s = 36;}
-						else if ( (true) ) {s = 37;}
-						 
-						input.seek(index6_8);
-						if ( s>=0 ) return s;
-						break;
-
-					case 8 : 
-						int LA6_9 = input.LA(1);
-						 
-						int index6_9 = input.index();
-						input.rewind();
-						s = -1;
-						if ( (synpred12_tiger_wood()) ) {s = 36;}
-						else if ( (true) ) {s = 37;}
-						 
-						input.seek(index6_9);
-						if ( s>=0 ) return s;
-						break;
-
-					case 9 : 
-						int LA6_10 = input.LA(1);
-						 
-						int index6_10 = input.index();
-						input.rewind();
-						s = -1;
-						if ( (synpred12_tiger_wood()) ) {s = 36;}
-						else if ( (true) ) {s = 37;}
-						 
-						input.seek(index6_10);
-						if ( s>=0 ) return s;
-						break;
-
-					case 10 : 
-						int LA6_11 = input.LA(1);
-						 
-						int index6_11 = input.index();
-						input.rewind();
-						s = -1;
-						if ( (synpred12_tiger_wood()) ) {s = 36;}
-						else if ( (true) ) {s = 37;}
-						 
-						input.seek(index6_11);
-						if ( s>=0 ) return s;
-						break;
-
-					case 11 : 
-						int LA6_12 = input.LA(1);
-						 
-						int index6_12 = input.index();
-						input.rewind();
-						s = -1;
-						if ( (synpred12_tiger_wood()) ) {s = 36;}
-						else if ( (true) ) {s = 37;}
-						 
-						input.seek(index6_12);
-						if ( s>=0 ) return s;
-						break;
-
-					case 12 : 
-						int LA6_13 = input.LA(1);
-						 
-						int index6_13 = input.index();
-						input.rewind();
-						s = -1;
-						if ( (synpred12_tiger_wood()) ) {s = 36;}
-						else if ( (true) ) {s = 37;}
-						 
-						input.seek(index6_13);
-						if ( s>=0 ) return s;
-						break;
-
-					case 13 : 
-						int LA6_14 = input.LA(1);
-						 
-						int index6_14 = input.index();
-						input.rewind();
-						s = -1;
-						if ( (synpred12_tiger_wood()) ) {s = 36;}
-						else if ( (true) ) {s = 37;}
-						 
-						input.seek(index6_14);
-						if ( s>=0 ) return s;
-						break;
-
-					case 14 : 
-						int LA6_15 = input.LA(1);
-						 
-						int index6_15 = input.index();
-						input.rewind();
-						s = -1;
-						if ( (synpred12_tiger_wood()) ) {s = 36;}
-						else if ( (true) ) {s = 37;}
-						 
-						input.seek(index6_15);
-						if ( s>=0 ) return s;
-						break;
-
-					case 15 : 
-						int LA6_16 = input.LA(1);
-						 
-						int index6_16 = input.index();
-						input.rewind();
-						s = -1;
-						if ( (synpred12_tiger_wood()) ) {s = 36;}
-						else if ( (true) ) {s = 37;}
-						 
-						input.seek(index6_16);
-						if ( s>=0 ) return s;
-						break;
-
-					case 16 : 
-						int LA6_17 = input.LA(1);
-						 
-						int index6_17 = input.index();
-						input.rewind();
-						s = -1;
-						if ( (synpred12_tiger_wood()) ) {s = 36;}
-						else if ( (true) ) {s = 37;}
-						 
-						input.seek(index6_17);
-						if ( s>=0 ) return s;
-						break;
-
-					case 17 : 
-						int LA6_18 = input.LA(1);
-						 
-						int index6_18 = input.index();
-						input.rewind();
-						s = -1;
-						if ( (synpred12_tiger_wood()) ) {s = 36;}
-						else if ( (true) ) {s = 37;}
-						 
-						input.seek(index6_18);
-						if ( s>=0 ) return s;
-						break;
-
-					case 18 : 
-						int LA6_19 = input.LA(1);
-						 
-						int index6_19 = input.index();
-						input.rewind();
-						s = -1;
-						if ( (synpred12_tiger_wood()) ) {s = 36;}
-						else if ( (true) ) {s = 37;}
-						 
-						input.seek(index6_19);
-						if ( s>=0 ) return s;
-						break;
-
-					case 19 : 
-						int LA6_20 = input.LA(1);
-						 
-						int index6_20 = input.index();
-						input.rewind();
-						s = -1;
-						if ( (synpred12_tiger_wood()) ) {s = 36;}
-						else if ( (true) ) {s = 37;}
-						 
-						input.seek(index6_20);
-						if ( s>=0 ) return s;
-						break;
-
-					case 20 : 
-						int LA6_21 = input.LA(1);
-						 
-						int index6_21 = input.index();
-						input.rewind();
-						s = -1;
-						if ( (synpred12_tiger_wood()) ) {s = 36;}
-						else if ( (true) ) {s = 37;}
-						 
-						input.seek(index6_21);
-						if ( s>=0 ) return s;
-						break;
-
-					case 21 : 
-						int LA6_22 = input.LA(1);
-						 
-						int index6_22 = input.index();
-						input.rewind();
-						s = -1;
-						if ( (synpred12_tiger_wood()) ) {s = 36;}
-						else if ( (true) ) {s = 37;}
-						 
-						input.seek(index6_22);
+						input.seek(index9_8);
 						if ( s>=0 ) return s;
 						break;
 			}
 			if (state.backtracking>0) {state.failed=true; return -1;}
 			NoViableAltException nvae =
-				new NoViableAltException(getDescription(), 6, _s, input);
+				new NoViableAltException(getDescription(), 9, _s, input);
 			error(nvae);
 			throw nvae;
 		}
@@ -4218,110 +3580,101 @@ public class tiger_woodParser extends DebugParser {
 	public static final BitSet FOLLOW_14_in_expr121 = new BitSet(new long[]{0x000005440000CB00L});
 	public static final BitSet FOLLOW_expSeq_in_expr123 = new BitSet(new long[]{0x0000000000008000L});
 	public static final BitSet FOLLOW_15_in_expr126 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_typeId_in_expr139 = new BitSet(new long[]{0x0000000080000000L});
-	public static final BitSet FOLLOW_31_in_expr141 = new BitSet(new long[]{0x0000054400004B00L});
-	public static final BitSet FOLLOW_expr_in_expr143 = new BitSet(new long[]{0x0000000100000000L});
-	public static final BitSet FOLLOW_32_in_expr145 = new BitSet(new long[]{0x0000080000000000L});
-	public static final BitSet FOLLOW_43_in_expr147 = new BitSet(new long[]{0x0000054400004B00L});
-	public static final BitSet FOLLOW_expr_in_expr149 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_typeId_in_expr154 = new BitSet(new long[]{0x0000000000000100L});
-	public static final BitSet FOLLOW_fieldList_in_expr156 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_lvalue_in_expr164 = new BitSet(new long[]{0x0000000000800000L});
-	public static final BitSet FOLLOW_23_in_expr166 = new BitSet(new long[]{0x0000054400004B00L});
-	public static final BitSet FOLLOW_expr_in_expr168 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ID_in_expr175 = new BitSet(new long[]{0x0000000000004000L});
-	public static final BitSet FOLLOW_14_in_expr177 = new BitSet(new long[]{0x000005440000CB00L});
-	public static final BitSet FOLLOW_expList_in_expr179 = new BitSet(new long[]{0x0000000000008000L});
-	public static final BitSet FOLLOW_15_in_expr182 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_STRING_in_expr187 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_INT_in_expr192 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_addExpr_in_opMan201 = new BitSet(new long[]{0x000000007E000002L});
-	public static final BitSet FOLLOW_set_in_opMan204 = new BitSet(new long[]{0x0000000000084300L});
-	public static final BitSet FOLLOW_addExpr_in_opMan218 = new BitSet(new long[]{0x000000007E000002L});
-	public static final BitSet FOLLOW_multExpr_in_addExpr231 = new BitSet(new long[]{0x00000000000A0002L});
-	public static final BitSet FOLLOW_set_in_addExpr235 = new BitSet(new long[]{0x0000000000084300L});
+	public static final BitSet FOLLOW_lvalue_in_expr135 = new BitSet(new long[]{0x0000000000800002L});
+	public static final BitSet FOLLOW_23_in_expr138 = new BitSet(new long[]{0x0000054400004B00L});
+	public static final BitSet FOLLOW_expr_in_expr140 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_ID_in_expr150 = new BitSet(new long[]{0x0000000000004000L});
+	public static final BitSet FOLLOW_14_in_expr152 = new BitSet(new long[]{0x000005440000CB00L});
+	public static final BitSet FOLLOW_expList_in_expr154 = new BitSet(new long[]{0x0000000000008000L});
+	public static final BitSet FOLLOW_15_in_expr157 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_typeId_in_expr165 = new BitSet(new long[]{0x0000000080000000L});
+	public static final BitSet FOLLOW_31_in_expr167 = new BitSet(new long[]{0x0000054400004B00L});
+	public static final BitSet FOLLOW_expr_in_expr169 = new BitSet(new long[]{0x0000000100000000L});
+	public static final BitSet FOLLOW_32_in_expr171 = new BitSet(new long[]{0x0000080000000000L});
+	public static final BitSet FOLLOW_43_in_expr173 = new BitSet(new long[]{0x0000054400004B00L});
+	public static final BitSet FOLLOW_expr_in_expr175 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_typeId_in_expr180 = new BitSet(new long[]{0x0000000000000102L});
+	public static final BitSet FOLLOW_fieldList_in_expr182 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_STRING_in_expr190 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_INT_in_expr195 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_addExpr_in_opMan208 = new BitSet(new long[]{0x000000007E000002L});
+	public static final BitSet FOLLOW_set_in_opMan211 = new BitSet(new long[]{0x0000000000084300L});
+	public static final BitSet FOLLOW_addExpr_in_opMan225 = new BitSet(new long[]{0x000000007E000002L});
 	public static final BitSet FOLLOW_multExpr_in_addExpr242 = new BitSet(new long[]{0x00000000000A0002L});
-	public static final BitSet FOLLOW_atom_in_multExpr256 = new BitSet(new long[]{0x0000000000210002L});
-	public static final BitSet FOLLOW_set_in_multExpr260 = new BitSet(new long[]{0x0000000000084300L});
-	public static final BitSet FOLLOW_atom_in_multExpr266 = new BitSet(new long[]{0x0000000000210002L});
-	public static final BitSet FOLLOW_int_in_atom289 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ID_in_atom301 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_14_in_atom311 = new BitSet(new long[]{0x0000054400004B00L});
-	public static final BitSet FOLLOW_expr_in_atom313 = new BitSet(new long[]{0x0000000000008000L});
-	public static final BitSet FOLLOW_15_in_atom315 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_INT_in_int329 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_19_in_int334 = new BitSet(new long[]{0x0000000000000200L});
-	public static final BitSet FOLLOW_INT_in_int336 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ID_in_lvalue353 = new BitSet(new long[]{0x0000000080100002L});
-	public static final BitSet FOLLOW_20_in_lvalue356 = new BitSet(new long[]{0x0000000000000100L});
-	public static final BitSet FOLLOW_ID_in_lvalue358 = new BitSet(new long[]{0x0000000080100002L});
-	public static final BitSet FOLLOW_31_in_lvalue363 = new BitSet(new long[]{0x0000054400004B00L});
-	public static final BitSet FOLLOW_expr_in_lvalue365 = new BitSet(new long[]{0x0000000100000000L});
-	public static final BitSet FOLLOW_32_in_lvalue367 = new BitSet(new long[]{0x0000000080000002L});
-	public static final BitSet FOLLOW_decFunc_in_decList378 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_decType_in_decList383 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_decVar_in_decList388 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_39_in_decFunc396 = new BitSet(new long[]{0x0000000000000100L});
-	public static final BitSet FOLLOW_ID_in_decFunc398 = new BitSet(new long[]{0x0000000000004000L});
-	public static final BitSet FOLLOW_14_in_decFunc400 = new BitSet(new long[]{0x0000000000008100L});
-	public static final BitSet FOLLOW_fieldList_in_decFunc402 = new BitSet(new long[]{0x0000000000008000L});
-	public static final BitSet FOLLOW_15_in_decFunc404 = new BitSet(new long[]{0x0000000008000000L});
-	public static final BitSet FOLLOW_27_in_decFunc406 = new BitSet(new long[]{0x0000054400004B00L});
-	public static final BitSet FOLLOW_expr_in_decFunc408 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_47_in_decVar416 = new BitSet(new long[]{0x0000000000000100L});
-	public static final BitSet FOLLOW_ID_in_decVar418 = new BitSet(new long[]{0x0000000000C00000L});
-	public static final BitSet FOLLOW_22_in_decVar421 = new BitSet(new long[]{0x0000000000000B00L});
-	public static final BitSet FOLLOW_typeId_in_decVar424 = new BitSet(new long[]{0x0000000000800000L});
-	public static final BitSet FOLLOW_23_in_decVar428 = new BitSet(new long[]{0x0000054400004B00L});
-	public static final BitSet FOLLOW_expr_in_decVar431 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_46_in_decType438 = new BitSet(new long[]{0x0000000000000B00L});
-	public static final BitSet FOLLOW_typeId_in_decType440 = new BitSet(new long[]{0x0000000008000000L});
-	public static final BitSet FOLLOW_27_in_decType442 = new BitSet(new long[]{0x0000000200000B00L});
-	public static final BitSet FOLLOW_type_in_decType444 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_typeFields_in_type452 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_33_in_type457 = new BitSet(new long[]{0x0000000000000B00L});
-	public static final BitSet FOLLOW_typeId_in_type459 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_typeId_in_type464 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_expr_in_expSeq473 = new BitSet(new long[]{0x0000000001000002L});
-	public static final BitSet FOLLOW_24_in_expSeq476 = new BitSet(new long[]{0x0000054400004B00L});
-	public static final BitSet FOLLOW_expr_in_expSeq478 = new BitSet(new long[]{0x0000000001000002L});
-	public static final BitSet FOLLOW_expr_in_expList488 = new BitSet(new long[]{0x0000000000040002L});
-	public static final BitSet FOLLOW_18_in_expList491 = new BitSet(new long[]{0x0000054400004B00L});
-	public static final BitSet FOLLOW_expr_in_expList493 = new BitSet(new long[]{0x0000000000040002L});
-	public static final BitSet FOLLOW_ID_in_fieldList506 = new BitSet(new long[]{0x0000000000400000L});
-	public static final BitSet FOLLOW_22_in_fieldList508 = new BitSet(new long[]{0x0000000000000B00L});
-	public static final BitSet FOLLOW_typeId_in_fieldList510 = new BitSet(new long[]{0x0000000000040002L});
-	public static final BitSet FOLLOW_18_in_fieldList513 = new BitSet(new long[]{0x0000000000000100L});
-	public static final BitSet FOLLOW_ID_in_fieldList515 = new BitSet(new long[]{0x0000000000400000L});
-	public static final BitSet FOLLOW_22_in_fieldList517 = new BitSet(new long[]{0x0000000000000B00L});
-	public static final BitSet FOLLOW_typeId_in_fieldList519 = new BitSet(new long[]{0x0000000000040002L});
-	public static final BitSet FOLLOW_typeField_in_typeFields535 = new BitSet(new long[]{0x0000000000040002L});
-	public static final BitSet FOLLOW_18_in_typeFields538 = new BitSet(new long[]{0x0000000000000100L});
-	public static final BitSet FOLLOW_typeField_in_typeFields540 = new BitSet(new long[]{0x0000000000040002L});
-	public static final BitSet FOLLOW_ID_in_typeField552 = new BitSet(new long[]{0x0000000000400000L});
-	public static final BitSet FOLLOW_22_in_typeField554 = new BitSet(new long[]{0x0000000000000B00L});
-	public static final BitSet FOLLOW_typeId_in_typeField556 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_set_in_addExpr246 = new BitSet(new long[]{0x0000000000084300L});
+	public static final BitSet FOLLOW_multExpr_in_addExpr253 = new BitSet(new long[]{0x00000000000A0002L});
+	public static final BitSet FOLLOW_atom_in_multExpr272 = new BitSet(new long[]{0x0000000000210002L});
+	public static final BitSet FOLLOW_set_in_multExpr276 = new BitSet(new long[]{0x0000000000084300L});
+	public static final BitSet FOLLOW_atom_in_multExpr282 = new BitSet(new long[]{0x0000000000210002L});
+	public static final BitSet FOLLOW_iNT_in_atom309 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_ID_in_atom321 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_14_in_atom332 = new BitSet(new long[]{0x0000054400004B00L});
+	public static final BitSet FOLLOW_expr_in_atom334 = new BitSet(new long[]{0x0000000000008000L});
+	public static final BitSet FOLLOW_15_in_atom336 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_INT_in_iNT351 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_19_in_iNT356 = new BitSet(new long[]{0x0000000000000200L});
+	public static final BitSet FOLLOW_INT_in_iNT358 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_decFunc_in_decList374 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_decType_in_decList379 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_decVar_in_decList384 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_39_in_decFunc392 = new BitSet(new long[]{0x0000000000000100L});
+	public static final BitSet FOLLOW_ID_in_decFunc394 = new BitSet(new long[]{0x0000000000004000L});
+	public static final BitSet FOLLOW_14_in_decFunc396 = new BitSet(new long[]{0x0000000000008100L});
+	public static final BitSet FOLLOW_typeFields_in_decFunc398 = new BitSet(new long[]{0x0000000000008000L});
+	public static final BitSet FOLLOW_15_in_decFunc401 = new BitSet(new long[]{0x0000000008400000L});
+	public static final BitSet FOLLOW_22_in_decFunc404 = new BitSet(new long[]{0x0000000000000B00L});
+	public static final BitSet FOLLOW_typeId_in_decFunc406 = new BitSet(new long[]{0x0000000008000000L});
+	public static final BitSet FOLLOW_27_in_decFunc410 = new BitSet(new long[]{0x0000054400004B00L});
+	public static final BitSet FOLLOW_expr_in_decFunc412 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_47_in_decVar420 = new BitSet(new long[]{0x0000000000000100L});
+	public static final BitSet FOLLOW_ID_in_decVar422 = new BitSet(new long[]{0x0000000000C00000L});
+	public static final BitSet FOLLOW_22_in_decVar425 = new BitSet(new long[]{0x0000000000000B00L});
+	public static final BitSet FOLLOW_typeId_in_decVar428 = new BitSet(new long[]{0x0000000000800000L});
+	public static final BitSet FOLLOW_23_in_decVar432 = new BitSet(new long[]{0x0000054400004B00L});
+	public static final BitSet FOLLOW_expr_in_decVar435 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_46_in_decType442 = new BitSet(new long[]{0x0000000000000B00L});
+	public static final BitSet FOLLOW_typeId_in_decType444 = new BitSet(new long[]{0x0000000008000000L});
+	public static final BitSet FOLLOW_27_in_decType446 = new BitSet(new long[]{0x0000000200000B00L});
+	public static final BitSet FOLLOW_type_in_decType448 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_ID_in_lvalue456 = new BitSet(new long[]{0x0000000080100002L});
+	public static final BitSet FOLLOW_20_in_lvalue460 = new BitSet(new long[]{0x0000000000000100L});
+	public static final BitSet FOLLOW_ID_in_lvalue462 = new BitSet(new long[]{0x0000000080100002L});
+	public static final BitSet FOLLOW_31_in_lvalue467 = new BitSet(new long[]{0x0000054400004B00L});
+	public static final BitSet FOLLOW_expr_in_lvalue469 = new BitSet(new long[]{0x0000000100000000L});
+	public static final BitSet FOLLOW_32_in_lvalue471 = new BitSet(new long[]{0x0000000080000002L});
+	public static final BitSet FOLLOW_typeFields_in_type481 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_33_in_type486 = new BitSet(new long[]{0x0000000000000B00L});
+	public static final BitSet FOLLOW_typeId_in_type488 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_typeId_in_type493 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_expr_in_expSeq502 = new BitSet(new long[]{0x0000000001000002L});
+	public static final BitSet FOLLOW_24_in_expSeq505 = new BitSet(new long[]{0x0000054400004B00L});
+	public static final BitSet FOLLOW_expr_in_expSeq507 = new BitSet(new long[]{0x0000000001000002L});
+	public static final BitSet FOLLOW_expr_in_expList517 = new BitSet(new long[]{0x0000000000040002L});
+	public static final BitSet FOLLOW_18_in_expList520 = new BitSet(new long[]{0x0000054400004B00L});
+	public static final BitSet FOLLOW_expr_in_expList522 = new BitSet(new long[]{0x0000000000040002L});
+	public static final BitSet FOLLOW_ID_in_fieldList534 = new BitSet(new long[]{0x0000000008000000L});
+	public static final BitSet FOLLOW_27_in_fieldList536 = new BitSet(new long[]{0x0000054400004B00L});
+	public static final BitSet FOLLOW_expr_in_fieldList538 = new BitSet(new long[]{0x0000000000040002L});
+	public static final BitSet FOLLOW_18_in_fieldList541 = new BitSet(new long[]{0x0000000000000100L});
+	public static final BitSet FOLLOW_ID_in_fieldList543 = new BitSet(new long[]{0x0000000008000000L});
+	public static final BitSet FOLLOW_27_in_fieldList545 = new BitSet(new long[]{0x0000054400004B00L});
+	public static final BitSet FOLLOW_expr_in_fieldList547 = new BitSet(new long[]{0x0000000000040002L});
+	public static final BitSet FOLLOW_typeField_in_typeFields560 = new BitSet(new long[]{0x0000000000040002L});
+	public static final BitSet FOLLOW_18_in_typeFields563 = new BitSet(new long[]{0x0000000000000100L});
+	public static final BitSet FOLLOW_typeField_in_typeFields565 = new BitSet(new long[]{0x0000000000040002L});
+	public static final BitSet FOLLOW_ID_in_typeField577 = new BitSet(new long[]{0x0000000000400000L});
+	public static final BitSet FOLLOW_22_in_typeField579 = new BitSet(new long[]{0x0000000000000B00L});
+	public static final BitSet FOLLOW_typeId_in_typeField581 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_36_in_synpred5_tiger_wood88 = new BitSet(new long[]{0x0000054400004B00L});
 	public static final BitSet FOLLOW_expr_in_synpred5_tiger_wood90 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_typeId_in_synpred11_tiger_wood139 = new BitSet(new long[]{0x0000000080000000L});
-	public static final BitSet FOLLOW_31_in_synpred11_tiger_wood141 = new BitSet(new long[]{0x0000054400004B00L});
-	public static final BitSet FOLLOW_expr_in_synpred11_tiger_wood143 = new BitSet(new long[]{0x0000000100000000L});
-	public static final BitSet FOLLOW_32_in_synpred11_tiger_wood145 = new BitSet(new long[]{0x0000080000000000L});
-	public static final BitSet FOLLOW_43_in_synpred11_tiger_wood147 = new BitSet(new long[]{0x0000054400004B00L});
-	public static final BitSet FOLLOW_expr_in_synpred11_tiger_wood149 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_fieldList_in_synpred12_tiger_wood156 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_typeId_in_synpred13_tiger_wood154 = new BitSet(new long[]{0x0000000000000100L});
-	public static final BitSet FOLLOW_fieldList_in_synpred13_tiger_wood156 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_lvalue_in_synpred14_tiger_wood164 = new BitSet(new long[]{0x0000000000800000L});
-	public static final BitSet FOLLOW_23_in_synpred14_tiger_wood166 = new BitSet(new long[]{0x0000054400004B00L});
-	public static final BitSet FOLLOW_expr_in_synpred14_tiger_wood168 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ID_in_synpred16_tiger_wood175 = new BitSet(new long[]{0x0000000000004000L});
-	public static final BitSet FOLLOW_14_in_synpred16_tiger_wood177 = new BitSet(new long[]{0x000005440000CB00L});
-	public static final BitSet FOLLOW_expList_in_synpred16_tiger_wood179 = new BitSet(new long[]{0x0000000000008000L});
-	public static final BitSet FOLLOW_15_in_synpred16_tiger_wood182 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_STRING_in_synpred17_tiger_wood187 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_18_in_synpred40_tiger_wood513 = new BitSet(new long[]{0x0000000000000100L});
-	public static final BitSet FOLLOW_ID_in_synpred40_tiger_wood515 = new BitSet(new long[]{0x0000000000400000L});
-	public static final BitSet FOLLOW_22_in_synpred40_tiger_wood517 = new BitSet(new long[]{0x0000000000000B00L});
-	public static final BitSet FOLLOW_typeId_in_synpred40_tiger_wood519 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_lvalue_in_synpred12_tiger_wood135 = new BitSet(new long[]{0x0000000000800002L});
+	public static final BitSet FOLLOW_23_in_synpred12_tiger_wood138 = new BitSet(new long[]{0x0000054400004B00L});
+	public static final BitSet FOLLOW_expr_in_synpred12_tiger_wood140 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_typeId_in_synpred17_tiger_wood180 = new BitSet(new long[]{0x0000000000000102L});
+	public static final BitSet FOLLOW_fieldList_in_synpred17_tiger_wood182 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_STRING_in_synpred18_tiger_wood190 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_18_in_synpred43_tiger_wood541 = new BitSet(new long[]{0x0000000000000100L});
+	public static final BitSet FOLLOW_ID_in_synpred43_tiger_wood543 = new BitSet(new long[]{0x0000000008000000L});
+	public static final BitSet FOLLOW_27_in_synpred43_tiger_wood545 = new BitSet(new long[]{0x0000054400004B00L});
+	public static final BitSet FOLLOW_expr_in_synpred43_tiger_wood547 = new BitSet(new long[]{0x0000000000000002L});
 }

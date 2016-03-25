@@ -38,7 +38,6 @@ factorPr		:	('*'| '/')  factor   factorPr
 	
 factor			:	
 			|	INT
-			|	STRING
 			|	'(' expList ')' // ')' en plus
 			|	 UnaryOp exp
 			|	'if' exp 'then'  exp ( 'else'  exp )?
@@ -47,7 +46,9 @@ factor			:
 			|	'break'
 			|	'let' decList 'in'  expList 'end'
 			|	 lValue
-			|	decList;
+			//			|	decList
+			|	STRING
+			;
 			
 decList 		:	( dec )*;
 

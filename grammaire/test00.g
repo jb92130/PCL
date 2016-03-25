@@ -1,10 +1,13 @@
 grammar test00;
 
 
-prog:   stat+ ;
+prog:   stat+;
+   
+   
+
                 
 stat:   expr NEWLINE
-    |   ID '=' expr NEWLINE
+    |   ID ':=' expr NEWLINE
     |   NEWLINE
     ;
 

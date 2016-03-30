@@ -1,19 +1,7 @@
-let  /* The eight queens solver from Appel */
-    var N := 8
+let  
+    var N : int := 8
     type intArray = array of int
-    var row := intArray [ N ] of 0
-    var col := intArray [ N ] of 0
-    var diag1 := intArray [ N+N-1 ] of 0
-    var diag2 := intArray [ N+N-1 ] of 0
-
-    function printboard() =
-   	 (for i := 0 to N-1
-   	 do (for j := 0 to N-1
-   		 do print(if col[i]=j then " O" else " .");
-   		 print("\n"));
-   	 print("\n"))
-    
-    function try(c:int) =
+   	function try(c:int) : String =
    	 if c=N then printboard()
    	 else for r := 0 to N-1
    		 do if row[r]=0 &
@@ -24,5 +12,18 @@ let  /* The eight queens solver from Appel */
    			 try(c+1);
    			 row[r] := 0; diag1[r+c] := 0;
    			 diag2[r+7-c] := 0)
-in try(0) end
+    
+    function printboard() =
+   	 (for i := 0 to N-1
+   	 do (for j := 0 to N-1
+   		 do print(if col[i]=j then " O" else " .");
+   		 print("\n"));
+   	 print("\n"))
+in
+	let
+    	var M := 8
+    in 
+    	try(0)
+    end
+ end
 

@@ -1,8 +1,10 @@
 import java.io.IOException;
+import java.io.ObjectInputStream.GetField;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
+import java.util.Set;
 
 import org.antlr.runtime.ANTLRFileStream;
 import org.antlr.runtime.CommonTokenStream;
@@ -31,7 +33,7 @@ public class Application {
 			prog_return r = parser.prog();
 			CommonTree t = (CommonTree) r.getTree();
 			
-			browseTree(t, null);
+			browseTree(t, null, 0);
 			
 			
 			/*for (Symbol sym : tabSymbol.values()) {
@@ -48,9 +50,10 @@ public class Application {
 
 	}
 	
-	private static void browseTree(Tree tree, SymbolTable st) {
+	private static void browseTree(Tree tree, SymbolTable st, int level) {
 		
 		System.out.println(st);
+		System.out.println(level);
 		
 		String id;
 		Symbol symbol = null;
@@ -67,18 +70,18 @@ public class Application {
 				
 				switch (currentChild.getText()) {
 					case "PROG":
-						browseTree(currentChild, new SymbolTable(st, "PROG"));
+						browseTree(currentChild, new SymbolTable(st, "PROG"), level+1);
 						break;
 						
 					case "LET":
-						browseTree(currentChild, new SymbolTable(st, "LET"));
+						browseTree(currentChild, new SymbolTable(st, "LET"), level+1);
 						break;
 	
 					case "DECL_VAR":
 						
 						try {
 							
-							Analyze.decVar(tree.getChild(i), st);
+							Analyze.decVarControl(tree.getChild(i), st);
 						
 							switch (currentChild.getChildCount()) {
 								case 2:
@@ -132,10 +135,8 @@ public class Application {
 					case "DECL_FCT":
 						
 						id = currentChild.getChild(0).getText();
-						System.out.println("ID="+id);
 						symbol = new Symbol(type);
 						symbol.setFunction(true);
-						//System.out.println("SEQ=" + tree.getChild(i).getChild(3).getText());
 						
 						SymbolTable stFct = new SymbolTable(st, "DECL_FCT");
 						
@@ -156,11 +157,40 @@ public class Application {
 						}
 						
 						st.getSymbols().put(id, symbol);
-						browseTree(currentChild, stFct);
+						browseTree(currentChild, stFct, level+1);
+						break;
+						
+					case "COND":
+						
+						// Controle sémentique du COND
+						// A faire
+						try {
+							Analyze.condControl(currentChild, st);
+						} catch (Exception e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						browseTree(currentChild, st, level+1);
+						break;
+						
+					case "FOR":
+						
+						// Controle sémentique du for
+						// A faire
+						Analyze.forControl(currentChild, st);
+						browseTree(currentChild, st, level+1);
+						break;
+						
+					case "IF":
+						
+						// Controle sémentique du if
+						// A faire
+						Analyze.ifControl(currentChild, st);
+						browseTree(currentChild, st, level+1);
 						break;
 						
 					default:
-						browseTree(currentChild, st);
+						browseTree(currentChild, st, level+1);
 						break;
 				}
 			}
@@ -171,8 +201,82 @@ public class Application {
 
 class Analyze {
 
-	public static void decVar(Tree child, SymbolTable st) throws Exception {
+	public static void decVarControl(Tree child, SymbolTable st) throws Exception {
 		//throw new Exception("Erreur de déclaration ligne " + child.getCharPositionInLine() + " (" + child.toStringTree() + ")");
+	}
+
+	public static void condControl(Tree child, SymbolTable st) throws Exception {
+		System.out.println("------------------------");
+		System.out.println("---Condition Control ---");
+		if (child.getChild(0).getText().equals("COND")) {
+			condControl(child.getChild(0), st);
+		}
+		else {
+			Tree nodeCond = child.getChild(0);
+			String leftElt = null, rightElt = null;
+			if (nodeCond.getChild(0).getChildCount() == 0) {
+				leftElt = nodeCond.getChild(0).getText();
+			}
+			if (nodeCond.getChild(1).getChildCount() == 0) {
+				rightElt = nodeCond.getChild(1).getText();
+			}
+			
+			System.out.println(Symbol.getTypeByString(leftElt));
+			String typeLeftElt = Symbol.getTypeByString(leftElt), typeRightElt = Symbol.getTypeByString(rightElt);
+			SymbolTable currentSt = st;
+
+			if (typeLeftElt.equals("VAR")) {
+				do {
+					Set<String> keys = currentSt.getSymbols().keySet();
+					if (!keys.contains(leftElt)) {
+						if (currentSt.getParent() != null) {
+							currentSt = currentSt.getParent();
+						}
+						else {
+							throw new Exception("Erreur variable non déclarée" + child.getCharPositionInLine());
+						}
+					}
+					else {
+						typeLeftElt = currentSt.getSymbols().get(leftElt).getType();
+						break;
+					}
+				}
+				while (currentSt.getParent() != null);
+			}
+			
+			if (typeRightElt.equals("VAR")) {
+				do {
+					Set<String> keys = currentSt.getSymbols().keySet();
+					if (!keys.contains(rightElt)) {
+						if (currentSt.getParent() != null) {
+							currentSt = currentSt.getParent();
+						}
+						else {
+							throw new Exception("Erreur " + leftElt + " variable non déclarée" + child.getCharPositionInLine());
+						}
+					}
+					else {
+						typeRightElt = currentSt.getSymbols().get(rightElt).getType();
+						break;
+					}
+				}
+				while (currentSt.getParent() != null);
+			}
+			
+			/*String firstElt = child.getChild(1).getText();
+			if (child.getChild(2).getText().equals("INDICE")) {
+				
+			}*/
+			System.out.println(child.getText() + " = (" + child.getChild(0).getText() + ")");
+		}
+	}
+
+	public static void forControl(Tree child, SymbolTable st) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public static void ifControl(Tree child, SymbolTable st) {
 	}
 	
 }
@@ -214,6 +318,7 @@ class Symbol {
 		this.type = type;
 	}
 	
+	
 	public void setTable(boolean isTable) {
 		this.isTable = isTable;
 	}
@@ -228,9 +333,28 @@ class Symbol {
 	
 	@Override
 	public String toString() {
-		return "Symbol [type=" + type + ", symbols=" + symbols + ", arguments="
-				+ arguments + ", isTable="
-				+ isTable + ", isFunction=" + isFunction + "]\n";
+		return "\n\n---Symbol---\ntype=" + type + "\nsymbols=" + symbols + "\narguments="
+				+ arguments + "\nisTable="
+				+ isTable + "\nisFunction=" + isFunction + "\n---Fin---\n\n";
+	}
+	
+	public String getType() {
+		return type;
+	}
+	
+	public static String getTypeByString(String elt) {
+		
+		try {
+			Integer.parseInt(elt);
+			return "int";
+		} catch (Exception e) {}
+		
+		
+		if (elt != null && elt.indexOf("\"") > -1) {
+			return "String";
+		}
+		
+		return "VAR";
 	}
 	
 }
@@ -252,6 +376,10 @@ class SymbolTable {
 		this.token = token;
 	}
 	
+	public SymbolTable getParent() {
+		return parent;
+	}
+	
 	public int getLevel() {
 		return level;
 	}
@@ -262,8 +390,8 @@ class SymbolTable {
 
 	@Override
 	public String toString() {
-		return "\nSymbolTable [parent=" + parent + ", symbols=" + symbols
-				+ ", level=" + level + ", token=" + token + "]\n";
+		return "\n\n---SymbolTable---\nparent=" + parent + "\nsymbols=" + symbols
+				+ "\nlevel=" + level + "\ntoken=" + token + "\n---Fin---\n\n";
 	}
 
 	

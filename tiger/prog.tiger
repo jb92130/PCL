@@ -1,5 +1,6 @@
 let  
-    var N := 8
+	var M :int := 5
+    var N : String := (M+M-M)
     type intArray = array of int
    	function try(c:int) : String =
    	 if c=N then printboard()

@@ -50,10 +50,10 @@ public class Application {
 
 	}
 	
-	private static void browseTree(Tree tree, SymbolTable st, int level) {
+	private static void browseTree(Tree tree, SymbolTable st, int countLet) {
 		
-		System.out.println(st);
-		System.out.println(level);
+		//System.out.println(st);
+		//System.out.println(countLevel);
 		
 		String id;
 		Symbol symbol = null;
@@ -61,46 +61,79 @@ public class Application {
 		String type = null;
 		
 		if (!tree.isNil()) {
-			System.out.println(tree.getText() + " / " + ((st != null) ? st.getLevel() : "-1"));
+			
+			//System.out.println(tree.getText() + " / " + ((st != null) ? st.getLevel() : "-1"));
 			//System.out.println(tree.toStringTree());
 			//tabSymbol.put(tree.getText(), );
 			for (int i = 0; i < tree.getChildCount(); i++) {
 				
+				
 				currentChild = tree.getChild(i);
+
+				System.out.println(currentChild.getText());
 				
 				switch (currentChild.getText()) {
+					
+					case "SEQUENCE":
+						break;
+				
 					case "PROG":
-						browseTree(currentChild, new SymbolTable(st, "PROG"), level+1);
+						browseTree(currentChild, st, countLet);
 						break;
 						
 					case "LET":
-						browseTree(currentChild, new SymbolTable(st, "LET"), level+1);
+						browseTree(currentChild, new SymbolTable(st, "LET"), countLet+1);
+						if (countLet-1 == 0) {
+							/**
+							 * Le code est analysé!
+							 */
+							System.out.println("--- FIN D'ANALYSE ---");
+							System.exit(0);
+						}
 						break;
 	
 					case "DECL_VAR":
 						
 						try {
 							
-							Analyze.decVarControl(tree.getChild(i), st);
+							//Analyze.decVarControl(tree.getChild(i), st);
 						
 							switch (currentChild.getChildCount()) {
 								case 2:
-									try {
-										Integer.parseInt(currentChild.getChild(2).getText());
-										type = "int";
+									// S'il a des enfants, on doit chercher le type
+									if (currentChild.getChild(1).getChildCount() > 0) {
+										Tree currentNode = currentChild.getChild(1);
+										boolean find = false;
+										while(currentNode.getChildCount() > 0 && !find) {
+											for (int j = 0; j < currentNode.getChildCount() && !find; j++) {
+												currentNode = currentNode.getChild(j);
+												if (currentNode.getChildCount() == 0) {
+													type = Symbol.getTypeByString(currentNode.getText());
+													if (type.equals("VAR")) {
+														type = SymbolTable.findTypeByVar(st, currentNode.getText());
+														if (type != null) {
+															find = true;
+														}
+													}
+												}
+											}
+										}
+										symbol = new Symbol(type);
 									}
-									catch (Exception e) {
-										type = "String";
+									else {
+										type = Symbol.getTypeByString(currentChild.getChild(1).getText());
+										symbol = new Symbol(type);
 									}
-									symbol = new Symbol(type);
-		
-								case 3:
-									symbol = new Symbol(currentChild.getChild(1).getText());
 									
-								default:
 									id = currentChild.getChild(0).getText();
 									st.getSymbols().put(id, symbol);
 									break;
+								case 3:
+									symbol = new Symbol(currentChild.getChild(1).getText());
+									id = currentChild.getChild(0).getText();
+									st.getSymbols().put(id, symbol);
+									break;
+
 							}
 							
 							
@@ -111,19 +144,20 @@ public class Application {
 						break;
 						
 					case "DECL_TYPE":
-						
+					
 						boolean isTable = false;
 						id = currentChild.getChild(0).getText();
 						
 						switch (currentChild.getChild(1).getChildCount()) {
 						case 0:
 							type = currentChild.getChild(1).getText();
+							symbol = new Symbol(type);
+							symbol.setTable(isTable);
+							break;
 							
 						case 1:
 							type = currentChild.getChild(1).getChild(0).getText();
 							isTable = true;
-							
-						default:
 							symbol = new Symbol(type);
 							symbol.setTable(isTable);
 							break;
@@ -131,6 +165,10 @@ public class Application {
 						
 						st.getSymbols().put(id, symbol);
 						break;
+						
+						/**
+						 * A compléter pour des structures complexes
+						 */
 						
 					case "DECL_FCT":
 						
@@ -157,10 +195,10 @@ public class Application {
 						}
 						
 						st.getSymbols().put(id, symbol);
-						browseTree(currentChild, stFct, level+1);
+						browseTree(currentChild, stFct, countLet);
 						break;
 						
-					case "COND":
+					/*case "COND":
 						
 						// Controle sémentique du COND
 						// A faire
@@ -170,27 +208,27 @@ public class Application {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
-						browseTree(currentChild, st, level+1);
+						browseTree(currentChild, st, countLet);
 						break;
-						
+						*/
 					case "FOR":
 						
 						// Controle sémentique du for
 						// A faire
-						Analyze.forControl(currentChild, st);
-						browseTree(currentChild, st, level+1);
+						//Analyze.forControl(currentChild, st);
+						browseTree(currentChild, st, countLet);
 						break;
 						
 					case "IF":
 						
 						// Controle sémentique du if
 						// A faire
-						Analyze.ifControl(currentChild, st);
-						browseTree(currentChild, st, level+1);
+						//Analyze.ifControl(currentChild, st);
+						browseTree(currentChild, st, countLet);
 						break;
 						
 					default:
-						browseTree(currentChild, st, level+1);
+						browseTree(currentChild, st, countLet);
 						break;
 				}
 			}
@@ -314,10 +352,8 @@ class Symbol {
 	private boolean isFunction;
 	
 	public Symbol(String type) {
-		super();
 		this.type = type;
 	}
-	
 	
 	public void setTable(boolean isTable) {
 		this.isTable = isTable;
@@ -344,15 +380,14 @@ class Symbol {
 	
 	public static String getTypeByString(String elt) {
 		
+		if (elt != null && elt.indexOf("\"") > -1) {
+			return "String";
+		}
+		
 		try {
 			Integer.parseInt(elt);
 			return "int";
 		} catch (Exception e) {}
-		
-		
-		if (elt != null && elt.indexOf("\"") > -1) {
-			return "String";
-		}
 		
 		return "VAR";
 	}
@@ -376,6 +411,22 @@ class SymbolTable {
 		this.token = token;
 	}
 	
+	public static String findTypeByVar(SymbolTable st, String symbol) {
+		SymbolTable currentSt = st;
+		do {
+			Set<String> keys = currentSt.getSymbols().keySet();
+			if (keys.contains(symbol)) {
+				System.out.println(currentSt.getSymbols().get(symbol));
+				return currentSt.getSymbols().get(symbol).getType();
+			}
+			else {
+				currentSt = currentSt.getParent();
+			}
+		}
+		while (currentSt != null);
+		return null;
+	}
+
 	public SymbolTable getParent() {
 		return parent;
 	}

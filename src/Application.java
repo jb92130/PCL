@@ -62,6 +62,66 @@ public class Application {
 		
 		if (!tree.isNil()) {
 			
+			if (tree.getText().equals("PROG")) {
+				
+				/**
+				 * Init fonction système !
+				 */
+				st = new SymbolTable(st, "PROG");
+				Symbol s;
+				
+				s = new Symbol("print", null);
+				s.setFunction(true);
+				s.getArguments().add(new Argument("arg1","String"));
+				st.getSymbols().add(s);
+				
+				s = new Symbol("flush", null);
+				s.setFunction(true);
+				st.getSymbols().add(s);
+				
+				s = new Symbol("exit", "String");
+				s.setFunction(true);
+				st.getSymbols().add(s);
+				
+				s = new Symbol("exit", "int");
+				s.setFunction(true);
+				s.getArguments().add(new Argument("arg1","String"));
+				st.getSymbols().add(s);
+				
+				s = new Symbol("exit", "String");
+				s.setFunction(true);
+				s.getArguments().add(new Argument("arg1","int"));
+				st.getSymbols().add(s);
+				
+				s = new Symbol("exit", "int");
+				s.setFunction(true);
+				s.getArguments().add(new Argument("arg1","String"));
+				st.getSymbols().add(s);
+				
+				s = new Symbol("exit", "String");
+				s.setFunction(true);
+				s.getArguments().add(new Argument("arg1","String"));
+				s.getArguments().add(new Argument("arg2","int"));
+				s.getArguments().add(new Argument("arg3","int"));
+				st.getSymbols().add(s);
+				
+				s = new Symbol("exit", "String");
+				s.setFunction(true);
+				s.getArguments().add(new Argument("arg1","String"));
+				s.getArguments().add(new Argument("arg2","String"));
+				st.getSymbols().add(s);
+				
+				s = new Symbol("exit", "int");
+				s.setFunction(true);
+				s.getArguments().add(new Argument("arg1","int"));
+				st.getSymbols().add(s);
+				
+				s = new Symbol("exit", null);
+				s.setFunction(true);
+				s.getArguments().add(new Argument("arg1","int"));
+				st.getSymbols().add(s);
+			}
+			
 			//System.out.println(tree.getText() + " / " + ((st != null) ? st.getLevel() : "-1"));
 			//System.out.println(tree.toStringTree());
 			//tabSymbol.put(tree.getText(), );
@@ -75,9 +135,7 @@ public class Application {
 				switch (currentChild.getText()) {
 					
 					case "SEQUENCE":
-						break;
-				
-					case "PROG":
+						Analyze.fctControl(currentChild, st);
 						browseTree(currentChild, st, countLet);
 						break;
 						
@@ -95,8 +153,8 @@ public class Application {
 					case "DECL_VAR":
 						
 						try {
-							
-							//Analyze.decVarControl(tree.getChild(i), st);
+
+							Analyze.varExistanceControl(currentChild.getChild(0), st);
 						
 							switch (currentChild.getChildCount()) {
 								case 2:
@@ -118,20 +176,19 @@ public class Application {
 												}
 											}
 										}
-										symbol = new Symbol(type);
 									}
 									else {
 										type = Symbol.getTypeByString(currentChild.getChild(1).getText());
-										symbol = new Symbol(type);
 									}
 									
 									id = currentChild.getChild(0).getText();
-									st.getSymbols().put(id, symbol);
+									symbol = new Symbol(id, type);
+									st.getSymbols().add(symbol);
 									break;
 								case 3:
-									symbol = new Symbol(currentChild.getChild(1).getText());
 									id = currentChild.getChild(0).getText();
-									st.getSymbols().put(id, symbol);
+									symbol = new Symbol(id, currentChild.getChild(1).getText());
+									st.getSymbols().add(symbol);
 									break;
 
 							}
@@ -148,23 +205,27 @@ public class Application {
 						boolean isTable = false;
 						id = currentChild.getChild(0).getText();
 						
+						Analyze.typeExistanceControl(currentChild.getChild(0), st);
+						
 						switch (currentChild.getChild(1).getChildCount()) {
 						case 0:
 							type = currentChild.getChild(1).getText();
-							symbol = new Symbol(type);
+							symbol = new Symbol(id, type);
 							symbol.setTable(isTable);
 							break;
 							
 						case 1:
 							type = currentChild.getChild(1).getChild(0).getText();
 							isTable = true;
-							symbol = new Symbol(type);
+							symbol = new Symbol(id, type);
 							symbol.setTable(isTable);
 							break;
 						}
 						
-						st.getSymbols().put(id, symbol);
+						symbol.setType(true);
+						st.getSymbols().add(symbol);
 						break;
+						
 						
 						/**
 						 * A compléter pour des structures complexes
@@ -172,8 +233,13 @@ public class Application {
 						
 					case "DECL_FCT":
 						
+						
 						id = currentChild.getChild(0).getText();
-						symbol = new Symbol(type);
+						
+						// Test existance de la fonction (surcharge interdite si déclarer dans le meme contexte)
+						Analyze.fctExistanceControl(currentChild.getChild(0), st);
+						
+						symbol = new Symbol(id, type);
 						symbol.setFunction(true);
 						
 						SymbolTable stFct = new SymbolTable(st, "DECL_FCT");
@@ -191,10 +257,10 @@ public class Application {
 						Argument currentArgument;
 						for (int j = 0; j < symbol.getArguments().size(); j++) {
 							currentArgument = symbol.getArguments().get(j);
-							stFct.getSymbols().put(currentArgument.getId(), new Symbol(currentArgument.getType()));
+							stFct.getSymbols().add(new Symbol(currentArgument.getId(), currentArgument.getType()));
 						}
 						
-						st.getSymbols().put(id, symbol);
+						st.getSymbols().add(symbol);
 						browseTree(currentChild, stFct, countLet);
 						break;
 						
@@ -240,11 +306,90 @@ public class Application {
 class Analyze {
 
 	public static void decVarControl(Tree child, SymbolTable st) throws Exception {
-		//throw new Exception("Erreur de déclaration ligne " + child.getCharPositionInLine() + " (" + child.toStringTree() + ")");
+		//throw new Exception("Erreur de déclaration ligne " + child.getLine() + " (" + child.toStringTree() + ")");
+	}
+
+	public static void typeExistanceControl(Tree child, SymbolTable st) {
+		int index;
+		System.out.println(child.getText() + "=====");
+		if ((index = st.getIndexSymbolByType(child.getText(), "TYPE")) > -1) {
+			System.err.println("Erreur type '" + child.getText() + "', la surcharge d'un type dans le même contexte est interdite - ligne " + child.getLine() + " (" + child.toStringTree() + ")");
+		}
+	}
+
+	public static void fctExistanceControl(Tree child, SymbolTable st) {
+		int index;
+		if ((index = st.getIndexSymbolByType(child.getText(), "FCT")) > -1) {
+			System.err.println("Erreur fonction '" + child.getText() + "', la surcharge d'une fonction dans le même contexte est interdite - ligne " + child.getLine() + " (" + child.toStringTree() + ")");
+		}
+	}
+
+	public static void varExistanceControl(Tree child, SymbolTable st) {
+		int index;
+		if ((index = st.getIndexSymbolByType(child.getText(), "VAR")) > -1) {
+			System.err.println("Erreur variable '" + child.getText() + "', la surcharge d'une variable dans le même contexte est interdite - ligne " + child.getLine() + " (" + child.toStringTree() + ")");
+		}
+	}
+	
+	public static void fctControl(Tree currentChild, SymbolTable st) {
+		System.out.println("-- fctControl ---");
+		Symbol symbol;
+		for (int i = 0; i < currentChild.getChildCount(); i++) {
+			if (currentChild.getChild(i).getChildCount() == 1 && currentChild.getChild(i).getChild(0).getText().equals("PARAMS")) {
+				//System.out.println("--- "+ currentChild.getChild(i).getText() + " ---");
+				symbol = st.findSymbol(currentChild.getChild(i).getText(), "FCT");
+				//System.out.println(st);
+				if (symbol == null) {
+					System.err.println("Erreur fonction '" + currentChild.getChild(i).getText() + "', elle n'est pas déclaré - ligne " + currentChild.getChild(i).getLine() + " (" + currentChild.getChild(i).toStringTree() + ")");
+				}
+				else {
+					int countArguments = symbol.getArguments().size();
+					if (currentChild.getChild(i).getChild(0).getChildCount() != countArguments) {
+						System.err.println("Erreur fonction '" + currentChild.getChild(i).getText() + "', le nombre d'argument n'est pas correct - ligne " + currentChild.getChild(i).getLine() + " (" + currentChild.getChild(i).toStringTree() + ")");
+					}
+					else {
+						for (int k = 0; k < currentChild.getChild(i).getChild(0).getChildCount(); k++) {
+							boolean find = false;
+							Tree currentNode = currentChild.getChild(i).getChild(0).getChild(k);
+							String type = null;
+
+							// S'il a des enfants, on doit chercher le type
+							if (currentNode.getChildCount() > 0) {
+								while(currentNode.getChildCount() > 0 && !find) {
+									for (int j = 0; j < currentNode.getChildCount() && !find; j++) {
+										currentNode = currentNode.getChild(j);
+										if (currentNode.getChildCount() == 0) {
+											type = Symbol.getTypeByString(currentNode.getText());
+											if (type.equals("VAR")) {
+												type = SymbolTable.findTypeByVar(st, currentNode.getText());
+												if (type != null) {
+													find = true;
+												}
+											}
+										}
+									}
+								}
+							}
+							else {
+								type = Symbol.getTypeByString(currentNode.getText());
+								if (type.equals("VAR")) {
+									type = SymbolTable.findTypeByVar(st, currentNode.getText());
+								}
+							}
+							
+							if (!symbol.getArguments().get(k).getType().equals(type)) {
+								System.err.println("Erreur fonction '" + currentChild.getChild(i).getText() + "',  le type de l'argument n°" + (k+1) + " n'est pas correct - ligne " + currentChild.getChild(i).getLine() + " (" + currentChild.getChild(i).toStringTree() + ")");
+							}
+						}
+					}
+				}
+				
+			}
+		}
 	}
 
 	public static void condControl(Tree child, SymbolTable st) throws Exception {
-		System.out.println("------------------------");
+		/*System.out.println("------------------------");
 		System.out.println("---Condition Control ---");
 		if (child.getChild(0).getText().equals("COND")) {
 			condControl(child.getChild(0), st);
@@ -271,7 +416,7 @@ class Analyze {
 							currentSt = currentSt.getParent();
 						}
 						else {
-							throw new Exception("Erreur variable non déclarée" + child.getCharPositionInLine());
+							throw new Exception("Erreur variable non déclarée" + child.getLine());
 						}
 					}
 					else {
@@ -290,7 +435,7 @@ class Analyze {
 							currentSt = currentSt.getParent();
 						}
 						else {
-							throw new Exception("Erreur " + leftElt + " variable non déclarée" + child.getCharPositionInLine());
+							throw new Exception("Erreur " + leftElt + " variable non déclarée" + child.getLine());
 						}
 					}
 					else {
@@ -301,12 +446,8 @@ class Analyze {
 				while (currentSt.getParent() != null);
 			}
 			
-			/*String firstElt = child.getChild(1).getText();
-			if (child.getChild(2).getText().equals("INDICE")) {
-				
-			}*/
 			System.out.println(child.getText() + " = (" + child.getChild(0).getText() + ")");
-		}
+		}*/
 	}
 
 	public static void forControl(Tree child, SymbolTable st) {
@@ -345,18 +486,37 @@ class Argument {
 }
 
 class Symbol {
+	private String id;
 	private String type;
 	LinkedHashMap<String, Symbol> symbols = new LinkedHashMap<String, Symbol>(); 
 	private LinkedList<Argument> arguments = new LinkedList<Argument>();
 	private boolean isTable;
+	private boolean isType;
 	private boolean isFunction;
 	
-	public Symbol(String type) {
+	public Symbol(String id, String type) {
+		this.id = id;
 		this.type = type;
+	}
+	
+	public boolean isFunction() {
+		return isFunction;
+	}
+	
+	public boolean isTable() {
+		return isTable;
+	}
+	
+	public boolean isType() {
+		return isType;
 	}
 	
 	public void setTable(boolean isTable) {
 		this.isTable = isTable;
+	}
+	
+	public void setType(boolean isType) {
+		this.isType = isType;
 	}
 	
 	public void setFunction(boolean isFunction) {
@@ -369,13 +529,17 @@ class Symbol {
 	
 	@Override
 	public String toString() {
-		return "\n\n---Symbol---\ntype=" + type + "\nsymbols=" + symbols + "\narguments="
+		return "\n\n---Symbol---\nid=" + id + "\ntype=" + type + "\nsymbols=" + symbols + "\narguments="
 				+ arguments + "\nisTable="
-				+ isTable + "\nisFunction=" + isFunction + "\n---Fin---\n\n";
+				+ isTable + "\nisFunction=" + isFunction + "\nisType=" + isType + "\n---Fin---\n\n";
 	}
 	
 	public String getType() {
 		return type;
+	}
+	
+	public String getId() {
+		return id;
 	}
 	
 	public static String getTypeByString(String elt) {
@@ -396,7 +560,7 @@ class Symbol {
 
 class SymbolTable {
 	private SymbolTable parent;
-	private LinkedHashMap<String, Symbol> symbols = new LinkedHashMap<String, Symbol>();
+	private LinkedList<Symbol> symbols = new LinkedList<Symbol>();
 	private int level;
 	private String token;
 	
@@ -411,13 +575,12 @@ class SymbolTable {
 		this.token = token;
 	}
 	
-	public static String findTypeByVar(SymbolTable st, String symbol) {
-		SymbolTable currentSt = st;
+	public Symbol findSymbol(String symbol, String type) {
+		SymbolTable currentSt = this;
 		do {
-			Set<String> keys = currentSt.getSymbols().keySet();
-			if (keys.contains(symbol)) {
-				System.out.println(currentSt.getSymbols().get(symbol));
-				return currentSt.getSymbols().get(symbol).getType();
+			int index;
+			if ((index = currentSt.getIndexSymbolByType(symbol, type)) > -1) {
+				return currentSt.getSymbols().get(index);
 			}
 			else {
 				currentSt = currentSt.getParent();
@@ -425,6 +588,49 @@ class SymbolTable {
 		}
 		while (currentSt != null);
 		return null;
+	}
+
+	public static String findTypeByVar(SymbolTable st, String symbol) {
+		SymbolTable currentSt = st;
+		do {
+			int index;
+			if ((index = currentSt.getIndexSymbolByType(symbol, "VAR")) > -1) {
+				return currentSt.getSymbols().get(index).getType();
+			}
+			else {
+				currentSt = currentSt.getParent();
+			}
+		}
+		while (currentSt != null);
+		return null;
+	}
+	
+	// A mettre à jour pour les structures
+	public int getIndexSymbolByType(String id, String type) {
+		for (int i = 0; i < getSymbols().size(); i++) {
+			if (getSymbols().get(i).getId().equals(id)) {
+				System.out.println(type + "-----" + id);
+				switch (type) {
+					case "FCT":
+						if (getSymbols().get(i).isFunction()) {
+							return i;
+						}
+						break;
+					case "VAR":
+						if (!getSymbols().get(i).isFunction()) {
+							return i;
+						}
+						break;
+					case "TYPE":
+						if (getSymbols().get(i).isType()) {
+							return i;
+						}
+						break;
+				}
+			}
+		}
+		
+		return -1;
 	}
 
 	public SymbolTable getParent() {
@@ -435,7 +641,7 @@ class SymbolTable {
 		return level;
 	}
 
-	public LinkedHashMap<String, Symbol> getSymbols() {
+	public LinkedList<Symbol> getSymbols() {
 		return symbols;
 	}
 

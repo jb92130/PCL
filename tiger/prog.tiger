@@ -2,7 +2,8 @@ let
 	var M :int := 5
     var N : String := (M+M-M)
     type intArray = array of int
-   	function try(c:int) : String =
+    var toto : intArray := 1
+   	function try(c:intArray) : String =
    	 if c=N then printboard()
    	 else for r := 0 to N-1
    		 do if row[r]=0 &
@@ -13,6 +14,8 @@ let
    			 try(c+1);
    			 row[r] := 0; diag1[r+c] := 0;
    			 diag2[r+7-c] := 0)
+   			 
+    
     
     function printboard() =
    	 (for i := 0 to N-1
@@ -20,11 +23,14 @@ let
    		 do print(if col[i]=j then " O" else " .");
    		 print("\n"));
    	 print("\n"))
+
+    type printboard = int
 in
 	let
     	var M := 8
+	   	 type printboard = int
     in 
-    	try(0)
+    	try(toto)
     end
  end
 

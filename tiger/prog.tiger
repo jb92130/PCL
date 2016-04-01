@@ -1,6 +1,6 @@
 let  
-	var M :int := 5
-    var N : String := (M+M-M)
+	var M : int := 5
+    var N := (M+M-M)
     type intArray = array of int
     var toto : intArray := 1
    	function try(c:intArray) : String =
@@ -30,7 +30,7 @@ in
     	var M := 8
 	   	 type printboard = int
     in 
-    	try(toto)
+    	try()
     end
  end
 

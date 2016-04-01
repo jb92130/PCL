@@ -60,6 +60,8 @@ public class Application {
 		Tree currentChild = null;
 		String type = null;
 		
+		System.out.println(st);
+		
 		if (!tree.isNil()) {
 			
 			if (tree.getText().equals("PROG")) {

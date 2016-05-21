@@ -1,0 +1,50 @@
+// -----------------------------------------------------
+// Générer par le super compilateur de la mort qui tue !
+// -----------------------------------------------------
+
+
+EXIT_EXC    equ     64
+READ_EXC    equ     65
+WRITE_EXC   equ     66
+BP          equ     R13
+WR          equ     R14
+SP          equ	   R15
+STACKA	   equ	   0x1000
+RESETA	   equ    0xFFFA
+            org	   0xFF20
+            start   RESETA
+
+START_PRG   LDW	   SP,#STACKA
+           // LDW	   SP,(SP)
+
+
+// Création d'un contexte dans la pile (LINK)
+            ADQ -2,SP
+            STW BP,(SP)
+            LDW BP,SP
+            SUB SP,R1,SP
+
+
+// Création d'un contexte dans la pile (LINK)
+            ADQ -2,SP
+            STW BP,(SP)
+            LDW BP,SP
+            SUB SP,R1,SP
+
+
+// Suppression du contexte dans la pile (UNLINK)
+            LDW SP,BP
+            LDW BP,(SP)
+            ADQ 2,SP
+
+
+// Suppression du contexte dans la pile (UNLINK)
+            LDW SP,BP
+            LDW BP,(SP)
+            ADQ 2,SP
+
+
+// Fin du code
+FIN         RSB	RESETA-FIN
+            JEA	@START_PRG
+

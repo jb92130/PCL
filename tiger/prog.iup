@@ -1,0 +1,113 @@
+ff20  origine
+fffa  debut d'execution
+6080   emplacement : 65312  (0xff20)  ligne n° 26	MAIN_PRGA	LDW	R0,#VECT_INT_1  // Je charge de RO l}adresse de mon }tiquette du d}but de mon interruption
+ff56   emplacement : 65314  (0xff22) 
+6050   emplacement : 65316  (0xff24)  ligne n° 27	            	STW	R0,@VECT_INTA  // Je sauvegarde mon interruption dans mon la table des interruption
+0088   emplacement : 65318  (0xff26) 
+6080   emplacement : 65320  (0xff28)  ligne n° 28			LDW	R0,#VECT_INT_2  // Je charge de RO l}adresse de mon }tiquette du d}but de mon interruption
+ff70   emplacement : 65322  (0xff2a) 
+6050   emplacement : 65324  (0xff2c)  ligne n° 29	            	STW	R0,@VECT_INTB  // Je sauvegarde mon interruption dans mon la table des interruption
+008c   emplacement : 65326  (0xff2e) 
+0700   emplacement : 65328  (0xff30)  ligne n° 30	            	ENI
+6f00   emplacement : 65330  (0xff32)  ligne n° 32	            	STW	SP,#STACKA
+1000   emplacement : 65332  (0xff34) 
+60d0   emplacement : 65334  (0xff36)  ligne n° 34	LOOP		LDW	R0,@CNTMA // Je r}cup}re la valeur de CNTMA
+ff00   emplacement : 65336  (0xff38) 
+6180   emplacement : 65338  (0xff3a)  ligne n° 35	            	LDW	R1,#INCR  // Je r}cup}re la valeur de mon incr}ment
+0010   emplacement : 65340  (0xff3c) 
+e010   emplacement : 65342  (0xff3e)  ligne n° 36	           	ADD	R0,R1,R0 // J}ajoute INCR } CNTMA
+6280   emplacement : 65344  (0xff40)  ligne n° 37	            	LDW	R2,#COMP // Je charge mon COMP
+006f   emplacement : 65346  (0xff42) 
+f202   emplacement : 65348  (0xff44)  ligne n° 38	            	SUB	R2,R0,R2 // Je soustrais pour le CARRY FLAG
+0480   emplacement : 65350  (0xff46)  ligne n° 39	            	JGE	#SAUV-$-2	// Si c}est sup}rieur ou }gal } COMP alors je mets } zero
+0006   emplacement : 65352  (0xff48) 
+6080   emplacement : 65354  (0xff4a)  ligne n° 40	            	LDW	R0,#0
+0000   emplacement : 65356  (0xff4c) 
+6050   emplacement : 65358  (0xff4e)  ligne n° 41	SAUV		STW	R0,@CNTMA // Je sauve garde la nouvelle valeur de CNTMA
+ff00   emplacement : 65360  (0xff50) 
+0950   emplacement : 65362  (0xff52)  ligne n° 45	            	JEA	@LOOP // JMP avec une adresse (JPM=Nombre de saut)
+ff36   emplacement : 65364  (0xff54) 
+604f   emplacement : 65366  (0xff56)  ligne n° 47	VECT_INT_1	STW	R0,-(SP) // Je sauvegarde dans la pile la valeur des registres
+614f   emplacement : 65368  (0xff58)  ligne n° 48	            	STW	R1,-(SP)
+60d0   emplacement : 65370  (0xff5a)  ligne n° 49	            	LDW 	R0,@CNTIA
+ff02   emplacement : 65372  (0xff5c) 
+6180   emplacement : 65374  (0xff5e)  ligne n° 50	            	LDW	R1,#INCR2
+0002   emplacement : 65376  (0xff60) 
+e010   emplacement : 65378  (0xff62)  ligne n° 51	            	ADD	R0,R1,R0
+6050   emplacement : 65380  (0xff64)  ligne n° 52	            	STW	R0,@CNTIA
+ff02   emplacement : 65382  (0xff66) 
+60bf   emplacement : 65384  (0xff68)  ligne n° 53	            	LDW	R0,(SP)+ // Je restaure la valeur des registre
+61bf   emplacement : 65386  (0xff6a)  ligne n° 54	            	LDW	R1,(SP)+ // }
+0700   emplacement : 65388  (0xff6c)  ligne n° 55	            	ENI	// On r}-autorise les interruptions
+0300   emplacement : 65390  (0xff6e)  ligne n° 56	            	RTI
+604f   emplacement : 65392  (0xff70)  ligne n° 58	VECT_INT_2	STW	R0,-(SP) // Je sauvegarde dans la pile la valeur des registres
+614f   emplacement : 65394  (0xff72)  ligne n° 59	            	STW	R1,-(SP)
+60d0   emplacement : 65396  (0xff74)  ligne n° 60	            	LDW 	R0,@CNTMA
+ff00   emplacement : 65398  (0xff76) 
+6180   emplacement : 65400  (0xff78)  ligne n° 61	            	LDW	R1,#INCR1
+0001   emplacement : 65402  (0xff7a) 
+f010   emplacement : 65404  (0xff7c)  ligne n° 62	            	SUB	R0,R1,R0
+6050   emplacement : 65406  (0xff7e)  ligne n° 63	            	STW	R0,@CNTMA
+ff00   emplacement : 65408  (0xff80) 
+60bf   emplacement : 65410  (0xff82)  ligne n° 64	            	LDW	R0,(SP)+ // Je restaure la valeur des registre
+61bf   emplacement : 65412  (0xff84)  ligne n° 65	            	LDW	R1,(SP)+ // }
+0700   emplacement : 65414  (0xff86)  ligne n° 66	            	ENI	// On r}-autorise les interruptions
+0300   emplacement : 65416  (0xff88)  ligne n° 67	            	RTI
+0000   emplacement : 65418  (0xff8a)  ligne n° 69	FIN         	RSB	RESETA-FIN
+0000   emplacement : 65420  (0xff8c) 
+0000   emplacement : 65422  (0xff8e) 
+0000   emplacement : 65424  (0xff90) 
+0000   emplacement : 65426  (0xff92) 
+0000   emplacement : 65428  (0xff94) 
+0000   emplacement : 65430  (0xff96) 
+0000   emplacement : 65432  (0xff98) 
+0000   emplacement : 65434  (0xff9a) 
+0000   emplacement : 65436  (0xff9c) 
+0000   emplacement : 65438  (0xff9e) 
+0000   emplacement : 65440  (0xffa0) 
+0000   emplacement : 65442  (0xffa2) 
+0000   emplacement : 65444  (0xffa4) 
+0000   emplacement : 65446  (0xffa6) 
+0000   emplacement : 65448  (0xffa8) 
+0000   emplacement : 65450  (0xffaa) 
+0000   emplacement : 65452  (0xffac) 
+0000   emplacement : 65454  (0xffae) 
+0000   emplacement : 65456  (0xffb0) 
+0000   emplacement : 65458  (0xffb2) 
+0000   emplacement : 65460  (0xffb4) 
+0000   emplacement : 65462  (0xffb6) 
+0000   emplacement : 65464  (0xffb8) 
+0000   emplacement : 65466  (0xffba) 
+0000   emplacement : 65468  (0xffbc) 
+0000   emplacement : 65470  (0xffbe) 
+0000   emplacement : 65472  (0xffc0) 
+0000   emplacement : 65474  (0xffc2) 
+0000   emplacement : 65476  (0xffc4) 
+0000   emplacement : 65478  (0xffc6) 
+0000   emplacement : 65480  (0xffc8) 
+0000   emplacement : 65482  (0xffca) 
+0000   emplacement : 65484  (0xffcc) 
+0000   emplacement : 65486  (0xffce) 
+0000   emplacement : 65488  (0xffd0) 
+0000   emplacement : 65490  (0xffd2) 
+0000   emplacement : 65492  (0xffd4) 
+0000   emplacement : 65494  (0xffd6) 
+0000   emplacement : 65496  (0xffd8) 
+0000   emplacement : 65498  (0xffda) 
+0000   emplacement : 65500  (0xffdc) 
+0000   emplacement : 65502  (0xffde) 
+0000   emplacement : 65504  (0xffe0) 
+0000   emplacement : 65506  (0xffe2) 
+0000   emplacement : 65508  (0xffe4) 
+0000   emplacement : 65510  (0xffe6) 
+0000   emplacement : 65512  (0xffe8) 
+0000   emplacement : 65514  (0xffea) 
+0000   emplacement : 65516  (0xffec) 
+0000   emplacement : 65518  (0xffee) 
+0000   emplacement : 65520  (0xfff0) 
+0000   emplacement : 65522  (0xfff2) 
+0000   emplacement : 65524  (0xfff4) 
+0000   emplacement : 65526  (0xfff6) 
+0000   emplacement : 65528  (0xfff8) 
+0950   emplacement : 65530  (0xfffa)  ligne n° 70	            	JEA	@MAIN_PRGA
+ff20   emplacement : 65532  (0xfffc) 

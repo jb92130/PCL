@@ -1,0 +1,70 @@
+
+
+SP          equ	R15
+STACKA		equ	0x1000
+
+CNTMA		equ	0xFF00
+INCR		equ	0x0010
+COMP		equ	0x006F
+
+CNTIA		equ	0xFF02
+INCR2		equ	0x0002
+INCR1		equ	0x0001
+
+TABLE_VECA	equ	0x0000
+SIZE_VEC	equ	0x0004
+INTA        equ	0x0034 // (INT=i+32=34)
+INTB       	equ	0x0035 // (INT=i+32=34)
+VECT_INTA	equ	0x0088 // (VECTEUR_INTA=TABLE_VECA+INT*SIZE_VEC)
+VECT_INTB	equ	0x008C // (VECTEUR_INTA=TABLE_VECA+INT*SIZE_VEC)
+
+RESETA		equ 	0xFFFA 
+
+            	org	0xFF20// ORIGINE l'adresse de chargement
+            	start	RESETA // Start : l'adresse de d�marrage
+		
+MAIN_PRGA	    LDW	R0,#VECT_INT_1  // Je charge de RO l�adresse de mon �tiquette du d�but de mon interruption
+            	STW	R0,@VECT_INTA  // Je sauvegarde mon interruption dans mon la table des interruption
+		        LDW	R0,#VECT_INT_2  // Je charge de RO l�adresse de mon �tiquette du d�but de mon interruption
+            	STW	R0,@VECT_INTB  // Je sauvegarde mon interruption dans mon la table des interruption
+            	ENI
+
+            	STW	SP,#STACKA
+
+LOOP		    LDW	R0,@CNTMA // Je r�cup�re la valeur de CNTMA
+            	LDW	R1,#INCR  // Je r�cup�re la valeur de mon incr�ment
+           	    ADD	R0,R1,R0 // J�ajoute INCR � CNTMA
+            	LDW	R2,#COMP // Je charge mon COMP
+            	SUB	R2,R0,R2 // Je soustrais pour le CARRY FLAG
+            	JGE	#SAUV-$-2	// Si c�est sup�rieur ou �gal � COMP alors je mets � zero
+            	LDW	R0,#0
+SAUV		    STW	R0,@CNTMA // Je sauve garde la nouvelle valeur de CNTMA
+
+		        //TRP	#INTA	
+
+            	JEA	@LOOP // JMP avec une adresse (JPM=Nombre de saut)
+
+VECT_INT_1	    STW	R0,-(SP) // Je sauvegarde dans la pile la valeur des registres
+            	STW	R1,-(SP)
+            	LDW 	R0,@CNTIA
+            	LDW	R1,#INCR2
+            	ADD	R0,R1,R0
+            	STW	R0,@CNTIA
+            	LDW	R0,(SP)+ // Je restaure la valeur des registre
+            	LDW	R1,(SP)+ // �
+            	ENI	// On r�-autorise les interruptions
+            	RTI
+
+VECT_INT_2	    STW	R0,-(SP) // Je sauvegarde dans la pile la valeur des registres
+            	STW	R1,-(SP)
+            	LDW 	R0,@CNTMA
+            	LDW	R1,#INCR1
+            	SUB	R0,R1,R0
+            	STW	R0,@CNTMA
+            	LDW	R0,(SP)+ // Je restaure la valeur des registre
+            	LDW	R1,(SP)+ // �
+            	ENI	// On r�-autorise les interruptions
+            	RTI
+
+FIN         	RSB	RESETA-FIN
+            	JEA	@MAIN_PRGA

@@ -1,10 +1,6 @@
 import java.io.IOException;
-import java.io.ObjectInputStream.GetField;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
-import java.util.Set;
 
 import org.antlr.runtime.ANTLRFileStream;
 import org.antlr.runtime.CommonTokenStream;
@@ -20,6 +16,7 @@ import output.GrammarParser.prog_return;
 public class Application {
 	
 	private static LinkedHashMap<String, Symbol> tabSymbol = new LinkedHashMap<String, Symbol> ();
+	private static StringBuffer sb = new StringBuffer();
 	
 	public static void main(String[] args) {
 		ANTLRFileStream input;
@@ -32,8 +29,10 @@ public class Application {
 			GrammarParser parser = new GrammarParser(tokens);
 			prog_return r = parser.prog();
 			CommonTree t = (CommonTree) r.getTree();
-			
+			System.out.println("pourtte");
 			browseTree(t, null, 0);
+			
+			System.out.println(sb.toString());
 			
 			
 			/*for (Symbol sym : tabSymbol.values()) {
@@ -47,7 +46,7 @@ public class Application {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+		
 	}
 	
 	private static void browseTree(Tree tree, SymbolTable st, int countLet) {
@@ -69,6 +68,24 @@ public class Application {
 				/**
 				 * Init fonction système !
 				 */
+				
+				// Init de la pile
+				sb.append("// -----------------------------------------------------\n");
+				sb.append("// Générer par le super compilateur de la mort qui tue !\n");
+				sb.append("// -----------------------------------------------------\n\n\n");
+				sb.append("EXIT_EXC    equ     64\n");
+				sb.append("READ_EXC    equ     65\n");
+				sb.append("WRITE_EXC   equ     66\n");
+				sb.append("BP          equ     R13\n");
+				sb.append("WR          equ     R14\n");
+				sb.append("SP          equ	   R15\n");
+				sb.append("STACKA	   equ	   0x1000\n");
+				sb.append("RESETA	   equ    0xFFFA\n");
+				sb.append("            org	   0xFF20\n");
+				sb.append("            start   RESETA\n\n");
+				sb.append("START_PRG   LDW	   SP,#STACKA\n");
+				sb.append("            //LDW	   SP,(SP)\n");
+				
 				st = new SymbolTable(st, "PROG");
 				Symbol s;
 				
@@ -142,13 +159,30 @@ public class Application {
 						break;
 						
 					case "LET":
+						
+			            // Création d'un contexte (LINK)
+						sb.append("\n\n// Création d'un contexte dans la pile (LINK)\n");
+						sb.append("            ADQ -2,SP\n");
+						sb.append("            STW BP,(SP)\n");
+						sb.append("            LDW BP,SP\n");
+						sb.append("            SUB SP,R1,SP\n");
+						
 						browseTree(currentChild, new SymbolTable(st, "LET"), countLet+1);
-						if (countLet-1 == 0) {
+						
+						sb.append("\n\n// Suppression du contexte dans la pile (UNLINK)\n");
+						sb.append("            LDW SP,BP\n");
+						sb.append("            LDW BP,(SP)\n");
+						sb.append("            ADQ 2,SP\n");
+						    
+						if (countLet == 0) {
 							/**
 							 * Le code est analysé!
 							 */
+							sb.append("\n\n// Fin du code\n");
+							sb.append("FIN         RSB	RESETA-FIN\n");
+							sb.append("            JEA	@START_PRG\n\n");
+							
 							System.out.println("--- FIN D'ANALYSE ---");
-							System.exit(0);
 						}
 						break;
 	

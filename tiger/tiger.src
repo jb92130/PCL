@@ -6,6 +6,9 @@
 EXIT_EXC    equ     64
 READ_EXC    equ     65
 WRITE_EXC   equ     66
+
+NIL         equ     0
+
 BP          equ     R13
 WR          equ     R14
 SP          equ	   R15
@@ -15,17 +18,80 @@ RESETA	   equ    0xFFFA
             start   RESETA
 
 START_PRG   LDW	   SP,#STACKA
-           // LDW	   SP,(SP)
+            
 
 
-// Création d'un contexte dans la pile (LINK)
-            ADQ -2,SP
+            // Create contexte in the stack / Let (LINK)
+            ADQ -2 ,SP
             STW BP,(SP)
             LDW BP,SP
             SUB SP,R1,SP
 
+            LDW R1,#6 // I save my number 6 in the register
+            STW	R1,-(SP) // I push in the stack
 
-// Création d'un contexte dans la pile (LINK)
+
+            LDW R1,#5
+            LDW R2,#6
+            ADD R1,R2,R1 // Addition
+            STW	R1,-(SP) // I push in the stack
+
+
+
+//      (`-.     ('-.      .-')      ('-.                        .-') _   ('-.   
+//    _(OO  )_  ( OO ).-. ( OO ).  _(  OO)                      ( OO ) )_(  OO)  
+//,--(_/   ,. \ / . --. /(_)---\_)(,------.,--.      ,-.-') ,--./ ,--,'(,------. 
+//\   \   /(__/ | \-.  \ /    _ |  |  .---'|  |.-')  |  |OO)|   \ |  |\ |  .---' 
+// \   \ /   /.-'-'  |  |\  :` `.  |  |    |  | OO ) |  |  \|    \|  | )|  |     
+//  \   '   /, \| |_.'  | '..`''.)(|  '--. |  |`-' | |  |(_/|  .     |/(|  '--.  
+//   \     /__) |  .-.  |.-._)   \ |  .--'(|  '---.',|  |_.'|  |\    |  |  .--'  
+//    \   /     |  | |  |\       / |  `---.|      |(_|  |   |  | \   |  |  `---. 
+//     `-'      `--' `--' `-----'  `------'`------'  `--'   `--'  `--'  `------'
+
+
+
+
+            LDW R1,#74 // Je sauvegarde mon "J" dans mon registre
+            STW	R1,-(SP) // J'empile
+            LDW R1,#101 // Je sauvegarde mon "e" dans mon registre
+            STW	R1,-(SP) // J'empile
+            LDW R1,#32 // Je sauvegarde mon " " dans mon registre
+            STW	R1,-(SP) // J'empile
+            LDW R1,#116 // Je sauvegarde mon "t" dans mon registre
+            STW	R1,-(SP) // J'empile
+            LDW R1,#39 // Je sauvegarde mon "'" dans mon registre
+            STW	R1,-(SP) // J'empile
+            LDW R1,#101 // Je sauvegarde mon "e" dans mon registre
+            STW	R1,-(SP) // J'empile
+            LDW R1,#110 // Je sauvegarde mon "n" dans mon registre
+            STW	R1,-(SP) // J'empile
+            LDW R1,#99 // Je sauvegarde mon "c" dans mon registre
+            STW	R1,-(SP) // J'empile
+            LDW R1,#117 // Je sauvegarde mon "u" dans mon registre
+            STW	R1,-(SP) // J'empile
+            LDW R1,#108 // Je sauvegarde mon "l" dans mon registre
+            STW	R1,-(SP) // J'empile
+            LDW R1,#101 // Je sauvegarde mon "e" dans mon registre
+            STW	R1,-(SP) // J'empile
+            LDW R1,#0 // Je sauvegarde 0 pour marquer la fin de la string dans mon registre
+            STW	R1,-(SP) // J'empile
+
+
+            
+            // définies juste avant le point d'entrée main_
+            STRING0 string "Hello world !" // place la chaîne terminée par NUL
+            LDW SP, #STACKA // charge SP avec STACK_ADRS
+            // print("Hello world !");
+            // empile les paramètres de la fonction
+            LDW R1, #STACKA // charge adresse de la chaîne n°0 dans R1
+            STW R1, -(SP) // empile paramètre p = STRING0 contenu dans R1 :
+            // appelle la fonction print d'adresse print_ :
+            JSR @print_ // appelle la fonction d'adresse print_:
+            // print("Il fait beau ...");
+            // empile les paramètres de la fonction
+
+
+// Création d'un contexte dans la pile / Fonction (LINK)
             ADQ -2,SP
             STW BP,(SP)
             LDW BP,SP
@@ -41,10 +107,39 @@ START_PRG   LDW	   SP,#STACKA
 // Suppression du contexte dans la pile (UNLINK)
             LDW SP,BP
             LDW BP,(SP)
-            ADQ 2,SP
+            ADQ 30,SP
 
 
+            // Pour eviter de boucler dans le print
+            TRP #EXIT_EXC
+
+            // prépare l'environnement de la fonction appelée (prologue) :
+            print_ LDQ 0, R1 // R1 = taille données locales (ici 0) de fonction appelée
+            // LINK (R1) // crée et lie l'environnement de fonction appelée
+            ADQ -2, SP // décrémente le pointeur de pile SP
+            STW BP, (SP) // sauvegarde le contenu du registre BP sur la pile
+            LDW BP, SP // charge contenu SP ds BP qui pointe sur sa sauvegarde
+            SUB SP, R1, SP // réserve R1 octets sur la pile pour la variable locale z
+
+
+            LDW R0, BP // R0 = BP
+            ADQ 4, R0 // R0 pointe sur p
+            LDW R0, (R0) // R0 = p = adresse du début du texte à afficher
+            // affiche texte pointé par R0
+            // TRP WR, #WRITE_EXC // lance trappe n° WRITE_EXC: affiche texte d'adresse R0
+            LDW WR, #WRITE_EXC // on suppose que symbole WRITE_EXC déjà défini
+            TRP WR // lance trappe dont n° dans WR
+            // fin de la fonction (épilogue) :
+            // UNLINK
+            LDW SP, BP // charge SP avec contenu de BP: abandon infos locales
+            LDW BP, (SP) // charge BP avec ancien BP
+            ADQ 2, SP // ancien BP supprimé de la pile
+            // RTS // retour au programme appelant:
+            LDW WR, (SP) // charge WR avec l'adresse de retour
+            ADQ 2, SP // incrémente le pointeur de pile SP
+            JEA (WR) // saute à l'instruction d'adresse absolue dans WR
+            
 // Fin du code
 FIN         RSB	RESETA-FIN
             JEA	@START_PRG
-
+            

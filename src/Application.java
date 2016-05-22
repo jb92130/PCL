@@ -29,7 +29,6 @@ public class Application {
 			GrammarParser parser = new GrammarParser(tokens);
 			prog_return r = parser.prog();
 			CommonTree t = (CommonTree) r.getTree();
-			System.out.println("pourtte");
 			browseTree(t, null, 0);
 			
 			System.out.println(sb.toString());
@@ -59,7 +58,7 @@ public class Application {
 		Tree currentChild = null;
 		String type = null;
 		
-		System.out.println(st);
+		//System.out.println(st);
 		
 		if (!tree.isNil()) {
 			
@@ -161,18 +160,20 @@ public class Application {
 					case "LET":
 						
 			            // Création d'un contexte (LINK)
-						sb.append("\n\n// Création d'un contexte dans la pile (LINK)\n");
-						sb.append("            ADQ -2,SP\n");
+						sb.append("\n\n// Création d'un contexte dans la pile / Let (LINK)\n");
+						sb.append("            ADQ -2 ,SP\n");
 						sb.append("            STW BP,(SP)\n");
 						sb.append("            LDW BP,SP\n");
 						sb.append("            SUB SP,R1,SP\n");
 						
-						browseTree(currentChild, new SymbolTable(st, "LET"), countLet+1);
+						SymbolTable newSt = new SymbolTable(st, "LET");
+						
+						browseTree(currentChild, newSt, countLet+1);
 						
 						sb.append("\n\n// Suppression du contexte dans la pile (UNLINK)\n");
 						sb.append("            LDW SP,BP\n");
 						sb.append("            LDW BP,(SP)\n");
-						sb.append("            ADQ 2,SP\n");
+						sb.append("            ADQ " + newSt.getCountStack() + ",SP\n");
 						    
 						if (countLet == 0) {
 							/**
@@ -189,11 +190,12 @@ public class Application {
 					case "DECL_VAR":
 						
 						try {
-
+							Tree value = null;
+							
 							Analyze.varExistanceControl(currentChild.getChild(0), st);
-						
 							switch (currentChild.getChildCount()) {
 								case 2:
+									value = currentChild.getChild(1);
 									// S'il a des enfants, on doit chercher le type
 									if (currentChild.getChild(1).getChildCount() > 0) {
 										Tree currentNode = currentChild.getChild(1);
@@ -214,6 +216,7 @@ public class Application {
 										}
 									}
 									else {
+										
 										type = Symbol.getTypeByString(currentChild.getChild(1).getText());
 									}
 									
@@ -223,12 +226,100 @@ public class Application {
 									break;
 								case 3:
 									id = currentChild.getChild(0).getText();
+									value = currentChild.getChild(2);
 									symbol = new Symbol(id, currentChild.getChild(1).getText());
 									st.getSymbols().add(symbol);
 									break;
 
 							}
 							
+							sb.append("\n");
+							
+							switch (value.getText()) {
+							case "+":
+								symbol.setCountStack(st.getCountStack());
+								type = Symbol.getTypeByString(value.getChild(0).getText());
+								if (type.equals("int")) {
+									sb.append("            LDW R1,#" + value.getChild(0).getText() + "\n");
+								}
+								type = Symbol.getTypeByString(value.getChild(1).getText());
+								if (type.equals("int")) {
+									sb.append("            LDW R2,#" + value.getChild(1).getText() + "\n");
+								}
+								sb.append("            ADD R1,R2,R1 // Opération d'addition\n");
+								sb.append("            STW	R1,-(SP) // J'empile le résultat\n");
+								st.setCountStack(st.getCountStack()+2);
+								break;
+							case "*":
+								symbol.setCountStack(st.getCountStack());
+								type = Symbol.getTypeByString(value.getChild(0).getText());
+								if (type.equals("int")) {
+									sb.append("            LDW R1,#" + value.getChild(0).getText() + "\n");
+								}
+								type = Symbol.getTypeByString(value.getChild(1).getText());
+								if (type.equals("int")) {
+									sb.append("            LDW R2,#" + value.getChild(1).getText() + "\n");
+								}
+								sb.append("            MUL R1,R2,R1 // Opération de multiplication\n");
+								sb.append("            STW	R1,-(SP) // J'empile le résultat\n");
+								st.setCountStack(st.getCountStack()+2);
+								break;
+							case "-":
+								symbol.setCountStack(st.getCountStack());
+								type = Symbol.getTypeByString(value.getChild(0).getText());
+								if (type.equals("int")) {
+									sb.append("            LDW R1,#" + value.getChild(0).getText() + "\n");
+								}
+								type = Symbol.getTypeByString(value.getChild(1).getText());
+								if (type.equals("int")) {
+									sb.append("            LDW R2,#" + value.getChild(1).getText() + "\n");
+								}
+								sb.append("            SUB R1,R2,R1 // Opération de soustraction\n");
+								sb.append("            STW	R1,-(SP) // J'empile le résultat\n");
+								st.setCountStack(st.getCountStack()+2);
+								break;
+							case "/":
+								symbol.setCountStack(st.getCountStack());
+								type = Symbol.getTypeByString(value.getChild(0).getText());
+								if (type.equals("int")) {
+									sb.append("            LDW R1,#" + value.getChild(0).getText() + "\n");
+								}
+								type = Symbol.getTypeByString(value.getChild(1).getText());
+								if (type.equals("int")) {
+									sb.append("            LDW R2,#" + value.getChild(1).getText() + "\n");
+								}
+								sb.append("            DIV R1,R2,R1 // Opération de division\n");
+								sb.append("            STW	R1,-(SP) // J'empile le résultat\n");
+								st.setCountStack(st.getCountStack()+2);
+								break;
+
+							default:
+								switch (symbol.getType()) {
+								case "int":
+									symbol.setCountStack(st.getCountStack());
+									sb.append("            LDW R1,#"+ value.getText() +" // Je sauvegarde mon " + value.getText() + " dans mon registre\n");
+									sb.append("            STW	R1,-(SP) // J'empile\n");
+									st.setCountStack(st.getCountStack()+2);
+									break;
+
+								case "String":
+									symbol.setCountStack(st.getCountStack());
+									for (int j = 1; j < value.getText().length()-1; j++) {
+										sb.append("            LDW R1,#"+ (int) value.getText().charAt(j) +" // Je sauvegarde mon \"" + value.getText().charAt(j) + "\" dans mon registre\n");
+										sb.append("            STW	R1,-(SP) // J'empile\n");
+										st.setCountStack(st.getCountStack()+2);
+									}
+									sb.append("            LDW R1,#0 // Je sauvegarde 0 pour marquer la fin de la string dans mon registre\n");
+									sb.append("            STW	R1,-(SP) // J'empile\n");
+									//st.setCountStack(st.getCountStack()+2);
+									break;
+								default:
+									break;
+								}
+								break;
+							}
+							
+							sb.append("\n");
 							
 						} catch (Exception e) {
 							System.out.println(e.getMessage());
@@ -268,7 +359,14 @@ public class Application {
 						 */
 						
 					case "DECL_FCT":
+
 						
+			            // Création d'un contexte (LINK)
+						sb.append("\n\n// Création d'un contexte dans la pile / Fonction (LINK)\n");
+						sb.append("            ADQ -2,SP\n");
+						sb.append("            STW BP,(SP)\n");
+						sb.append("            LDW BP,SP\n");
+						sb.append("            SUB SP,R1,SP\n");
 						
 						id = currentChild.getChild(0).getText();
 						
@@ -298,6 +396,12 @@ public class Application {
 						
 						st.getSymbols().add(symbol);
 						browseTree(currentChild, stFct, countLet);
+						
+						sb.append("\n\n// Suppression du contexte dans la pile (UNLINK)\n");
+						sb.append("            LDW SP,BP\n");
+						sb.append("            LDW BP,(SP)\n");
+						sb.append("            ADQ " + stFct.getCountStack() + ",SP\n");
+						
 						break;
 						
 					/*case "COND":
@@ -529,6 +633,15 @@ class Symbol {
 	private boolean isTable;
 	private boolean isType;
 	private boolean isFunction;
+	private int countStack = 0;
+	
+	public void setCountStack(int countStack) {
+		this.countStack = countStack;
+	}
+	
+	public int getCountStack() {
+		return countStack;
+	}
 	
 	public Symbol(String id, String type) {
 		this.id = id;
@@ -599,6 +712,15 @@ class SymbolTable {
 	private LinkedList<Symbol> symbols = new LinkedList<Symbol>();
 	private int level;
 	private String token;
+	private int countStack = 2;
+	
+	public void setCountStack(int countStack) {
+		this.countStack = countStack;
+	}
+	
+	public int getCountStack() {
+		return countStack;
+	}
 	
 	public SymbolTable(SymbolTable st, String token) {
 		this.parent = st;

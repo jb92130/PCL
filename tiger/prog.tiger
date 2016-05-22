@@ -1,16 +1,9 @@
 let  
-	var M : String := 5
-    var toto : String := "test"
-    var N := (toto+M-M)
-    type intArray = array of int
-   	function try(c:int) : String = "a"
-   			
+	var test := 6
+	var M := 5 + 6
+	var Toto := "Je t'encule"
+   	function try(c:int) : int = 6 + 5
 in
-	let
-    	var M := 8
-	   	type printboard = int
-    in 
-    	try(9)
-    end
+   	try(9)
  end
 

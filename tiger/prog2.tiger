@@ -1,0 +1,16 @@
+let  
+	var M : String := 5
+    var toto : String := "test"
+    var N := (toto+M-M)
+    type intArray = array of int
+   	function try(c:int) : String = "a"
+   			
+in
+	let
+    	var M := 8
+	   	type printboard = int
+    in 
+    	try(9)
+    end
+ end
+

@@ -1,100 +1,100 @@
 ff20  origine
 fffa  debut d'execution
-6f80   emplacement : 65312  (0xff20)  ligne n° 17	START_PRG   LDW	   SP,#STACKA
+6f80   emplacement : 65312  (0xff20)  ligne n° 20	START_PRG   LDW	   SP,#STACKA
 1000   emplacement : 65314  (0xff22) 
-3ffe   emplacement : 65316  (0xff24)  ligne n° 22	            ADQ -2,SP
-6d2f   emplacement : 65318  (0xff26)  ligne n° 23	            STW BP,(SP)
-6d9f   emplacement : 65320  (0xff28)  ligne n° 24	            LDW BP,SP
-ff1f   emplacement : 65322  (0xff2a)  ligne n° 25	            SUB SP,R1,SP
-3ffe   emplacement : 65324  (0xff2c)  ligne n° 29	            ADQ -2,SP
-6d2f   emplacement : 65326  (0xff2e)  ligne n° 30	            STW BP,(SP)
-6d9f   emplacement : 65328  (0xff30)  ligne n° 31	            LDW BP,SP
-ff1f   emplacement : 65330  (0xff32)  ligne n° 32	            SUB SP,R1,SP
-6f9d   emplacement : 65332  (0xff34)  ligne n° 36	            LDW SP,BP
-6daf   emplacement : 65334  (0xff36)  ligne n° 37	            LDW BP,(SP)
-3f02   emplacement : 65336  (0xff38)  ligne n° 38	            ADQ 2,SP
-6f9d   emplacement : 65338  (0xff3a)  ligne n° 42	            LDW SP,BP
-6daf   emplacement : 65340  (0xff3c)  ligne n° 43	            LDW BP,(SP)
-3f02   emplacement : 65342  (0xff3e)  ligne n° 44	            ADQ 2,SP
-0000   emplacement : 65344  (0xff40)  ligne n° 48	FIN         RSB	RESETA-FIN
-0000   emplacement : 65346  (0xff42) 
-0000   emplacement : 65348  (0xff44) 
-0000   emplacement : 65350  (0xff46) 
-0000   emplacement : 65352  (0xff48) 
-0000   emplacement : 65354  (0xff4a) 
-0000   emplacement : 65356  (0xff4c) 
-0000   emplacement : 65358  (0xff4e) 
-0000   emplacement : 65360  (0xff50) 
-0000   emplacement : 65362  (0xff52) 
-0000   emplacement : 65364  (0xff54) 
-0000   emplacement : 65366  (0xff56) 
-0000   emplacement : 65368  (0xff58) 
-0000   emplacement : 65370  (0xff5a) 
-0000   emplacement : 65372  (0xff5c) 
-0000   emplacement : 65374  (0xff5e) 
-0000   emplacement : 65376  (0xff60) 
-0000   emplacement : 65378  (0xff62) 
-0000   emplacement : 65380  (0xff64) 
-0000   emplacement : 65382  (0xff66) 
-0000   emplacement : 65384  (0xff68) 
-0000   emplacement : 65386  (0xff6a) 
-0000   emplacement : 65388  (0xff6c) 
-0000   emplacement : 65390  (0xff6e) 
-0000   emplacement : 65392  (0xff70) 
-0000   emplacement : 65394  (0xff72) 
-0000   emplacement : 65396  (0xff74) 
-0000   emplacement : 65398  (0xff76) 
-0000   emplacement : 65400  (0xff78) 
-0000   emplacement : 65402  (0xff7a) 
-0000   emplacement : 65404  (0xff7c) 
-0000   emplacement : 65406  (0xff7e) 
-0000   emplacement : 65408  (0xff80) 
+3ffe   emplacement : 65316  (0xff24)  ligne n° 26	            ADQ -2 ,SP
+6d2f   emplacement : 65318  (0xff26)  ligne n° 27	            STW BP,(SP)
+6d9f   emplacement : 65320  (0xff28)  ligne n° 28	            LDW BP,SP
+ff1f   emplacement : 65322  (0xff2a)  ligne n° 29	            SUB SP,R1,SP
+6180   emplacement : 65324  (0xff2c)  ligne n° 31	            LDW R1,#6 // Je sauvegarde mon 6 dans mon registre
+0006   emplacement : 65326  (0xff2e) 
+614f   emplacement : 65328  (0xff30)  ligne n° 32	            STW	R1,-(SP) // J'empile
+6180   emplacement : 65330  (0xff32)  ligne n° 35	            LDW R1,#5
+0005   emplacement : 65332  (0xff34) 
+6280   emplacement : 65334  (0xff36)  ligne n° 36	            LDW R2,#6
+0006   emplacement : 65336  (0xff38) 
+e121   emplacement : 65338  (0xff3a)  ligne n° 37	            ADD R1,R2,R1 // Opiration d'addition
+614f   emplacement : 65340  (0xff3c)  ligne n° 38	            STW	R1,-(SP) // J'empile
+6180   emplacement : 65342  (0xff3e)  ligne n° 41	            LDW R1,#74 // Je sauvegarde mon "J" dans mon registre
+004a   emplacement : 65344  (0xff40) 
+614f   emplacement : 65346  (0xff42)  ligne n° 42	            STW	R1,-(SP) // J'empile
+6180   emplacement : 65348  (0xff44)  ligne n° 43	            LDW R1,#101 // Je sauvegarde mon "e" dans mon registre
+0065   emplacement : 65350  (0xff46) 
+614f   emplacement : 65352  (0xff48)  ligne n° 44	            STW	R1,-(SP) // J'empile
+6180   emplacement : 65354  (0xff4a)  ligne n° 45	            LDW R1,#32 // Je sauvegarde mon " " dans mon registre
+0020   emplacement : 65356  (0xff4c) 
+614f   emplacement : 65358  (0xff4e)  ligne n° 46	            STW	R1,-(SP) // J'empile
+6180   emplacement : 65360  (0xff50)  ligne n° 47	            LDW R1,#116 // Je sauvegarde mon "t" dans mon registre
+0074   emplacement : 65362  (0xff52) 
+614f   emplacement : 65364  (0xff54)  ligne n° 48	            STW	R1,-(SP) // J'empile
+6180   emplacement : 65366  (0xff56)  ligne n° 49	            LDW R1,#39 // Je sauvegarde mon "'" dans mon registre
+0027   emplacement : 65368  (0xff58) 
+614f   emplacement : 65370  (0xff5a)  ligne n° 50	            STW	R1,-(SP) // J'empile
+6180   emplacement : 65372  (0xff5c)  ligne n° 51	            LDW R1,#101 // Je sauvegarde mon "e" dans mon registre
+0065   emplacement : 65374  (0xff5e) 
+614f   emplacement : 65376  (0xff60)  ligne n° 52	            STW	R1,-(SP) // J'empile
+6180   emplacement : 65378  (0xff62)  ligne n° 53	            LDW R1,#110 // Je sauvegarde mon "n" dans mon registre
+006e   emplacement : 65380  (0xff64) 
+614f   emplacement : 65382  (0xff66)  ligne n° 54	            STW	R1,-(SP) // J'empile
+6180   emplacement : 65384  (0xff68)  ligne n° 55	            LDW R1,#99 // Je sauvegarde mon "c" dans mon registre
+0063   emplacement : 65386  (0xff6a) 
+614f   emplacement : 65388  (0xff6c)  ligne n° 56	            STW	R1,-(SP) // J'empile
+6180   emplacement : 65390  (0xff6e)  ligne n° 57	            LDW R1,#117 // Je sauvegarde mon "u" dans mon registre
+0075   emplacement : 65392  (0xff70) 
+614f   emplacement : 65394  (0xff72)  ligne n° 58	            STW	R1,-(SP) // J'empile
+6180   emplacement : 65396  (0xff74)  ligne n° 59	            LDW R1,#108 // Je sauvegarde mon "l" dans mon registre
+006c   emplacement : 65398  (0xff76) 
+614f   emplacement : 65400  (0xff78)  ligne n° 60	            STW	R1,-(SP) // J'empile
+6180   emplacement : 65402  (0xff7a)  ligne n° 61	            LDW R1,#101 // Je sauvegarde mon "e" dans mon registre
+0065   emplacement : 65404  (0xff7c) 
+614f   emplacement : 65406  (0xff7e)  ligne n° 62	            STW	R1,-(SP) // J'empile
+6180   emplacement : 65408  (0xff80)  ligne n° 63	            LDW R1,#0 // Je sauvegarde 0 pour marquer la fin de la string dans mon registre
 0000   emplacement : 65410  (0xff82) 
-0000   emplacement : 65412  (0xff84) 
-0000   emplacement : 65414  (0xff86) 
-0000   emplacement : 65416  (0xff88) 
-0000   emplacement : 65418  (0xff8a) 
-0000   emplacement : 65420  (0xff8c) 
-0000   emplacement : 65422  (0xff8e) 
-0000   emplacement : 65424  (0xff90) 
-0000   emplacement : 65426  (0xff92) 
-0000   emplacement : 65428  (0xff94) 
-0000   emplacement : 65430  (0xff96) 
-0000   emplacement : 65432  (0xff98) 
-0000   emplacement : 65434  (0xff9a) 
-0000   emplacement : 65436  (0xff9c) 
-0000   emplacement : 65438  (0xff9e) 
-0000   emplacement : 65440  (0xffa0) 
-0000   emplacement : 65442  (0xffa2) 
-0000   emplacement : 65444  (0xffa4) 
-0000   emplacement : 65446  (0xffa6) 
-0000   emplacement : 65448  (0xffa8) 
-0000   emplacement : 65450  (0xffaa) 
-0000   emplacement : 65452  (0xffac) 
-0000   emplacement : 65454  (0xffae) 
-0000   emplacement : 65456  (0xffb0) 
-0000   emplacement : 65458  (0xffb2) 
-0000   emplacement : 65460  (0xffb4) 
-0000   emplacement : 65462  (0xffb6) 
-0000   emplacement : 65464  (0xffb8) 
-0000   emplacement : 65466  (0xffba) 
-0000   emplacement : 65468  (0xffbc) 
-0000   emplacement : 65470  (0xffbe) 
-0000   emplacement : 65472  (0xffc0) 
-0000   emplacement : 65474  (0xffc2) 
-0000   emplacement : 65476  (0xffc4) 
-0000   emplacement : 65478  (0xffc6) 
-0000   emplacement : 65480  (0xffc8) 
-0000   emplacement : 65482  (0xffca) 
-0000   emplacement : 65484  (0xffcc) 
-0000   emplacement : 65486  (0xffce) 
-0000   emplacement : 65488  (0xffd0) 
-0000   emplacement : 65490  (0xffd2) 
-0000   emplacement : 65492  (0xffd4) 
-0000   emplacement : 65494  (0xffd6) 
-0000   emplacement : 65496  (0xffd8) 
-0000   emplacement : 65498  (0xffda) 
-0000   emplacement : 65500  (0xffdc) 
+614f   emplacement : 65412  (0xff84)  ligne n° 64	            STW	R1,-(SP) // J'empile
+4865   emplacement : 65414  (0xff86)  ligne n° 69	            STRING0 string "Hello world !" // place la channe terminie par NUL
+6c6c   emplacement : 65416  (0xff88) 
+6f20   emplacement : 65418  (0xff8a) 
+776f   emplacement : 65420  (0xff8c) 
+726c   emplacement : 65422  (0xff8e) 
+6420   emplacement : 65424  (0xff90) 
+2100   emplacement : 65426  (0xff92) 
+6f80   emplacement : 65428  (0xff94)  ligne n° 70	            LDW SP, #STACKA // charge SP avec STACK_ADRS
+1000   emplacement : 65430  (0xff96) 
+6180   emplacement : 65432  (0xff98)  ligne n° 73	            LDW R1, #STACKA // charge adresse de la channe n00 dans R1
+1000   emplacement : 65434  (0xff9a) 
+614f   emplacement : 65436  (0xff9c)  ligne n° 74	            STW R1, -(SP) // empile paramhtre p = STRING0 contenu dans R1 :
+0a50   emplacement : 65438  (0xff9e)  ligne n° 76	            JSR @print_ // appelle la fonction d'adresse print_:
+ffba   emplacement : 65440  (0xffa0) 
+3ffe   emplacement : 65442  (0xffa2)  ligne n° 82	            ADQ -2,SP
+6d2f   emplacement : 65444  (0xffa4)  ligne n° 83	            STW BP,(SP)
+6d9f   emplacement : 65446  (0xffa6)  ligne n° 84	            LDW BP,SP
+ff1f   emplacement : 65448  (0xffa8)  ligne n° 85	            SUB SP,R1,SP
+6f9d   emplacement : 65450  (0xffaa)  ligne n° 89	            LDW SP,BP
+6daf   emplacement : 65452  (0xffac)  ligne n° 90	            LDW BP,(SP)
+3f02   emplacement : 65454  (0xffae)  ligne n° 91	            ADQ 2,SP
+6f9d   emplacement : 65456  (0xffb0)  ligne n° 95	            LDW SP,BP
+6daf   emplacement : 65458  (0xffb2)  ligne n° 96	            LDW BP,(SP)
+3f1e   emplacement : 65460  (0xffb4)  ligne n° 97	            ADQ 30,SP
+0b00   emplacement : 65462  (0xffb6)  ligne n° 101	            TRP #EXIT_EXC
+0040   emplacement : 65464  (0xffb8) 
+2100   emplacement : 65466  (0xffba)  ligne n° 104	            print_ LDQ 0, R1 // R1 = taille donnies locales (ici 0) de fonction appelie
+3ffe   emplacement : 65468  (0xffbc)  ligne n° 106	            ADQ -2, SP // dicrimente le pointeur de pile SP
+6d2f   emplacement : 65470  (0xffbe)  ligne n° 107	            STW BP, (SP) // sauvegarde le contenu du registre BP sur la pile
+6d9f   emplacement : 65472  (0xffc0)  ligne n° 108	            LDW BP, SP // charge contenu SP ds BP qui pointe sur sa sauvegarde
+ff1f   emplacement : 65474  (0xffc2)  ligne n° 109	            SUB SP, R1, SP // riserve R1 octets sur la pile pour la variable locale z
+609d   emplacement : 65476  (0xffc4)  ligne n° 112	            LDW R0, BP // R0 = BP
+3004   emplacement : 65478  (0xffc6)  ligne n° 113	            ADQ 4, R0 // R0 pointe sur p
+60a0   emplacement : 65480  (0xffc8)  ligne n° 114	            LDW R0, (R0) // R0 = p = adresse du dibut du texte ` afficher
+6e80   emplacement : 65482  (0xffca)  ligne n° 117	            LDW WR, #WRITE_EXC // on suppose que symbole WRITE_EXC dij` difini
+0042   emplacement : 65484  (0xffcc) 
+0b1e   emplacement : 65486  (0xffce)  ligne n° 118	            TRP WR // lance trappe dont n0 dans WR
+6f9d   emplacement : 65488  (0xffd0)  ligne n° 121	            LDW SP, BP // charge SP avec contenu de BP: abandon infos locales
+6daf   emplacement : 65490  (0xffd2)  ligne n° 122	            LDW BP, (SP) // charge BP avec ancien BP
+3f02   emplacement : 65492  (0xffd4)  ligne n° 123	            ADQ 2, SP // ancien BP supprimi de la pile
+6eaf   emplacement : 65494  (0xffd6)  ligne n° 125	            LDW WR, (SP) // charge WR avec l'adresse de retour
+3f02   emplacement : 65496  (0xffd8)  ligne n° 126	            ADQ 2, SP // incrimente le pointeur de pile SP
+092e   emplacement : 65498  (0xffda)  ligne n° 127	            JEA (WR) // saute ` l'instruction d'adresse absolue dans WR
+0000   emplacement : 65500  (0xffdc)  ligne n° 130	FIN         RSB	RESETA-FIN
 0000   emplacement : 65502  (0xffde) 
 0000   emplacement : 65504  (0xffe0) 
 0000   emplacement : 65506  (0xffe2) 
@@ -109,5 +109,5 @@ ff1f   emplacement : 65330  (0xff32)  ligne n° 32	            SUB SP,R1,SP
 0000   emplacement : 65524  (0xfff4) 
 0000   emplacement : 65526  (0xfff6) 
 0000   emplacement : 65528  (0xfff8) 
-0950   emplacement : 65530  (0xfffa)  ligne n° 49	            JEA	@START_PRG
+0950   emplacement : 65530  (0xfffa)  ligne n° 131	            JEA	@START_PRG
 ff20   emplacement : 65532  (0xfffc) 
